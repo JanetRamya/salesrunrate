@@ -6,24 +6,23 @@
 	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
 	xmlns:p="http://primefaces.org/ui">
 	<div id="file">
-		<h:outputLabel value="USER PROFILE"
-			style="font-family:Serif;font-size:25px;color:red;text-align:center;"></h:outputLabel>
-		<br /> <br />
-		<h:panelGrid columns="2" styleClass="test" cellspacing="30">
-			<h:outputLabel value="ID"></h:outputLabel>
+		<p:outputLabel value="USER PROFILE"
+			style="font-family:Serif;font-size:25px;color:red;"></p:outputLabel>
+		<p:panelGrid columns="2" styleClass="test" cellspacing="30">
+			<p:outputLabel value="ID"></p:outputLabel>
 			<p:inputText></p:inputText>
-			<h:outputLabel value="UserName"></h:outputLabel>
+			<p:outputLabel value="UserName"></p:outputLabel>
 			<p:inputText placeholder="Janet"></p:inputText>
-			<h:outputLabel value="Password"></h:outputLabel>
+			<p:outputLabel value="Password"></p:outputLabel>
 			<p:password></p:password>
-			<h:outputLabel value="Mobile"></h:outputLabel>
+			<p:outputLabel value="Mobile"></p:outputLabel>
 			<p:inputText maxlength="10" placeholder="1234567890"></p:inputText>
-			<h:outputLabel value="Email-ID"></h:outputLabel>
+			<p:outputLabel value="Email-ID"></p:outputLabel>
 			<p:inputText placeholder="sales@company.com"></p:inputText>
-		</h:panelGrid>
-		<h:panelGrid columns="1">
+		</p:panelGrid>
+		<p:panelGrid columns="1">
 			<p:commandButton value="SAVE" />
-		</h:panelGrid>
+		</p:panelGrid>
 	</div>
 </ui:composition>
 
