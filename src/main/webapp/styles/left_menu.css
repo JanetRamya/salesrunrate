@@ -1,0 +1,67 @@
+@charset "utf-8";
+/* CSS Document */
+
+#left_heading{background:url(../images/left_heading_bg.png) right center no-repeat; font-size:11px;  text-shadow:1px 1px 1px #000; text-align:left;line-height:33px; padding-left:20px; color:#FFFFFF; margin-top:25px; font-weight:bold;
+}
+#left_heading1{background:url(../images/left_heading_bg.png) right center no-repeat; font-size:11px;  text-shadow:1px 1px 1px #000; text-align:left;line-height:33px; padding-left:20px; color:#FFFFFF; margin-top:10px; font-weight:bold;
+}
+
+#myaccount_left_heading{background:url(../images/admin_left_heading_bg.png) right center no-repeat; font-size:11px;  text-shadow:1px 1px 1px #000; text-align:left;line-height:33px; padding-left:20px; color:#FFFFFF; margin-top:25px; font-weight:bold;
+}
+
+
+#admin_left_heading{background:url(../images/left_heading_bg1.png) right center no-repeat; font-size:11px;  text-shadow:1px 1px 1px #000; text-align:left;line-height:33px; padding-left:20px; color:#FFFFFF; margin-top:25px; font-weight:bold;
+}
+#admin_left_heading1{background:url(../images/left_heading_bg3.png) right center no-repeat; font-size:11px;  text-shadow:1px 1px 1px #000; text-align:left;line-height:33px; padding-left:20px; color:#FFFFFF; margin-top:10px; font-weight:bold;
+}
+
+.arrowlistmenu{
+width:203px; /*width of accordion menu*/
+}
+
+.arrowlistmenu .menuheader{ /*CSS class for menu headers in general (expanding or not!)*/
+font:bold 12px Arial; background:url(../images/left_divider.jpg) bottom center no-repeat;
+color:#000; 
+text-transform: uppercase;
+padding:0 0 10px 20px; /*header text is indented 10px*/
+cursor: pointer;
+}
+.arrowlistmenu .menuheader h3{padding:0; margin:0;
+}
+.arrowlistmenu .openheader{ /*CSS class to apply to expandable header when it's expanded*/
+ background:url(../images/down.gif) right center no-repeat; font-weight:bold; color:#f6f283;
+}
+
+.arrowlistmenu ul{ /*CSS for UL of each sub menu*/
+list-style-type: none;
+margin: 0;
+padding: 0;
+}
+
+.arrowlistmenu ul li{
+background:url(../images/left_divider.jpg) bottom center no-repeat; /*bottom spacing between menu items*/
+}
+
+.arrowlistmenu ul li a{
+color: #6c6c6c; background:url(../images/submenu_arrow.png) left center no-repeat;
+ /*custom bullet list image*/
+display: block; border-bottom:1px solid #dddddd;
+padding: 5px 0px; text-shadow:none;
+padding-left: 19px; /*link text is indented 19px*/
+text-decoration:none; font-size:11px;
+font-weight: bold; 
+
+
+}
+
+.arrowlistmenu ul li a:visited{
+color: #6c6c6c;text-shadow:none;
+}
+
+.arrowlistmenu ul li a:hover{ /*hover state CSS*/
+color: #434343;background:url(../images/suv_menu_bg.jpg) center top repeat-y;text-shadow:none;
+
+}
+
+#main_heading1{padding-top:5px; padding-bottom:5px; font-weight:bold; color:#000;
+}

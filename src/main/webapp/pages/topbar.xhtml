@@ -1,0 +1,36 @@
+<ui:composition 
+
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:pm="http://primefaces.org/modena">
+    <!-- TOPBAR START -->
+    <div id="layout-topbar">
+    <div class="wrapper_inner_topbar">
+        <h:panelGrid style="float:left;">
+					<p:commandLink id="logo" 
+						actionListener="#{nav.landingScreen}" update=":content">
+						<p:graphicImage value="../images/CSNG-grey.png" for="logo" border="0"/>
+						<b style ="font-size:30px;font-family: sans-serif; color:light blue;">SALES RUN RATE</b>
+					</p:commandLink>
+		</h:panelGrid>
+        
+        <a id="show-top-menu" class="ShowOnMobile ripplelink"><i class="icon-more_vert" id="active"></i><i class="icon-close DispNone" id="passive"></i> </a>
+        
+        <ul id="top-menu" class="top-menucls">
+            <li>
+                <a class="ripplelink"><i class="icon-power"></i> <span class="ShowOnMobile">System</span></a>
+                <ul>
+                    <li>
+                    <p:commandLink actionListener="#{loginBean.logout}"><span class="Red"><i class="icon-vpn_key Fs30 DispBlock"></i> Logout</span></p:commandLink>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        </div>
+    </div>
+    <!-- TOPBAR END -->
+</ui:composition>

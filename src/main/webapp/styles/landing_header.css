@@ -1,0 +1,185 @@
+
+.leftHeader{
+	width:95%;
+	color:black;
+	align: left;
+    font-size:18px;
+	font-weight:bold;
+	text-decoration:underline;
+	text-shadow:1px 1px 1px #FFFFFF; 
+}
+.rightHeader{
+	align: right;
+}
+.rightHeader .createButton{
+	width: 110px;
+}
+.ui-layout-north .ui-layout-unit-content  {
+     
+background-color: #003366;
+}
+
+.top_div{
+	background:url(../images/back_top_bg.jpg) left top repeat-x;
+}
+#top_right_logo{
+	margin-left: 800px;
+	margin-bottom: 10px;
+}
+.top_right_logo_span{
+	color: #ffffff;font-size: 12px;
+	margin-bottom: 10px;
+}
+.right_logo{
+	background:url(../images/user_icon.png) ;
+}
+
+.leftMenuPanel .ui-panel-titlebar {background:url(../images/left_heading_bg.png) right center no-repeat;
+font-size:11px;
+ text-shadow:1px 1px 1px #000;
+  text-align:center;
+  line-height:33px;
+   color:#FFFFFF;
+   border:0px; 
+    margin-top:-10px; 
+    font-weight:bold;
+}
+
+.leftMenuPanel .ui-panel-content {
+text-decoration:none;
+
+
+}
+.leftMenuPanel  ul {
+	list-style-type: none;
+margin: 0;
+padding: 0;
+	
+	
+}
+.leftMenuPanel  ul li {
+	
+	text-align:left;
+	background:url(../images/left_divider.jpg) left bottom repeat-x;
+}
+.leftMenuCommandLink{
+	text-align:left;
+color: #6c6c6c;
+background:url(../images/submenu_arrow.png) left center no-repeat;
+display: block;
+padding: 5px 0px;
+border-bottom:1px solid #dddddd;
+text-shadow:none;
+padding-left: 19px;
+text-decoration:none;
+font-size:11px;
+font-weight: bold;
+
+}
+#smoothmenu1{
+	background:url(../images/menu_hover.jpg) left top repeat-x;
+}
+
+.ddsmoothmenu{
+padding-left:200px; /*background of menu bar (default state)*/
+background:url(../images/menu_hover.jpg) left top repeat-x;
+} 
+
+.ddsmoothmenu ul{
+z-index:100;
+margin: 0;
+padding: 0;
+list-style-type: none;
+}
+
+/*Top level list items*/
+.ddsmoothmenu ul li{
+position: relative;
+display: inline;
+float: left;
+}
+
+/*Top level menu link items style*/
+.ddsmoothmenu ul li a{
+display: block; text-align:center;
+padding:6px 20px;      
+ background:url(../images/menu_divider.jpg) right top no-repeat;text-shadow:1px 1px 1px #000; font-size:11px; font-weight:bold;
+text-decoration: none;
+}
+
+
+* html .ddsmoothmenu ul li a{ /*IE6 hack to get sub menu links to behave correctly*/
+display: inline-block; font-size:11px;
+}
+
+.ddsmoothmenu ul li a:link, .ddsmoothmenu ul li a:visited{  
+color: white;text-shadow:1px 1px 1px #000; font-size:11px; font-weight:bold; font-size:11px;
+}
+
+.ddsmoothmenu ul li a:hover{ text-decoration:none; background:url(../images/menu_hover.jpg) left top repeat-x;
+}
+
+	
+/*1st sub level menu*/
+.ddsmoothmenu ul li ul{
+position: absolute;
+left: 0;
+display: none; /*collapse all sub menus to begin with*/
+visibility: hidden; margin-top:-1px;
+}
+
+/*Sub level menu list items (undo style from Top level List Items)*/
+.ddsmoothmenu ul li ul li{
+display: list-item;
+float: none; border-bottom:1px solid #285f9a;
+}
+
+/*All subsequent sub menu levels vertical offset after 1st level sub menu */
+.ddsmoothmenu ul li ul li ul{
+top: 0;
+}
+
+.ddsmoothmenu ul li ul li ul li{ border-bottom:1px solid #285f9a;
+}
+
+/* Sub level menu links style */
+.ddsmoothmenu ul li ul li a{ 
+width: 170px; /*width of sub menus*/  
+padding: 5px; text-align:left;
+margin: 0; background:url(../images/suv_menu_bg.jpg) left top repeat-y;
+border-top-width: 0; font-size:11px;
+
+}
+
+/* Holly Hack for IE \*/
+* html .ddsmoothmenu{height: 1%;} /*Holly Hack for IE7 and below*/
+
+
+/* ######### CSS classes applied to down and right arrow images  ######### */
+
+.downarrowclass{
+position: absolute;
+top: 12px;
+right: 7px;
+}
+
+.rightarrowclass{
+position: absolute;
+top: 6px;
+right: 5px;
+}
+
+/* ######### CSS for shadow added to sub menus  ######### */
+
+.ddshadow{ /*shadow for NON CSS3 capable browsers*/
+position: absolute;
+left: 0;
+top: 0;
+width: 0;
+height: 0;
+
+}
+
+.toplevelshadow{ /*shadow opacity for NON CSS3 capable browsers. Doesn't work in IE*/
+opacity: 0.8;
+}

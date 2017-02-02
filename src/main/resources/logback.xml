@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+	<!-- <logger name="org.apache.cxf" level="WARN"/> -->
+103
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%d{dd MMM yyyy HH:mm:ss.SSS} %-5level %logger{36} - %msg%n
+			</pattern>
+		</encoder>
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>info</level>
+		</filter>
+
+	</appender>
+
+	<!-- Logging all events from debug -->
+	<appender name="FILE"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>logs/csng.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+			<maxHistory>30</maxHistory>
+			<timeBasedFileNamingAndTriggeringPolicy
+				class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>1000MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>debug</level>
+		</filter>
+
+		<encoder>
+			<pattern>%d{dd MMM yyyy HH:mm:ss.SSS} %-5level %logger{36} - %msg%n
+			</pattern>
+		</encoder>
+	</appender>
+
+	<!-- Logging all trace events -->
+	<appender name="TRACE"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>logs/csng-trace.%d{yyyy-MM-dd}.%i.log
+			</fileNamePattern>
+			<maxHistory>1</maxHistory>
+			<timeBasedFileNamingAndTriggeringPolicy
+				class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>1000MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+
+		</rollingPolicy>
+
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+			<level>TRACE</level>
+			<onMatch>ACCEPT</onMatch>
+			<onMismatch>DENY</onMismatch>
+		</filter>
+
+		<encoder>
+			<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS},%msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<logger name="com.botree" level="TRACE" />
+
+	<root level="debug">
+ 		<appender-ref ref="STDOUT" />
+		<appender-ref ref="FILE" />
+		<appender-ref ref="TRACE" />
+		<!-- <appender-ref ref="SMTP" /> -->
+	</root>
+</configuration>
