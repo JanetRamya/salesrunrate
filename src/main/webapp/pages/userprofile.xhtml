@@ -8,21 +8,21 @@
 	<div id="file">
 		<p:outputLabel value="USER PROFILE"
 			style="font-family:Serif;font-size:25px;color:red;"></p:outputLabel>
-		<p:panelGrid columns="2" styleClass="test" cellspacing="30">
+		<h:panelGrid columns="2" styleClass="test" cellspacing="30">
 			<p:outputLabel value="ID"></p:outputLabel>
-			<p:inputText></p:inputText>
+			<p:inputText value="#{userProfileBean.id}"></p:inputText>
 			<p:outputLabel value="UserName"></p:outputLabel>
-			<p:inputText placeholder="Janet"></p:inputText>
+			<p:inputText value="#{userProfileBean.userName}" placeholder="Janet"></p:inputText>
 			<p:outputLabel value="Password"></p:outputLabel>
-			<p:password></p:password>
+			<p:password value="#{userProfileBean.password}"></p:password>
 			<p:outputLabel value="Mobile"></p:outputLabel>
-			<p:inputText maxlength="10" placeholder="1234567890"></p:inputText>
+			<p:inputText maxlength="10" placeholder="1234567890" value="#{userProfileBean.mobileNo}"></p:inputText>
 			<p:outputLabel value="Email-ID"></p:outputLabel>
-			<p:inputText placeholder="sales@company.com"></p:inputText>
-		</p:panelGrid>
-		<p:panelGrid columns="1">
+			<p:inputText value="#{userProfileBean.emailId}" placeholder="sales@company.com"></p:inputText>
+		</h:panelGrid>
+		<h:panelGrid columns="1">
 			<p:commandButton value="SAVE" />
-		</p:panelGrid>
+		</h:panelGrid>
 	</div>
 </ui:composition>
 

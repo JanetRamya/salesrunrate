@@ -6,51 +6,22 @@
 	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
 	xmlns:p="http://primefaces.org/ui">
 	<div id="file">
-		<h:outputLabel value="DISTRIBUTOR PROFILE"
-			style="font-family:Serif;font-size:25px;color:red;text-align:center;"></h:outputLabel>
-		<br />
-		<br />
-		<h:panelGrid columns="3" styleClass="test">
-			<h:column>
-				<h:outputLabel value="DistributorCode"></h:outputLabel>
-			</h:column>
-			<h:column></h:column>
-			<h:column>
-				<p:inputText></p:inputText>
-			</h:column>
-			<h:column>
-				<h:outputLabel placeholder="Janet" value="DistributorName"></h:outputLabel>
-			</h:column>
-			<h:column></h:column>
-			<h:column>
-				<p:inputText></p:inputText>
-			</h:column>
-			<h:column>
-				<h:outputLabel value="Country"></h:outputLabel>
-			</h:column>
-			<h:column></h:column>
-			<h:column>
-				<p:inputText></p:inputText>
-			</h:column>
-			<h:column>
-				<h:outputLabel value="State"></h:outputLabel>
-			</h:column>
-			<h:column></h:column>
-			<h:column>
-				<p:inputText></p:inputText>
-			</h:column>
-			<h:column>
-				<h:outputLabel value="City"></h:outputLabel>
-			</h:column>
-			<h:column></h:column>
-			<h:column>
-				<p:inputText></p:inputText>
-			</h:column>
-			<br />
-			<br />
-			<br />
+		<p:outputLabel value="DISTRIBUTOR PROFILE"
+			style="font-family:Serif;font-size:25px;color:red;text-align:center;"></p:outputLabel>
+		<br /> <br />
+		<h:panelGrid columns="2" styleClass="test" cellspacing="20">
+			<p:outputLabel value="DistributorCode"></p:outputLabel>
+			<p:inputText></p:inputText>
+			<p:outputLabel  value="DistributorName"></p:outputLabel>
+			<p:inputText placeholder="Janet"></p:inputText>
+			<p:outputLabel value="Country"></p:outputLabel>
+			<p:inputText></p:inputText>
+			<p:outputLabel value="State"></p:outputLabel>
+			<p:inputText></p:inputText>
+			<p:outputLabel value="City"></p:outputLabel>
+			<p:inputText></p:inputText>
 			<center>
-				<h:commandButton value="SAVE"></h:commandButton>
+				<p:commandButton value="SAVE"></p:commandButton>
 			</center>
 		</h:panelGrid>
 	</div>

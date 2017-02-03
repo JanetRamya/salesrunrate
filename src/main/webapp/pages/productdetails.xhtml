@@ -6,36 +6,15 @@
 	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
 	xmlns:p="http://primefaces.org/ui">
 	<div id="file">
-		<h:outputLabel value="PRODUCT DETAILS"
-			style="font-family:Serif;font-size:25px;color:red;text-align:center;"></h:outputLabel>
-		<br />
-		<br />
-		<h:panelGrid columns="3" styleClass="test">
-			<h:column>
-				<h:outputLabel value="ProductCode"></h:outputLabel>
-			</h:column>
-			<h:column></h:column>
-			<h:column>
-				<p:inputText></p:inputText>
-			</h:column>
-			<h:column>
-				<h:outputLabel value="ProductName"></h:outputLabel>
-			</h:column>
-			<h:column></h:column>
-			<h:column>
-				<p:inputText></p:inputText>
-			</h:column>
-			<h:column>
-				<h:outputLabel value="Price"></h:outputLabel>
-			</h:column>
-			<h:column></h:column>
-			<h:column>
-				<p:inputText></p:inputText>
-			</h:column>
-
-			<br />
-			<br />
-			<br />
+		<p:outputLabel value="PRODUCT DETAILS"
+			style="font-family:Serif;font-size:25px;color:red;text-align:center;"></p:outputLabel>
+		<h:panelGrid columns="2" styleClass="test" cellspacing="20">
+			<p:outputLabel value="ProductCode"></p:outputLabel>
+			<p:inputText></p:inputText>
+			<p:outputLabel value="ProductName"></p:outputLabel>
+			<p:inputText></p:inputText>
+			<p:outputLabel value="Price"></p:outputLabel>
+			<p:inputText></p:inputText>
 			<center>
 				<h:commandButton value="SAVE"></h:commandButton>
 			</center>

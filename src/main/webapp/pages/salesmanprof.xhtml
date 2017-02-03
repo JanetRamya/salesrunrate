@@ -6,77 +6,40 @@
 	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
 	xmlns:p="http://primefaces.org/ui">
 	<div id="file">
-	<h:outputLabel value="SALESMAN PROFILE" style="font-family:Serif;font-size:25px;color:red;text-align:center;"></h:outputLabel>
-	<br/><br/>
-		<h:panelGrid columns="3" styleClass="test">
-		<h:column>
-		<h:outputLabel value="Name"></h:outputLabel>
-		</h:column>
-		<h:column></h:column>
-		<h:column>
+		<p:outputLabel value="SALESMAN PROFILE"
+			style="font-family:Serif;font-size:25px;color:red;text-align:center;">
+		</p:outputLabel>
+		<h:panelGrid columns="2" styleClass="test" cellspacing="20">
+			<p:outputLabel value="Name"></p:outputLabel>
 			<p:inputText placeholder="Janet"></p:inputText>
-		</h:column>
-		<h:column>
-			<h:outputLabel value="Code"></h:outputLabel>
-		</h:column>
-		<h:column></h:column>
-		<h:column>
+			<p:outputLabel value="Code"></p:outputLabel>
 			<p:inputText></p:inputText>
-		</h:column>
-		<h:column>
-			<h:outputLabel value="DistributorBranch"></h:outputLabel>
-		</h:column>
-		<h:column></h:column>
-		<h:column>
+			<p:outputLabel value="DistributorBranch"></p:outputLabel>
 			<p:selectOneMenu>
 				<f:selectItem itemLabel="Select Branch" itemValue="" />
-					<f:selectItem itemLabel="Annanagar"  itemValue="1" />
-					<f:selectItem itemLabel="TNagar"  itemValue="2" />
-					<f:selectItem itemLabel="Pudupet" itemValue="3"  />
-				</p:selectOneMenu>
-		</h:column>
-		<h:column>
-			<h:outputLabel value="CompanyName"></h:outputLabel>
-		</h:column>
-		<h:column></h:column>
-		<h:column>
+				<f:selectItem itemLabel="Annanagar" itemValue="1" />
+				<f:selectItem itemLabel="TNagar" itemValue="2" />
+				<f:selectItem itemLabel="Pudupet" itemValue="3" />
+			</p:selectOneMenu>
+			<p:outputLabel value="CompanyName"></p:outputLabel>
 			<p:selectOneMenu>
 				<f:selectItem itemLabel="Select Company" itemValue="" />
-					<f:selectItem itemLabel="Airtel"  itemValue="1" />
-					<f:selectItem itemLabel="Loreal" itemValue="2" />
-					<f:selectItem itemLabel="Godrej"  itemValue="3" />
-				</p:selectOneMenu>
-		</h:column>
-		<h:column>
-			<h:outputLabel value="Mobile"></h:outputLabel>
-		</h:column>
-		<h:column></h:column>
-		<h:column>
+				<f:selectItem itemLabel="Airtel" itemValue="1" />
+				<f:selectItem itemLabel="Loreal" itemValue="2" />
+				<f:selectItem itemLabel="Godrej" itemValue="3" />
+			</p:selectOneMenu>
+			<p:outputLabel value="Mobile"></p:outputLabel>
 			<p:inputText maxlength="10" placeholder="1234567890"></p:inputText>
-		</h:column>
-			<h:column>
-			<h:outputLabel value="EMail-Id"></h:outputLabel>
-		</h:column>
-		<h:column></h:column>
-		<h:column>
+			<p:outputLabel value="EMail-Id"></p:outputLabel>
 			<p:inputText placeholder="sales@company.com"></p:inputText>
-		</h:column>
-			<h:column>
-			<h:outputLabel value="DailyAllowance"></h:outputLabel>
-		</h:column>
-		<h:column></h:column>
-		<h:column>
+			<p:outputLabel value="DailyAllowance"></p:outputLabel>
 			<p:inputText></p:inputText>
-		</h:column>
-			<h:column>
-			<h:outputLabel value="MonthlySalary"></h:outputLabel>
-		</h:column>
-		<h:column></h:column>
-		<h:column>
+			<p:outputLabel value="MonthlySalary"></p:outputLabel>
 			<p:inputText></p:inputText>
-		</h:column>
-		<br/><br/><br/><center><h:commandButton value="SAVE"></h:commandButton></center>
-	</h:panelGrid>
+			<center>
+				<h:commandButton value="SAVE"></h:commandButton>
+			</center>
+		</h:panelGrid>
 	</div>
 </ui:composition>
 
