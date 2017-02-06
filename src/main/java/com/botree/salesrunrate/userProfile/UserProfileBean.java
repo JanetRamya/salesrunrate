@@ -12,7 +12,6 @@ import com.botree.salesrunrate.entity.UserProfile;
 @Scope("session")
 public class UserProfileBean {
 
-	private String id;
 	private String userName;
 	private String password;
 	private String mobileNo;
@@ -27,20 +26,12 @@ public class UserProfileBean {
 		service.save(userName, password, emailId, mobileNo);
 	}
 	
-	@PostConstruct
+    @PostConstruct
 	public void findUserProfile()
 	{
 		userProfile=service.findAll(userName);
 	}
-
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
-
+	
 	public String getUserName() {
 		return userName;
 	}

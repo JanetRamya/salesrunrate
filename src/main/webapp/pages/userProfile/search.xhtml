@@ -7,19 +7,19 @@
 	xmlns:p="http://primefaces.org/ui">
 <p:outputLabel value="UserProfileRecords"></p:outputLabel>
 <p:dataTable var="user" value="#{userProfileBean.userProfile}">
-    <p:column headerText="Id">
+    <p:column headerText="USERNAME">
         <h:outputText value="#{user.userName}" />
     </p:column>
  
-    <p:column headerText="Year">
+    <p:column headerText="PASSWORD">
         <h:outputText value="#{user.password}" />
     </p:column>
  
-    <p:column headerText="Brand">
+    <p:column headerText="CONTACT">
         <h:outputText value="#{user.mobileNo}" />
     </p:column>
  
-    <p:column headerText="Color">
+    <p:column headerText="EMAIL-ID">
         <h:outputText value="#{user.emailId}" />
     </p:column>
 </p:dataTable>

@@ -34,9 +34,16 @@
 								<p:panel styleClass="rptGrps">
 									<h:outputLabel styleClass="rptHeader" value="Configuration"
 										style="color:#AD1457;"></h:outputLabel>
-									<ul class="reportsGrp">
+										<ul class="reportsGrp">
 										<li><p:commandLink id="user"
 												styleClass="leftMenuCommandLink" value="User Profile"
+												actionListener="#{navi.selectUrl('/pages/userProfile/entity.xhtml')}"
+												update=":content">
+											</p:commandLink></li>
+									</ul>
+									<ul class="reportsGrp">
+										<li><p:commandLink id="userr"
+												styleClass="leftMenuCommandLink" value="Users Records"
 												actionListener="#{navi.selectUrl('/pages/userProfile/search.xhtml')}"
 												update=":content">
 											</p:commandLink></li>
@@ -48,7 +55,7 @@
 									<ul class="reportsGrp">
 										<li><p:commandLink id="product"
 												styleClass="leftMenuCommandLink" value="Product Details"
-												actionListener="#{navi.selectUrl('productdetails.xhtml')}"
+												actionListener="#{navi.selectUrl('/pages/productDetails/entity.xhtml')}"
 												update=":content">
 											</p:commandLink></li>
 									</ul>
@@ -113,7 +120,7 @@
 									<ul class="reportsGrp">
 										<li><p:commandLink id="stat"
 												styleClass="leftMenuCommandLink"
-												value="Target Vs. Achievement" 
+												value="Target Vs. Achievement"
 												actionListener="#{navi.selectUrl('output.xhtml')}"
 												update=":content">
 											</p:commandLink></li>

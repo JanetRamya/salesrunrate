@@ -1,0 +1,23 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:p="http://primefaces.org/ui">
+<p:outputLabel value="ProductDetails"></p:outputLabel>
+<p:dataTable var="prd" value="#{productDetailsBean.prdCode}">
+    <p:column headerText="PRODUCT CODE">
+        <h:outputText value="#{prd.prdCode}" />
+    </p:column>
+ 
+    <p:column headerText="PRODUCT NAME">
+        <h:outputText value="#{prd.prdName}" />
+    </p:column>
+ 
+    <p:column headerText="PRICE">
+        <h:outputText value="#{prd.price}" />
+    </p:column>
+ </p:dataTable>
+</ui:composition>
+

@@ -1,5 +1,6 @@
 package com.botree.salesrunrate.entity;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection="userProfile")
@@ -8,6 +9,7 @@ public class UserProfile extends MongoEntity {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	@Id
 	private String userName;
 	private String password;
 	private String mobileNo;
