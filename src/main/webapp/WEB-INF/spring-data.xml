@@ -11,6 +11,9 @@
 	<!-- MongoDB host -->
 	<mongo:mongo host="${mongo.host.name}" port="${mongo.host.port}" />
 	
+	<!-- Mongo Repository -->
+	<mongo:repositories base-package="com.botree.salesrunrate" />
+	
 	<!-- MongoDB factory -->
 	<mongo:db-factory dbname="${mongo.db.name}" mongo-ref="mongo"
 		id="mongoDbFactory" />

@@ -10,25 +10,25 @@
 			style="font-family:Serif;font-size:25px;color:red;text-align:center;"></p:outputLabel>
 		<h:panelGrid columns="2" styleClass="test" cellspacing="20">
 			<p:outputLabel value="SalesmanCode"></p:outputLabel>
-			<p:selectOneMenu>
+			<p:selectOneMenu value="#{salesmanTarget.smcode}">
 				<f:selectItem itemLabel="Select Code" itemValue="" />
 				<f:selectItem itemLabel="1234" itemValue="1" />
 				<f:selectItem itemLabel="4554" itemValue="2" />
 				<f:selectItem itemLabel="4846" itemValue="3" />
 			</p:selectOneMenu>
 			<p:outputLabel value="SalesmanName"></p:outputLabel>
-			<p:inputText></p:inputText>
+			<p:inputText value="#{salesmanTarget.smname}"></p:inputText>
 		</h:panelGrid>
 	</div>
 	<p:dataTable>
 		<p:column headerText="Product Code" style="color:red;">
-			<h:outputText />
+		<h:inputText value="#{salesmanTarget.prdcode}" />
 		</p:column>
 		<p:column headerText="Product Name" style="color:red;">
-			<h:outputText />
+			<h:inputText value="#{salesmanTarget.prdname}" />
 		</p:column>
 		<p:column headerText="Target Quantity" style="color:red;">
-			<h:outputText />
+			<h:inputText value="#{salesmanTarget.tqty}" />
 		</p:column>
 	</p:dataTable>
 	<center>

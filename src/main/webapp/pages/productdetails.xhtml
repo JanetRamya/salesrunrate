@@ -10,11 +10,11 @@
 			style="font-family:Serif;font-size:25px;color:red;text-align:center;"></p:outputLabel>
 		<h:panelGrid columns="2" styleClass="test" cellspacing="20">
 			<p:outputLabel value="ProductCode"></p:outputLabel>
-			<p:inputText></p:inputText>
+			<p:inputText value="#{productDetailsBean.prdcode}"></p:inputText>
 			<p:outputLabel value="ProductName"></p:outputLabel>
-			<p:inputText></p:inputText>
+			<p:inputText value="#{productDetailsBean.prdname}"></p:inputText>
 			<p:outputLabel value="Price"></p:outputLabel>
-			<p:inputText></p:inputText>
+			<p:inputText value="#{productDetailsBean.price}"></p:inputText>
 			<center>
 				<h:commandButton value="SAVE"></h:commandButton>
 			</center>

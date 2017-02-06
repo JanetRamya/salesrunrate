@@ -11,31 +11,31 @@
 		</p:outputLabel>
 		<h:panelGrid columns="2" styleClass="test" cellspacing="20">
 			<p:outputLabel value="Name"></p:outputLabel>
-			<p:inputText placeholder="Janet"></p:inputText>
+			<p:inputText value="#{salesmanProfile.smname}" placeholder="Janet"></p:inputText>
 			<p:outputLabel value="Code"></p:outputLabel>
-			<p:inputText></p:inputText>
+			<p:inputText value="#{salesmanProfile.smcode}"></p:inputText>
 			<p:outputLabel value="DistributorBranch"></p:outputLabel>
-			<p:selectOneMenu>
+			<p:selectOneMenu style="width:90px;" value="#{salesmanProfile.dtbranch}">
 				<f:selectItem itemLabel="Select Branch" itemValue="" />
 				<f:selectItem itemLabel="Annanagar" itemValue="1" />
 				<f:selectItem itemLabel="TNagar" itemValue="2" />
 				<f:selectItem itemLabel="Pudupet" itemValue="3" />
 			</p:selectOneMenu>
 			<p:outputLabel value="CompanyName"></p:outputLabel>
-			<p:selectOneMenu>
+			<p:selectOneMenu style="width:90px;" value="#{salesmanProfile.compname}">
 				<f:selectItem itemLabel="Select Company" itemValue="" />
 				<f:selectItem itemLabel="Airtel" itemValue="1" />
 				<f:selectItem itemLabel="Loreal" itemValue="2" />
 				<f:selectItem itemLabel="Godrej" itemValue="3" />
 			</p:selectOneMenu>
 			<p:outputLabel value="Mobile"></p:outputLabel>
-			<p:inputText maxlength="10" placeholder="1234567890"></p:inputText>
-			<p:outputLabel value="EMail-Id"></p:outputLabel>
-			<p:inputText placeholder="sales@company.com"></p:inputText>
+			<p:inputMask mask="999-999-9999" value="#{salesmanProfile.mobile}"></p:inputMask>
+			<p:outputLabel value="Email-Id"></p:outputLabel>
+			<p:inputText value="#{salesmanProfile.email}" placeholder="sales@company.com"></p:inputText>
 			<p:outputLabel value="DailyAllowance"></p:outputLabel>
-			<p:inputText></p:inputText>
+			<p:inputText value="#{salesmanProfile.allow}"></p:inputText>
 			<p:outputLabel value="MonthlySalary"></p:outputLabel>
-			<p:inputText></p:inputText>
+			<p:inputText value="#{salesmanProfile.msal}"></p:inputText>
 			<center>
 				<h:commandButton value="SAVE"></h:commandButton>
 			</center>

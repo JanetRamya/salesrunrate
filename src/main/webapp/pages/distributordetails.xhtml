@@ -11,15 +11,19 @@
 		<br /> <br />
 		<h:panelGrid columns="2" styleClass="test" cellspacing="20">
 			<p:outputLabel value="DistributorCode"></p:outputLabel>
-			<p:inputText></p:inputText>
+			<p:inputText value="#{distributorDetails.dtcode}"></p:inputText>
 			<p:outputLabel  value="DistributorName"></p:outputLabel>
-			<p:inputText placeholder="Janet"></p:inputText>
+			<p:inputText value="#{distributorDetails.dtname}" placeholder="Janet"></p:inputText>
+			<p:outputLabel value="Mobile"></p:outputLabel>
+			<p:inputMask mask="999-999-9999" value="#{distributorDetails.mobile}"></p:inputMask>
+			<p:outputLabel value="Email-Id"></p:outputLabel>
+			<p:inputText value="#{distributorDetails.email}" placeholder="dist@company.com"></p:inputText>
 			<p:outputLabel value="Country"></p:outputLabel>
-			<p:inputText></p:inputText>
+			<p:inputText value="#{distributorDetails.country}"></p:inputText>
 			<p:outputLabel value="State"></p:outputLabel>
-			<p:inputText></p:inputText>
+			<p:inputText value="#{distributorDetails.state}"></p:inputText>
 			<p:outputLabel value="City"></p:outputLabel>
-			<p:inputText></p:inputText>
+			<p:inputText value="#{distributorDetails.city}"></p:inputText>
 			<center>
 				<p:commandButton value="SAVE"></p:commandButton>
 			</center>

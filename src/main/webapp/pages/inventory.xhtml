@@ -10,11 +10,11 @@
 			style="font-family:Serif;font-size:25px;color:red;text-align:center;"></p:outputLabel>
 		<h:panelGrid columns="2" styleClass="test" cellspacing="20">
 			<p:outputLabel value="ProductCode"></p:outputLabel>
-			<p:inputText></p:inputText>
+			<p:inputText value="#{inventory.prdcode}"></p:inputText>
 			<p:outputLabel value="ProductName"></p:outputLabel>
-			<p:inputText></p:inputText>
+			<p:inputText value="#{inventory.prdname}"></p:inputText>
 			<p:outputLabel value="Quantity"></p:outputLabel>
-			<p:spinner id="minMax" value="#{spinnerView.number3}" min="0"
+			<p:spinner id="minMax" value="#{inventory.qty}" min="0"
 				max="100" />
 			<center>
 				<h:commandButton value="SAVE"></h:commandButton>
