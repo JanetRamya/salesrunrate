@@ -2472,6 +2472,72 @@ table.hierarchyBlock{
 	width: 10px;
 }
 
+.customDialogStyle .ui-dialog-titlebar{
+	padding: 10px 5px 0px 0px !important;
+    border-bottom: none #e0e0e0 !important;
+    background-color: #ffffff;
+    color: #546e7a;
+    font-size: 19px;
+    border-top-left-radius: 1px;
+    border-top-right-radius: 1px;
+    position: absolute;
+    width: 100%;
+	
+}
+.customDialogStyle .ui-dialog-content .ui-confirm-dialog-message{
+	margin:5px;
+}
+.customDialogStyle{
+	min-width: 200px;
+	min-height: 117px;
+	max-width :350px;
+}
+.customDialogStyle .ui-dialog-content{
+	font-size : 15px !important;
+	text-align: center;
+	margin-bottom: -15px
+}
+.customDialogStyle .ui-dialog-titlebar-close{
+	xz-index: 1000;
+	xposition: relative;
+	display: none;
+}
+.customDialogStyle .ui-dialog-footer{
+	border-top : none !important;
+	background-color : #ffffff !important;
+	
+}
+.customDialogStyle .ui-icon-warning,.customDialogStyle .ui-icon-alert,.customDialogStyle .ui-icon-check{
+	width: 100%;
+	display: block;
+	text-align: center;
+	xmargin-bottom: 10px;
+	xbackground-image: none !important;
+}
+
+.customDialogStyle .ui-icon-warning:before{
+	content: "\f071";
+	font-family: 'FontAwesome';	
+	color: #43A047;
+}
+.customDialogStyle .ui-icon-alert:before{
+	content: "\f056";
+	font-family: 'FontAwesome' !important;	
+	color: #FF0000;
+} 
+.customDialogStyle .ui-icon-check:before {
+  content: "\f00c";
+  font-family: 'FontAwesome' !important;	
+  color: #43A047;
+}
+.customDialogStyle .ui-icon {
+    background-image: none !important;
+    text-indent: 0px;
+    font-size: 25px;
+	display: block;
+	height: 30px;    
+}
+
 
 
 /* .panel-radius .jqplot-series-canvas{

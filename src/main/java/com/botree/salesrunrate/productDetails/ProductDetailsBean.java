@@ -1,7 +1,5 @@
 package com.botree.salesrunrate.productDetails;
 
-import javax.annotation.PostConstruct;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -25,7 +23,7 @@ public class ProductDetailsBean {
 		service.save(prdCode,prdName,price);
 
 	}
-	@PostConstruct
+	
 	public void findProductDetails()
 	{
 		productDetails=service.findAll(prdCode);

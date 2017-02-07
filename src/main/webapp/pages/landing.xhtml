@@ -146,5 +146,15 @@
 	<h:outputStylesheet name="css/font-awesome.css" library="modena-layout" />
 	<h:outputStylesheet name="css/modena-layout.css"
 		library="modena-layout" />
+		<p:confirmDialog id="saveInfoDialog" styleClass="customDialogStyle"
+		message="Saved Successfully" widgetVar="saveInfo"
+		severity="check">
+		<h:form>
+			<h:panelGroup styleClass="buttons_center">
+				<p:commandButton id="ok" value="#{lbl.ok}" styleClass="ok"
+					onclick="PF('saveInfo').hide()" ajax="true" update=":content" />
+			</h:panelGroup>
+		</h:form>
+	</p:confirmDialog>
 </h:body>
 </html>

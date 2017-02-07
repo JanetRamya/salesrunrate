@@ -1,7 +1,5 @@
 package com.botree.salesrunrate.userProfile;
 
-
-
 import com.botree.salesrunrate.entity.UserProfile;
 
 public interface IUserProfileService {

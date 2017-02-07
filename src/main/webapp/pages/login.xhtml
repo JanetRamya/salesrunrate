@@ -11,15 +11,15 @@
 				<h:outputLabel value="UserName"></h:outputLabel>
 			</h:column>
 			<h:column>
-				<h:inputText></h:inputText>
+				<h:inputText value="#{loginBean.userName}"></h:inputText>
 			</h:column>
 			<h:column>
 				<h:outputLabel value="Password"></h:outputLabel>
 			</h:column>
 			<h:column>
-				<h:inputSecret></h:inputSecret>
+				<h:inputSecret value="#{loginBean.password}"></h:inputSecret>
 			</h:column>
-			<h:commandButton value="Login"></h:commandButton>
+			<h:commandButton value="Login" action="#{loginBean.login}"></h:commandButton>
 		</h:panelGrid>
 	</ui:composition>
 

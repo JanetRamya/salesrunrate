@@ -16,7 +16,7 @@ public class ProductDetailsService implements IProductDetailsService {
 		productDetails.setPrdCode(prdCode);
 		productDetails.setPrdName(prdName);
 		productDetails.setPrice(price);
-		repository.findOneByPrdCode(prdCode);
+		repository.save(productDetails);  
 
 	}
 

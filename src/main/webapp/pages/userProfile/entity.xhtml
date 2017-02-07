@@ -19,7 +19,8 @@
 			<p:inputText value="#{userProfileBean.emailId}" placeholder="sales@company.com"></p:inputText>
 		</h:panelGrid>
 		<h:panelGrid columns="1">
-			<p:commandButton value="SAVE" actionListener="#{userProfileBean.save}"/>
+			<p:commandButton value="SAVE" actionListener="#{userProfileBean.save}"
+			oncomplete="if(args.showDialog) PF('saveInfo').show()"/>
 		</h:panelGrid>
 	</div>
 </ui:composition>
