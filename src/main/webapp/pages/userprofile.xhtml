@@ -16,10 +16,9 @@
 			<p:outputLabel value="Mobile"></p:outputLabel>
 			<p:inputMask mask="999-999-9999" value="#{userProfileBean.mobileNo}"></p:inputMask>
 			<p:outputLabel value="Email-ID"></p:outputLabel>
-			<p:inputText value="#{userProfileBean.emailId}"
-				placeholder="sales@company.com"></p:inputText>
+			<center><p:inputText value="#{userProfileBean.emailId}"
+				placeholder="sales@company.com"></p:inputText></center>
 		</h:panelGrid>
-		<p:commandButton value="SAVE" actionListener="#{userProfileBean.save}" />
-	</div>
+</div>
 </ui:composition>
 

@@ -1,0 +1,37 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:p="http://primefaces.org/ui">
+	<p:outputLabel value="DistributorDetails"></p:outputLabel>
+	<p:dataTable var="dist" value="#{distributorDetailsBean.distCode}">
+		<p:column headerText="DISTRIBUTOR CODE">
+			<h:outputText value="#{dist.distCode}" />
+		</p:column>
+
+		<p:column headerText="DISTRIBUTOR NAME">
+			<h:outputText value="#{dist.distName}" />
+		</p:column>
+
+		<p:column headerText="MOBILE">
+			<h:outputText value="#{dist.mobile}" />
+		</p:column>
+		
+		<p:column headerText="EMAIL-ID">
+			<h:outputText value="#{dist.email}" />
+		</p:column>
+		
+		<p:column headerText="COUNTRY">
+			<h:outputText value="#{dist.country}" />
+		</p:column>
+		<p:column headerText="STATE">
+			<h:outputText value="#{dist.state}" />
+		</p:column>
+		<p:column headerText="CITY">
+			<h:outputText value="#{dist.city}" />
+		</p:column>
+	</p:dataTable>
+</ui:composition>
+

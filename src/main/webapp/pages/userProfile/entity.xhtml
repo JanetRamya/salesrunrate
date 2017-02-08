@@ -5,9 +5,9 @@
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
 	xmlns:p="http://primefaces.org/ui">
-	<div id="file">
+	<div id="file" align="center">
 		<p:outputLabel value="USER PROFILE"
-			style="font-family:Serif;font-size:25px;color:red;"></p:outputLabel>
+			style="font-family:Serif;font-size:25px;color:red;text-align:center;"></p:outputLabel>
 		<h:panelGrid columns="2" styleClass="test" cellspacing="30">
 			<p:outputLabel value="UserName"></p:outputLabel>
 			<p:inputText value="#{userProfileBean.userName}" placeholder="Janet"></p:inputText>
@@ -17,10 +17,8 @@
 			<p:inputMask mask="999-999-9999" value="#{userProfileBean.mobileNo}"></p:inputMask>
 			<p:outputLabel value="Email-ID"></p:outputLabel>
 			<p:inputText value="#{userProfileBean.emailId}" placeholder="sales@company.com"></p:inputText>
-		</h:panelGrid>
-		<h:panelGrid columns="1">
-			<p:commandButton value="SAVE" actionListener="#{userProfileBean.save}"
-			oncomplete="if(args.showDialog) PF('saveInfo').show()"/>
+				<center><p:commandButton value="SAVE" actionListener="#{userProfileBean.save}"
+			oncomplete="if(args.showDialog) PF('saveInfo').show()"/></center>
 		</h:panelGrid>
 	</div>
 </ui:composition>

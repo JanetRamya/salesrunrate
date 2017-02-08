@@ -3,7 +3,6 @@ package com.botree.salesrunrate.productDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
-
 import com.botree.salesrunrate.entity.ProductDetails;
 
 @Component("productDetailsBean")
