@@ -23,7 +23,7 @@
 	<h:outputStylesheet name="css/font-awesome.css" library="modena-layout" />
 	<h:outputStylesheet name="css/modena-layout.css"
 		library="modena-layout" />
-	
+
 </h:head>
 <h:body id="bbb" styleClass="GrayModena Geometry" style="height:auto;">
 	<h:form>
@@ -57,7 +57,9 @@
 							autocomplete="off" placeholder="Enter password"></p:inputText>
 					</div>
 					<div style="padding: 20px;" align="center">
-						<p:commandButton value="LOGIN" action="#{loginBean.login}"></p:commandButton>
+						<h:form>
+							<p:commandButton value="LOGIN" action="#{loginBean.login}" />
+						</h:form>
 					</div>
 				</div>
 			</div>
