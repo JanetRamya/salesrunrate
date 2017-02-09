@@ -27,8 +27,8 @@ public class LoginBean extends AbstractBean {
 	@Autowired
 	UserService userService;
 	
-	@Autowired UserSession userSession;
-
+	@Autowired 
+	UserSession userSession;
 	UserProfile user = new UserProfile();
 
 	public String getUserName() {

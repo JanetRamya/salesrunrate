@@ -24,16 +24,16 @@ public class SessionHolder {
 		return sessionHolder;
 	}
 
-	public void saveSession(final String userCode, final HttpSession session) {
-		sessionMap.put(userCode.toLowerCase(), session);
+	public void saveSession(final String userName, final HttpSession session) {
+		sessionMap.put(userName.toLowerCase(), session);
 	}
 
-	public void clearSession(final String userCode) {
-		if (userCode != null) {
-			HttpSession session = sessionMap.get(userCode.toLowerCase());
+	public void clearSession(final String userName) {
+		if (userName != null) {
+			HttpSession session = sessionMap.get(userName.toLowerCase());
 			if (session != null) {
 				invalidateSession(session);
-				sessionMap.remove(userCode);
+				sessionMap.remove(userName);
 			}
 		}
 	}

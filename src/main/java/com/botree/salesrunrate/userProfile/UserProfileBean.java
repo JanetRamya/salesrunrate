@@ -1,11 +1,13 @@
 package com.botree.salesrunrate.userProfile;
 
+import javax.annotation.PostConstruct;
+
 import org.primefaces.context.RequestContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-
+import com.botree.common.UserSession;
 import com.botree.salesrunrate.entity.UserProfile;
 
 @Component("userProfileBean")
@@ -19,8 +21,10 @@ public class UserProfileBean {
 
 	@Autowired
 	private IUserProfileService service;
-	
 	UserProfile userProfile =new UserProfile();
+	
+	@Autowired
+	private UserSession userSession;
 	
 
 	public void save() {
@@ -28,9 +32,10 @@ public class UserProfileBean {
 		RequestContext.getCurrentInstance().addCallbackParam("showDialog",true);
 	}
 	
+	@PostConstruct 
 	public void findUserProfile()
 	{
-		userProfile=service.findAll(userName);
+		userProfile=service.findAll(userSession.getUserName());
 	}
 	
 	public String getUserName() {
@@ -72,6 +77,8 @@ public class UserProfileBean {
 	public void setUserProfile(UserProfile userProfile) {
 		this.userProfile = userProfile;
 	}
+
+	
 	
 	
 

@@ -1,5 +1,6 @@
 package com.botree.salesrunrate.productDetails;
 
+import org.primefaces.context.RequestContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -20,7 +21,7 @@ public class ProductDetailsBean {
 	
 	public void save(){
 		service.save(prdCode,prdName,price);
-
+		RequestContext.getCurrentInstance().addCallbackParam("showDialog",true);
 	}
 	
 	public void findProductDetails()

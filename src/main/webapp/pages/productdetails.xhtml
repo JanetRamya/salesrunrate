@@ -16,7 +16,8 @@
 			<p:outputLabel value="Price"></p:outputLabel>
 			<p:inputText value="#{productDetailsBean.price}"></p:inputText>
 			<center>
-				<h:commandButton value="SAVE" actionListener="#{productDetailsBean.save}"></h:commandButton>
+				<h:commandButton value="SAVE" actionListener="#{productDetailsBean.save}"
+				oncomplete="if(args.showDialog) PF('saveInfo').show()"></h:commandButton>
 			</center>
 		</h:panelGrid>
 	</div>

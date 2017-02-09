@@ -1,0 +1,45 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:p="http://primefaces.org/ui">
+	<p:outputLabel value="SalesmanDetails"></p:outputLabel>
+	<p:dataTable var="sale" value="#{salesmanDetailsBean.distCode}">
+		<p:column headerText="SALESMAN  CODE">
+			<h:outputText value="#{sale.smCode}" />
+		</p:column>
+
+		<p:column headerText="SALESMAN NAME">
+			<h:outputText value="#{sale.smName}" />
+		</p:column>
+		
+		<p:column headerText="DISTRIBUTOR BRANCH">
+			<h:outputText value="#{sale.distBranch}" />
+		</p:column>
+
+
+        <p:column headerText="COMPANY NAME">
+			<h:outputText value="#{sale.compName}" />
+		</p:column>
+		
+		<p:column headerText="MOBILE">
+			<h:outputText value="#{sale.mobile}" />
+		</p:column>
+		
+		<p:column headerText="EMAIL-ID">
+			<h:outputText value="#{sale.email}" />
+		</p:column>
+		
+		<p:column headerText="ALLOWANCE">
+			<h:outputText value="#{sale.allow}" />
+		</p:column>
+		<p:column headerText="MONTHLY SALARY">
+			<h:outputText value="#{sale.monSalary}" />
+		</p:column>
+		
+	</p:dataTable>
+	
+</ui:composition>
+

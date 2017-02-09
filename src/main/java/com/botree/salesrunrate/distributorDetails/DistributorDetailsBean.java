@@ -1,5 +1,6 @@
 package com.botree.salesrunrate.distributorDetails;
 
+import org.primefaces.context.RequestContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -22,6 +23,7 @@ public class DistributorDetailsBean {
 	
 	public void save(){
 		service.save(distCode, distName, mobile, email, country, state, city);
+		RequestContext.getCurrentInstance().addCallbackParam("showDialog",true);
 	}
 	
 	

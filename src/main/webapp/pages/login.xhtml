@@ -1,23 +1,67 @@
-<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
-	xmlns:p="http://primefaces.org/ui"> 
-	<div align="center" > <p:outputLabel value="SALES RUN RATE"
-			style="font-family:Serif;font-size:50px;color:red;padding:50px;"></p:outputLabel></div>
-	<div id="file" align="center"
-		style="padding: 125px;">
-						<p:outputLabel value="SIGN IN"
-			style="font-family:Serif;font-size:25px;color:red;"></p:outputLabel>
-		<h:panelGrid columns="2" styleClass="test" cellspacing="30">
-			<p:outputLabel value="UserName"></p:outputLabel>
-			<p:inputText value="#{loginBean.userName}"></p:inputText>
-			<p:outputLabel value="Password"></p:outputLabel>
-			<p:password value="#{loginBean.password}"></p:password>
-		</h:panelGrid>
-		<p:commandButton value="Login" action="#{loginBean.login}"></p:commandButton>
-	</div>
-</ui:composition>
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
 
+	<!-- <link type="text/css" rel="stylesheet"
+		href="#{request.contextPath}/styles/login.css" /> -->
+	<link rel="bookmark" href="#{request.contextPath}/images/favicon.ico" />
+	<link rel="shortcut icon"
+		href="#{request.contextPath}/images/favicon.ico" />
+
+	<h:outputStylesheet name="css/core-layout.css" library="modena-layout" />
+	<h:outputStylesheet name="css/animate.css" library="modena-layout" />
+	<h:outputStylesheet name="css/modena-font.css" library="modena-layout" />
+	<h:outputStylesheet name="css/ripple-effect.css"
+		library="modena-layout" />
+	<h:outputStylesheet name="css/font-awesome.css" library="modena-layout" />
+	<h:outputStylesheet name="css/modena-layout.css"
+		library="modena-layout" />
+	
+</h:head>
+<h:body id="bbb" styleClass="GrayModena Geometry" style="height:auto;">
+	<h:form>
+		<p:poll interval="600" listener="#{loginBean.makeSessionAlive()}" />
+
+		<div align="center">
+			<h:outputLabel style="color:black;font-size:50px;padding:30px;"
+				value="SALES RUN RATE"></h:outputLabel>
+			<div class="Wid28 MarAuto WidAutoOnMobile">
+				<!-- <h:graphicImage name="images/logo-dark.svg" library="modena-layout" style="width:40%; max-width:200px;"/> -->
+				<div class="EmptyBox30"></div>
+				<div class="Card ShadowEffect">
+					<div class="Wid100 OvHidden BigTopic Fs30">
+						<!-- <p:graphicImage value="#{request.contextPath}/images/logo.png" for="logo"
+							width="160px"  height="40px" border="0" /> -->
+					</div>
+
+					<div class="EmptyBox30"></div>
+
+					<div class="Wid100">
+						<p:inputText value="#{loginBean.userName}"
+							placeholder="Enter UserName"
+							styleClass="Wid80 TexAlCenter Fs18 loginInput " id="loginuser"
+							autocomplete="off" />
+					</div>
+					<div class="EmptyBox10"></div>
+
+					<div class="Wid100">
+						<p:inputText type="password" value="#{loginBean.password}"
+							styleClass="Wid80 TexAlCenter Fs18 loginInput" id="loginpass"
+							autocomplete="off" placeholder="Enter password"></p:inputText>
+					</div>
+					<div style="padding: 20px;" align="center">
+						<p:commandButton value="LOGIN" action="#{loginBean.login}"></p:commandButton>
+					</div>
+				</div>
+			</div>
+		</div>
+	</h:form>
+</h:body>
+</html>

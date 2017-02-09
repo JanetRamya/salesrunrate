@@ -91,7 +91,7 @@
 									<ul class="reportsGrp">
 										<li><p:commandLink id="sales"
 												styleClass="leftMenuCommandLink" value="Salesman Profile"
-												actionListener="#{navi.selectUrl('salesmanprof.xhtml')}"
+												actionListener="#{navi.selectUrl('/pages/salesmanDetails/entity.xhtml')}"
 												update=":content">
 											</p:commandLink></li>
 									</ul>
@@ -151,7 +151,7 @@
 		severity="check">
 		<h:form>
 			<h:panelGroup styleClass="buttons_center">
-				<p:commandButton id="ok" styleClass="ok"
+				<p:commandButton id="ok" styleClass="ok" value="OK"
 					onclick="PF('saveInfo').hide()" update=":content" />
 			</h:panelGroup>
 		</h:form>
