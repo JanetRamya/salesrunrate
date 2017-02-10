@@ -20,6 +20,6 @@
         <h:outputText value="#{user.emailId}" />
     </p:column>
 </p:dataTable>
-<p:commandButton value="CreateNewUser" action="/pages/userProfile/entity.xhtml"></p:commandButton>
+<p:commandButton value="CreateNewUser" action="#{navi.selectUrl('/pages/userProfile/entity.xhtml')}" update=":content"></p:commandButton>
 </ui:composition>
 

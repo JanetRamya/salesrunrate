@@ -26,7 +26,7 @@
 
 </h:head>
 <h:body id="bbb" styleClass="GrayModena Geometry" style="height:auto;">
-	<h:form>
+	<h:form id="logForm">
 		<p:poll interval="600" listener="#{loginBean.makeSessionAlive()}" />
 
 		<div align="center">
@@ -56,10 +56,9 @@
 							styleClass="Wid80 TexAlCenter Fs18 loginInput" id="loginpass"
 							autocomplete="off" placeholder="Enter password"></p:inputText>
 					</div>
+					<p:messages></p:messages>
 					<div style="padding: 20px;" align="center">
-						<h:form>
-							<p:commandButton value="LOGIN" action="#{loginBean.login}" />
-						</h:form>
+							<p:commandButton value="LOGIN" action="#{loginBean.login}" id="login"  update=":logForm"/>
 					</div>
 				</div>
 			</div>

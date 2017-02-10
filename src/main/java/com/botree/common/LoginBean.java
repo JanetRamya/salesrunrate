@@ -2,9 +2,9 @@ package com.botree.common;
 
 import java.io.IOException;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,12 +61,11 @@ public class LoginBean extends AbstractBean {
 				.redirect(FacesContext.getCurrentInstance().getExternalContext().getRequestContextPath()
 						+ "/pages/landing.xhtml");
 			} else {
-				HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext()
-						.getSession(true);
-				SessionHolder.getIntance().saveSession(userName, session);
-				FacesContext.getCurrentInstance().getExternalContext()
-				.redirect(FacesContext.getCurrentInstance().getExternalContext().getRequestContextPath()
-						+ "/pages/login.xhtml");
+				
+				FacesContext context = FacesContext.getCurrentInstance();
+				context.addMessage("logForm:login", new FacesMessage(FacesMessage.SEVERITY_ERROR,
+						"UserName or Password Invalid", "UserName or Password Invalid"));
+		
 			}
 
 		} catch (IOException e) {

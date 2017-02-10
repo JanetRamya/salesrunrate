@@ -34,10 +34,10 @@
 								<p:panel styleClass="rptGrps">
 									<h:outputLabel styleClass="rptHeader" value="Configuration"
 										style="color:#AD1457;"></h:outputLabel>
-										<ul class="reportsGrp">
+									<ul class="reportsGrp">
 										<li><p:commandLink id="user"
 												styleClass="leftMenuCommandLink" value="User Profile"
-												actionListener="#{navi.selectUrl('/pages/userProfile/entity.xhtml')}"
+												actionListener="#{navi.selectUrl('/pages/userProfile/search.xhtml')}"
 												update=":content">
 											</p:commandLink></li>
 									</ul>
@@ -62,7 +62,7 @@
 									<ul class="reportsGrp">
 										<li><p:commandLink id="stock"
 												styleClass="leftMenuCommandLink" value="Stock Details"
-												actionListener="#{navi.selectUrl('inventory.xhtml')}"
+												actionListener="#{navi.selectUrl('/pages/inventory/entity.xhtml')}"
 												update=":content">
 											</p:commandLink></li>
 									</ul>
@@ -146,9 +146,8 @@
 	<h:outputStylesheet name="css/font-awesome.css" library="modena-layout" />
 	<h:outputStylesheet name="css/modena-layout.css"
 		library="modena-layout" />
-		<p:confirmDialog id="saveInfoDialog" styleClass="customDialogStyle"
-		message="Saved Successfully" widgetVar="saveInfo"
-		severity="check">
+	<p:confirmDialog id="saveInfoDialog" styleClass="customDialogStyle"
+		message="Saved Successfully" widgetVar="saveInfo" severity="check">
 		<h:form>
 			<h:panelGroup styleClass="buttons_center">
 				<p:commandButton id="ok" styleClass="ok" value="OK"
@@ -156,5 +155,6 @@
 			</h:panelGroup>
 		</h:form>
 	</p:confirmDialog>
+
 </h:body>
 </html>
