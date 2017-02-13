@@ -28,6 +28,7 @@ public class UserProfileBean {
 	
 
 	public void save() {
+		
 		service.save(userName, password, emailId, mobileNo);
 		RequestContext.getCurrentInstance().addCallbackParam("showDialog",true);
 	}
@@ -36,6 +37,11 @@ public class UserProfileBean {
 	public void findUserProfile()
 	{
 		userProfile=service.findAll(userSession.getUserName());
+	}
+	
+	public void delete(UserProfile user)
+	{
+		service.delete(user);
 	}
 	
 	public String getUserName() {

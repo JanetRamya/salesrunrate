@@ -31,7 +31,7 @@
 							<!-- SUB MENU START -->
 							<p:panel id="left_menu_headings" styleClass="leftMenuPanel"
 								rendered="#{navi.renderModule}">
-								<p:panel styleClass="rptGrps">
+								<p:panel styleClass="rptGrps" >
 									<h:outputLabel styleClass="rptHeader" value="Configuration"
 										style="color:#AD1457;"></h:outputLabel>
 									<ul class="reportsGrp">
@@ -67,7 +67,7 @@
 											</p:commandLink></li>
 									</ul>
 								</p:panel>
-								<p:panel styleClass="rptGrps">
+								<p:panel styleClass="rptGrps" rendered="#{userSession.cmpUser}">
 									<h:outputLabel styleClass="rptHeader" value="Distributor"
 										style="color:#AD1457;"></h:outputLabel>
 									<ul class="reportsGrp">
@@ -85,7 +85,7 @@
 											</p:commandLink></li>
 									</ul>
 								</p:panel>
-								<p:panel styleClass="rptGrps">
+								<p:panel styleClass="rptGrps" rendered="#{!userSession.cmpUser}">
 									<h:outputLabel styleClass="rptHeader" value="Salesman"
 										style="color:#AD1457;"></h:outputLabel>
 									<ul class="reportsGrp">
@@ -103,7 +103,7 @@
 											</p:commandLink></li>
 									</ul>
 								</p:panel>
-								<p:panel styleClass="rptGrps">
+								<p:panel styleClass="rptGrps" rendered="#{!userSession.cmpUser}">
 									<h:outputLabel styleClass="rptHeader" value="Invoice"
 										style="color:#AD1457;"></h:outputLabel>
 									<ul class="reportsGrp">

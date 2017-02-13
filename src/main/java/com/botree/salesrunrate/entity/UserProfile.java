@@ -14,6 +14,7 @@ public class UserProfile extends MongoEntity {
 	private String password;
 	private String mobileNo;
 	private String emailId;
+	private String distCode;
 
 	
 	public String getUserName() {
@@ -39,6 +40,12 @@ public class UserProfile extends MongoEntity {
 	}
 	public void setEmailId(String emailId) {
 		this.emailId = emailId;
+	}
+	public String getDistCode() {
+		return distCode;
+	}
+	public void setDistCode(String distCode) {
+		this.distCode = distCode;
 	}
 	
 

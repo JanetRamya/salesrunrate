@@ -6,5 +6,7 @@ import com.botree.salesrunrate.entity.ProductDetails;
 public interface ProductDetailsRepo extends MongoRepository<ProductDetails, String> {
 
 	ProductDetails findOneByPrdCode(String prdCode);
+	
+	
 
 }

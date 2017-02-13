@@ -1,5 +1,10 @@
 package com.botree.salesrunrate.productDetails;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.annotation.PostConstruct;
+
 import org.primefaces.context.RequestContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -19,6 +24,8 @@ public class ProductDetailsBean {
 	private IProductDetailsService service;
 	ProductDetails productDetails=new ProductDetails();
 	
+	List<ProductDetails> details=new ArrayList<>();
+	
 	public void save(){
 		service.save(prdCode,prdName,price);
 		RequestContext.getCurrentInstance().addCallbackParam("showDialog",true);
@@ -26,7 +33,7 @@ public class ProductDetailsBean {
 	
 	public void findProductDetails()
 	{
-		productDetails=service.findAll(prdCode);
+		details=service.findAll();
 	}
 
 	public String getPrdCode() {
@@ -59,6 +66,14 @@ public class ProductDetailsBean {
 
 	public void setProductDetails(ProductDetails productDetails) {
 		this.productDetails = productDetails;
+	}
+
+	public List<ProductDetails> getDetails() {
+		return details;
+	}
+
+	public void setDetails(List<ProductDetails> details) {
+		this.details = details;
 	}
 	
 	

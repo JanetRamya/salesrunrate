@@ -19,7 +19,12 @@
      <p:column headerText="EMAIL-ID">
         <h:outputText value="#{user.emailId}" />
     </p:column>
+    <p:column headerText="Actions">
+    action="#{user}"
+    </p:column>
 </p:dataTable>
-<p:commandButton value="CreateNewUser" action="#{navi.selectUrl('/pages/userProfile/entity.xhtml')}" update=":content"></p:commandButton>
+	<p:commandButton value="CreateNewUser"
+		action="#{navi.selectUrl('/pages/userProfile/entity.xhtml')}"
+		update=":content" rendered="#{userSession.cmpUser}"></p:commandButton>
 </ui:composition>
 

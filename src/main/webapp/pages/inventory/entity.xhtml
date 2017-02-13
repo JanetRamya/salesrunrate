@@ -9,16 +9,16 @@
 		<p:outputLabel value="STOCK DETAILS"
 			style="font-family:Serif;font-size:25px;color:red;text-align:center;"></p:outputLabel>
 		<h:panelGrid columns="2" styleClass="test" cellspacing="20">
-			<p:outputLabel value="ProductName"></p:outputLabel>
+			<p:outputLabel value="ProductCode"></p:outputLabel>
 			<p:autoComplete value="#{inventoryBean.prdName}"
-				completeMethod="#{inventory.findByPrdName}" minQueryLength="3"
-				required="true"
+				completeMethod="#{productDetailsBean.findProductDetails}"
+				minQueryLength="3" required="true"
 				onkeypress="if (event.prdCode == 13) { return false; }"
 				dropdown="true">
 				<p:ajax update=":content" event="itemSelect"
 					listener="#{inventoryBean.prdName}" />
 			</p:autoComplete>
-			<p:outputLabel value="ProductCode"></p:outputLabel>
+			<p:outputLabel value="ProductName"></p:outputLabel>
 			<p:inputText value="#{inventoryBean.prdCode}"></p:inputText>
 			<p:outputLabel value="Quantity"></p:outputLabel>
 			<p:spinner id="minMax" value="#{inventoryBean.qty}" min="0"

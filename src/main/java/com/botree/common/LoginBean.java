@@ -51,9 +51,14 @@ public class LoginBean extends AbstractBean {
 		userSession.setUserName(userName);
 		userSession.setPassword(password);
 		user = userService.findUser(userName, password);
-		
+		if (user.getDistCode() == null) {
+			userSession.setCmpUser(true);
+		} else {
+			userSession.setCmpUser(false);
+		}
 		try {
 			if (user != null) {
+				
 				HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext()
 						.getSession(true);
 				SessionHolder.getIntance().saveSession(userName, session);
@@ -64,7 +69,7 @@ public class LoginBean extends AbstractBean {
 				
 				FacesContext context = FacesContext.getCurrentInstance();
 				context.addMessage("logForm:login", new FacesMessage(FacesMessage.SEVERITY_ERROR,
-						"UserName or Password Invalid", "UserName or Password Invalid"));
+						"Either UserName or Password Invalid", "UserName or Password Invalid"));
 		
 			}
 

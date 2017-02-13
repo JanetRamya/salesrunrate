@@ -45,14 +45,14 @@
 
 					<div class="Wid100">
 						<p:inputText value="#{loginBean.userName}"
-							placeholder="Enter UserName"
+							placeholder="Enter UserName" required="true" requiredMessage="Please enter the username"
 							styleClass="Wid80 TexAlCenter Fs18 loginInput " id="loginuser"
 							autocomplete="off" />
 					</div>
 					<div class="EmptyBox10"></div>
 
 					<div class="Wid100">
-						<p:inputText type="password" value="#{loginBean.password}"
+						<p:inputText type="password" value="#{loginBean.password}" required="true" requiredMessage="Please Enter the Password"
 							styleClass="Wid80 TexAlCenter Fs18 loginInput" id="loginpass"
 							autocomplete="off" placeholder="Enter password"></p:inputText>
 					</div>

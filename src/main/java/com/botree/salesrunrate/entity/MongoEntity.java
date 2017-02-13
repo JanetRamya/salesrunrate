@@ -1,6 +1,7 @@
 package com.botree.salesrunrate.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public abstract class MongoEntity implements Serializable {
 	
@@ -9,17 +10,17 @@ public abstract class MongoEntity implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	private String modUserCode;
-	private String modDt;
+	private Date modDt;
 	public String getModUserCode() {
 		return modUserCode;
 	}
 	public void setModUserCode(String modUserCode) {
 		this.modUserCode = modUserCode;
 	}
-	public String getModDt() {
+	public Date getModDt() {
 		return modDt;
 	}
-	public void setModDt(String modDt) {
+	public void setModDt(Date modDt) {
 		this.modDt = modDt;
 	}
 	

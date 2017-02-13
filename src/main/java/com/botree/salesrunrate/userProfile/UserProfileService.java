@@ -1,5 +1,7 @@
 package com.botree.salesrunrate.userProfile;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import com.botree.salesrunrate.entity.UserProfile;
@@ -18,12 +20,20 @@ public class UserProfileService implements IUserProfileService {
 		userProfile.setPassword(password);
 		userProfile.setEmailId(email);
 		userProfile.setMobileNo(mobileNo);
+		userProfile.setDistCode(null);
+		userProfile.setModDt(new Date());
 		repository.save(userProfile);
 	}
 
 	@Override
 	public UserProfile findAll(String userName) {
 		return repository.findOneByUserName(userName);
+		
+	}
+
+	@Override
+	public void delete(UserProfile userProfile) {
+		repository.delete(userProfile);
 		
 	}
 	

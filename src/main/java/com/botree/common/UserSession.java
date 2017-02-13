@@ -9,6 +9,7 @@ public class UserSession {
 	
 	private String userName;
 	private String password;
+	private boolean cmpUser;
 	public String getUserName() {
 		return userName;
 	}
@@ -21,8 +22,11 @@ public class UserSession {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
-	
-	
+	public boolean isCmpUser() {
+		return cmpUser;
+	}
+	public void setCmpUser(boolean cmpUser) {
+		this.cmpUser = cmpUser;
+	}
 
 }
