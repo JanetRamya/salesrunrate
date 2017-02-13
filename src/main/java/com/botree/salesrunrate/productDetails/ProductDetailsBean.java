@@ -31,11 +31,6 @@ public class ProductDetailsBean {
 		RequestContext.getCurrentInstance().addCallbackParam("showDialog",true);
 	}
 	
-	public void findProductDetails()
-	{
-		details=service.findAll();
-	}
-
 	public String getPrdCode() {
 		return prdCode;
 	}

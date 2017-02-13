@@ -5,26 +5,34 @@
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
 	xmlns:p="http://primefaces.org/ui">
-<p:outputLabel value="UserProfileRecords"></p:outputLabel>
-<p:dataTable var="user" value="#{userProfileBean.userProfile}">
-    <p:column headerText="USERNAME">
-        <h:outputText value="#{user.userName}" />
-    </p:column>
-     <p:column headerText="PASSWORD">
-        <h:outputText value="#{user.password}" />
-    </p:column>
-     <p:column headerText="CONTACT">
-        <h:outputText value="#{user.mobileNo}" />
-    </p:column>
-     <p:column headerText="EMAIL-ID">
-        <h:outputText value="#{user.emailId}" />
-    </p:column>
-    <p:column headerText="Actions">
-    action="#{user}"
-    </p:column>
-</p:dataTable>
-	<p:commandButton value="CreateNewUser"
-		action="#{navi.selectUrl('/pages/userProfile/entity.xhtml')}"
-		update=":content" rendered="#{userSession.cmpUser}"></p:commandButton>
+	<div align="center">
+		<p:outputLabel style="font-size:30px;" value="USER PROFILE RECORDS"></p:outputLabel>
+	</div>
+	<div align="right">
+		<p:commandButton value="CreateNewUser"
+			action="#{navi.selectUrl('/pages/userProfile/entity.xhtml')}"
+			update=":content" rendered="#{userSession.cmpUser}"></p:commandButton>
+	</div>
+	<br />
+
+	<p:dataTable var="user" value="#{userProfileBean.userProfile}">
+		<p:column headerText="USERNAME">
+			<h:outputText value="#{user.userName}" />
+		</p:column>
+		<p:column headerText="PASSWORD">
+			<h:outputText value="#{user.password}" />
+		</p:column>
+		<p:column headerText="CONTACT">
+			<h:outputText value="#{user.mobileNo}" />
+		</p:column>
+		<p:column headerText="EMAIL-ID">
+			<h:outputText value="#{user.emailId}" />
+		</p:column>
+		<p:column headerText="ACTIONS">
+			<p:commandLink action="#{user}" update=":content" >
+				<p:graphicImage value="../images/delete.png" border="0" />
+			</p:commandLink>
+		</p:column>
+	</p:dataTable>
 </ui:composition>
 

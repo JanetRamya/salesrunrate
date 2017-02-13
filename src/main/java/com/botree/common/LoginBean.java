@@ -69,7 +69,7 @@ public class LoginBean extends AbstractBean {
 				
 				FacesContext context = FacesContext.getCurrentInstance();
 				context.addMessage("logForm:login", new FacesMessage(FacesMessage.SEVERITY_ERROR,
-						"Either UserName or Password Invalid", "UserName or Password Invalid"));
+						"Either UserName or Password Invalid", "Either UserName or Password Invalid"));
 		
 			}
 

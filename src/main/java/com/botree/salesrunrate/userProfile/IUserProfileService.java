@@ -10,4 +10,6 @@ public interface IUserProfileService {
 	
 	public void delete(UserProfile userProfile);
 	
+
+	
 }

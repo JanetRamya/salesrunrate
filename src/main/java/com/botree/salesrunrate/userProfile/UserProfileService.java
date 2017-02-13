@@ -36,7 +36,5 @@ public class UserProfileService implements IUserProfileService {
 		repository.delete(userProfile);
 		
 	}
-	
-	
 
-}
+	}

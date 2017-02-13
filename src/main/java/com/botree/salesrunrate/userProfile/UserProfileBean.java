@@ -1,6 +1,8 @@
 package com.botree.salesrunrate.userProfile;
 
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 
 import org.primefaces.context.RequestContext;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,8 +31,17 @@ public class UserProfileBean {
 
 	public void save() {
 		
+		if(userProfile.getUserName()==null)
+		{
 		service.save(userName, password, emailId, mobileNo);
 		RequestContext.getCurrentInstance().addCallbackParam("showDialog",true);
+		}
+		else
+		{
+			FacesContext context = FacesContext.getCurrentInstance();
+			context.addMessage("content:save", new FacesMessage(FacesMessage.SEVERITY_ERROR,
+					"Either UserName or Password Invalid", "UserName already exists"));
+		}
 	}
 	
 	@PostConstruct 

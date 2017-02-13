@@ -17,4 +17,9 @@ public class UserService implements IUserService {
 		return userProfile.findOneByUserNameAndPassword(userName, password);
 	}
 
+	public UserProfile findUser(String userName) {
+		
+		return userProfile.findOneByUserName(userName);
+	}
+
 }

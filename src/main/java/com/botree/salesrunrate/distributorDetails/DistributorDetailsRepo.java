@@ -5,5 +5,5 @@ import com.botree.salesrunrate.entity.DistributorDetails;
 
 public interface DistributorDetailsRepo extends MongoRepository<DistributorDetails, String> {
 	
-	DistributorDetails findOneByDistCode(String distCode);
+	public DistributorDetails findOneByDistCode(String distCode);
 }

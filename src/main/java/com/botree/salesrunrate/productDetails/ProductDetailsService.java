@@ -1,7 +1,5 @@
 package com.botree.salesrunrate.productDetails;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import com.botree.salesrunrate.entity.ProductDetails;
@@ -23,9 +21,9 @@ public class ProductDetailsService implements IProductDetailsService {
 	}
 
 	@Override
-	public List<ProductDetails> findAll() {
-		return (List<ProductDetails>) repository.findAll();
+	public ProductDetails findAll(String prdCode) {
+		return repository.findOneByPrdCode(prdCode);
 	}
 
-	
+
 }

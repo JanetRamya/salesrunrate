@@ -2539,7 +2539,16 @@ table.hierarchyBlock{
 	height: 30px;    
 }
 
-
+.shimmer
+{
+  font-family: Lato;
+  font-weight: 300;
+  font-size: 3em;
+  margin:  auto;
+  padding: 140px ;
+  display: inline;
+  margin-bottom: 0;
+}
 
 /* .panel-radius .jqplot-series-canvas{
 	top:0px !important;
