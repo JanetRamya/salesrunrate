@@ -4,6 +4,6 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import com.botree.salesrunrate.entity.DistributorDetails;
 
 public interface DistributorDetailsRepo extends MongoRepository<DistributorDetails, String> {
-	
+
 	public DistributorDetails findOneByDistCode(String distCode);
 }

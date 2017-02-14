@@ -15,22 +15,25 @@ import com.botree.salesrunrate.entity.ProductDetails;
 @Scope("session")
 
 public class ProductDetailsBean {
-	
+
 	private String prdCode;
 	private String prdName;
 	private String price;
-	
+
 	@Autowired
 	private IProductDetailsService service;
-	ProductDetails productDetails=new ProductDetails();
-	
-	List<ProductDetails> details=new ArrayList<>();
-	
-	public void save(){
-		service.save(prdCode,prdName,price);
-		RequestContext.getCurrentInstance().addCallbackParam("showDialog",true);
+	List<ProductDetails> productDetails = new ArrayList<>();
+
+	public void save() {
+		service.save(prdCode, prdName, price);
+		RequestContext.getCurrentInstance().addCallbackParam("showDialog", true);
 	}
-	
+
+	@PostConstruct
+	public void findAll() {
+		productDetails = service.findAll();
+	}
+
 	public String getPrdCode() {
 		return prdCode;
 	}
@@ -55,22 +58,12 @@ public class ProductDetailsBean {
 		this.price = price;
 	}
 
-	public ProductDetails getProductDetails() {
+	public List<ProductDetails> getProductDetails() {
 		return productDetails;
 	}
 
-	public void setProductDetails(ProductDetails productDetails) {
+	public void setProductDetails(List<ProductDetails> productDetails) {
 		this.productDetails = productDetails;
 	}
-
-	public List<ProductDetails> getDetails() {
-		return details;
-	}
-
-	public void setDetails(List<ProductDetails> details) {
-		this.details = details;
-	}
-	
-	
 
 }

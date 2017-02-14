@@ -6,5 +6,5 @@ import com.botree.salesrunrate.entity.SalesmanDetails;
 public interface SalesmanDetailsRepo extends MongoRepository<SalesmanDetails, String> {
 
 	SalesmanDetails findOneBySmCode(String smCode);
-		
+
 }

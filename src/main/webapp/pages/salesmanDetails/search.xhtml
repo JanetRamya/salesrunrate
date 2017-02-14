@@ -5,8 +5,16 @@
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
 	xmlns:p="http://primefaces.org/ui">
-	<p:outputLabel value="SalesmanDetails"></p:outputLabel>
-	<p:dataTable var="sale" value="#{salesmanDetailsBean.distCode}">
+	<div align="center">
+		<p:outputLabel style="font-size:30px;" value="SALESMAN DETAILS"></p:outputLabel>
+	</div>
+	<div align="right">
+		<p:commandButton value="Create New Salesman"
+			action="#{navi.selectUrl('/pages/salesmanDetails/entity.xhtml')}"
+			update=":content"></p:commandButton>
+	</div>
+	<br />
+	<p:dataTable var="sale" value="#{salesmanDetailsBean.salesmanDetails}">
 		<p:column headerText="SALESMAN  CODE">
 			<h:outputText value="#{sale.smCode}" />
 		</p:column>
@@ -14,32 +22,32 @@
 		<p:column headerText="SALESMAN NAME">
 			<h:outputText value="#{sale.smName}" />
 		</p:column>
-		
+
 		<p:column headerText="DISTRIBUTOR BRANCH">
 			<h:outputText value="#{sale.distBranch}" />
 		</p:column>
 
 
-        <p:column headerText="COMPANY NAME">
+		<p:column headerText="COMPANY NAME">
 			<h:outputText value="#{sale.compName}" />
 		</p:column>
-		
+
 		<p:column headerText="MOBILE">
 			<h:outputText value="#{sale.mobile}" />
 		</p:column>
-		
+
 		<p:column headerText="EMAIL-ID">
 			<h:outputText value="#{sale.email}" />
 		</p:column>
-		
+
 		<p:column headerText="ALLOWANCE">
 			<h:outputText value="#{sale.allow}" />
 		</p:column>
 		<p:column headerText="MONTHLY SALARY">
 			<h:outputText value="#{sale.monSalary}" />
 		</p:column>
-		
+
 	</p:dataTable>
-	
+
 </ui:composition>
 

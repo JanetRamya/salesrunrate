@@ -1,5 +1,10 @@
 package com.botree.salesrunrate.distributorDetails;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.annotation.PostConstruct;
+
 import org.primefaces.context.RequestContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -11,25 +16,24 @@ import com.botree.salesrunrate.entity.DistributorDetails;
 public class DistributorDetailsBean {
 	private String distCode;
 	private String distName;
-    private String mobile;
-    private String email;
+	private String mobile;
+	private String email;
 	private String country;
 	private String state;
 	private String city;
-	
+
 	@Autowired
 	private IDistributorDetailsService service;
-	DistributorDetails distributorDetails=new DistributorDetails();
-	
-	public void save(){
+	List<DistributorDetails> distributorDetails = new ArrayList<>();
+
+	public void save() {
 		service.save(distCode, distName, mobile, email, country, state, city);
-		RequestContext.getCurrentInstance().addCallbackParam("showDialog",true);
+		RequestContext.getCurrentInstance().addCallbackParam("showDialog", true);
 	}
-	
-	
-	public void findDistributorDetails(){
-		distributorDetails=service.findAll(distCode);
-		
+
+	@PostConstruct
+	public void findAll() {
+		distributorDetails = service.findAll();
 	}
 
 	public String getDistCode() {
@@ -88,15 +92,12 @@ public class DistributorDetailsBean {
 		this.city = city;
 	}
 
-	public DistributorDetails getDistributorDetails() {
+	public List<DistributorDetails> getDistributorDetails() {
 		return distributorDetails;
 	}
 
-	public void setDistributorDetails(DistributorDetails distributorDetails) {
+	public void setDistributorDetails(List<DistributorDetails> distributorDetails) {
 		this.distributorDetails = distributorDetails;
 	}
-	
-	
-	
 
 }

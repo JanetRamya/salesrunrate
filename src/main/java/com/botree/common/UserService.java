@@ -11,15 +11,16 @@ public class UserService implements IUserService {
 
 	@Autowired
 	private UserProfileRepo userProfile;
+	private UserProfileRepo usr;
 
 	@Override
 	public UserProfile findUser(String userName, String password) {
 		return userProfile.findOneByUserNameAndPassword(userName, password);
 	}
 
-	public UserProfile findUser(String userName) {
-		
-		return userProfile.findOneByUserName(userName);
+	@Override
+	public UserProfile findOneByUserName(String userName) {
+		return usr.findOneByUserName(userName);
 	}
 
 }

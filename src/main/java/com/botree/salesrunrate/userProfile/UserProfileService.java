@@ -9,7 +9,7 @@ import com.botree.salesrunrate.userProfile.UserProfileRepo;
 
 @Component
 public class UserProfileService implements IUserProfileService {
-	
+
 	@Autowired
 	private UserProfileRepo repository;
 
@@ -28,13 +28,13 @@ public class UserProfileService implements IUserProfileService {
 	@Override
 	public UserProfile findAll(String userName) {
 		return repository.findOneByUserName(userName);
-		
+
 	}
 
 	@Override
 	public void delete(UserProfile userProfile) {
 		repository.delete(userProfile);
-		
-	}
 
 	}
+
+}

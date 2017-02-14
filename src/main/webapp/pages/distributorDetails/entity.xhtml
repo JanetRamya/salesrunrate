@@ -11,23 +11,36 @@
 		<br /> <br />
 		<h:panelGrid columns="2" styleClass="test" cellspacing="20">
 			<p:outputLabel value="DistributorCode"></p:outputLabel>
-			<p:inputText value="#{distributorDetailsBean.distCode}"></p:inputText>
-			<p:outputLabel  value="DistributorName"></p:outputLabel>
-			<p:inputText value="#{distributorDetailsBean.distName}" placeholder="Janet"></p:inputText>
+			<p:inputText value="#{distributorDetailsBean.distCode}"
+				required="true" requiredMessage="Please Enter Distributor Code"></p:inputText>
+			<p:outputLabel value="DistributorName"></p:outputLabel>
+			<p:inputText value="#{distributorDetailsBean.distName}"
+				placeholder="Janet" required="true"
+				requiredMessage="Please Enter Distributor Name"></p:inputText>
 			<p:outputLabel value="Mobile"></p:outputLabel>
-			<p:inputMask mask="999-999-9999" value="#{distributorDetailsBean.mobile}"></p:inputMask>
+			<p:inputMask mask="999-999-9999"
+				value="#{distributorDetailsBean.mobile}" required="true"
+				requiredMessage="Please Enter Distributor Contact"></p:inputMask>
 			<p:outputLabel value="Email-Id"></p:outputLabel>
-			<p:inputText value="#{distributorDetailsBean.email}" placeholder="dist@company.com"></p:inputText>
+			<p:inputText value="#{distributorDetailsBean.email}"
+				placeholder="dist@company.com" required="true"
+				requiredMessage="Please Enter Distributor Email"></p:inputText>
 			<p:outputLabel value="Country"></p:outputLabel>
-			<p:inputText value="#{distributorDetailsBean.country}"></p:inputText>
-			<p:outputLabel value="State"></p:outputLabel>
-			<p:inputText value="#{distributorDetailsBean.state}"></p:inputText>
-			<p:outputLabel value="City"></p:outputLabel>
-			<p:inputText value="#{distributorDetailsBean.city}"></p:inputText>
-			<center>
-				<p:commandButton value="SAVE" actionListener="#{distributorDetailsBean.save}"
-				oncomplete="if(args.showDialog) PF('saveInfo').show()"></p:commandButton>
-			</center>
+			<p:inputText value="#{distributorDetailsBean.country}"
+				required="true"
+				requiredMessage="Please Enter Distributor Country></p:inputText>
+			<p:outputLabel value="State">
+				</p:outputLabel>
+				<p:inputText value="#{distributorDetailsBean.state}" required="true"
+					requiredMessage="Please Enter Distributor State"></p:inputText>
+				<p:outputLabel value="City"></p:outputLabel>
+				<p:inputText value="#{distributorDetailsBean.city}" required="true"
+					requiredMessage="Please Enter Distributor City"></p:inputText>
+				<center>
+					<p:commandButton value="SAVE"
+						actionListener="#{distributorDetailsBean.save}"
+						oncomplete="if(args.showDialog) PF('saveInfo').show()"></p:commandButton>
+				</center>
 		</h:panelGrid>
 	</div>
 </ui:composition>

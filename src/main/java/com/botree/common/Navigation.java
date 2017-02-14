@@ -16,38 +16,33 @@ import org.springframework.stereotype.Component;
  */
 @Component("navi")
 @Scope("session")
-public class Navigation implements Serializable{
+public class Navigation implements Serializable {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private boolean renderModule=true;
+	private boolean renderModule = true;
 	private String selectedUrl = "";
-	
 
-public boolean isRenderModule() {
+	public boolean isRenderModule() {
 		return renderModule;
 	}
-
 
 	public void setRenderModule(boolean renderModule) {
 		this.renderModule = renderModule;
 	}
 
-
 	public String getSelectedUrl() {
 		return selectedUrl;
 	}
-
 
 	public void setSelectedUrl(String selectedUrl) {
 		this.selectedUrl = selectedUrl;
 	}
 
 	@PostConstruct
-	public void display()
-	{
-		renderModule=true;
+	public void display() {
+		renderModule = true;
 	}
 
 	public void selectUrl(String url) {

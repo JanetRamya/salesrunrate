@@ -1,6 +1,7 @@
 package com.botree.salesrunrate.distributorDetails;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -14,15 +15,14 @@ public class DistributorDetailsService implements IDistributorDetailsService {
 
 	@Autowired
 	private DistributorDetailsRepo repository;
-	
+
 	@Autowired
 	private UserProfileRepo userRepo;
-
 
 	@Override
 	public void save(String distCode, String distName, String mobile, String email, String country, String state,
 			String city) {
-		DistributorDetails distributorDetails=new DistributorDetails();
+		DistributorDetails distributorDetails = new DistributorDetails();
 		UserProfile userProfile = new UserProfile();
 		distributorDetails.setDistCode(distCode);
 		distributorDetails.setDistName(distName);
@@ -41,8 +41,8 @@ public class DistributorDetailsService implements IDistributorDetailsService {
 		userRepo.save(userProfile);
 	}
 
-	
 	@Override
-	public DistributorDetails findAll(String distCode) {
-		return repository.findOneByDistCode(distCode);
-	}}
+	public List<DistributorDetails> findAll() {
+		return repository.findAll();
+	}
+}

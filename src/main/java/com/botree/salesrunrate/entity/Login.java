@@ -24,5 +24,4 @@ public class Login extends MongoEntity {
 		this.password = password;
 	}
 
-
 }

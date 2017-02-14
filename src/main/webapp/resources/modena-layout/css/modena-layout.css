@@ -430,7 +430,7 @@ height: 100%;
 /* topbar */
 #layout-topbar {
   width: 95.5%;
-  height: 50px;
+  height: 60px;
   position: fixed;
   z-index: 1000;
   background-color: #37474F;

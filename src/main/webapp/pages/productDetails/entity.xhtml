@@ -10,14 +10,18 @@
 			style="font-family:Serif;font-size:25px;color:red;text-align:center;"></p:outputLabel>
 		<h:panelGrid columns="2" styleClass="test" cellspacing="20">
 			<p:outputLabel value="ProductCode"></p:outputLabel>
-			<p:inputText value="#{productDetailsBean.prdCode}"></p:inputText>
+			<p:inputText value="#{productDetailsBean.prdCode}" required="true"
+				requiredMessage="Please Enter Product Code"></p:inputText>
 			<p:outputLabel value="ProductName"></p:outputLabel>
-			<p:inputText value="#{productDetailsBean.prdName}"></p:inputText>
+			<p:inputText value="#{productDetailsBean.prdName}" required="true"
+				requiredMessage="Please Enter Product Name"></p:inputText>
 			<p:outputLabel value="Price"></p:outputLabel>
-			<p:inputText value="#{productDetailsBean.price}"></p:inputText>
+			<p:inputText value="#{productDetailsBean.price}" required="true"
+				requiredMessage="Please Enter Price"></p:inputText>
 			<center>
-				<p:commandButton value="SAVE" actionListener="#{productDetailsBean.save}" 
-				oncomplete="if(args.showDialog) PF('saveInfo').show()"></p:commandButton>
+				<p:commandButton value="SAVE"
+					actionListener="#{productDetailsBean.save}"
+					oncomplete="if(args.showDialog) PF('saveInfo').show()"></p:commandButton>
 			</center>
 		</h:panelGrid>
 	</div>

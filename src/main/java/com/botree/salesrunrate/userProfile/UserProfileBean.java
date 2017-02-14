@@ -8,7 +8,6 @@ import org.primefaces.context.RequestContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
-
 import com.botree.common.UserSession;
 import com.botree.salesrunrate.entity.UserProfile;
 
@@ -23,38 +22,33 @@ public class UserProfileBean {
 
 	@Autowired
 	private IUserProfileService service;
-	UserProfile userProfile =new UserProfile();
-	
+	UserProfile userProfile = new UserProfile();
+	UserProfile usr = new UserProfile();
+
 	@Autowired
 	private UserSession userSession;
-	
 
 	public void save() {
-		
-		if(userProfile.getUserName()==null)
-		{
-		service.save(userName, password, emailId, mobileNo);
-		RequestContext.getCurrentInstance().addCallbackParam("showDialog",true);
-		}
-		else
-		{
+		usr = service.findAll(userName);
+		if (usr.getUserName() == null) {
+			service.save(userName, password, emailId, mobileNo);
+			RequestContext.getCurrentInstance().addCallbackParam("showDialog", true);
+		} else {
 			FacesContext context = FacesContext.getCurrentInstance();
-			context.addMessage("content:save", new FacesMessage(FacesMessage.SEVERITY_ERROR,
-					"Either UserName or Password Invalid", "UserName already exists"));
+			context.addMessage("content:save", new FacesMessage(FacesMessage.SEVERITY_ERROR, "UserName already exists",
+					"UserName already exists"));
 		}
 	}
-	
-	@PostConstruct 
-	public void findUserProfile()
-	{
-		userProfile=service.findAll(userSession.getUserName());
+
+	@PostConstruct
+	public void findUserProfile() {
+		userProfile = service.findAll(userSession.getUserName());
 	}
-	
-	public void delete(UserProfile user)
-	{
+
+	public void delete(UserProfile user) {
 		service.delete(user);
 	}
-	
+
 	public String getUserName() {
 		return userName;
 	}
@@ -94,9 +88,5 @@ public class UserProfileBean {
 	public void setUserProfile(UserProfile userProfile) {
 		this.userProfile = userProfile;
 	}
-
-	
-	
-	
 
 }

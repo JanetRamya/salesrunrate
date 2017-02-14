@@ -6,32 +6,34 @@
 	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
 	xmlns:p="http://primefaces.org/ui">
 	<h:body>
-	<h:form id="saveForm">
-	<div id="file" align="center">
-		<p:outputLabel value="USER PROFILE"
-			style="font-family:Serif;font-size:25px;color:red;text-align:center;"></p:outputLabel>
-		<h:panelGrid columns="2" styleClass="test" cellspacing="30">
-			<p:outputLabel value="UserName"></p:outputLabel>
-			<p:inputText value="#{userProfileBean.userName}" placeholder="Janet"
-				required="true" requiredMessage="Please enter the username"></p:inputText>
-			<p:outputLabel value="Password" required="true"
-				requiredMessage="Please enter the password"></p:outputLabel>
-			<p:password value="#{userProfileBean.password}"></p:password>
-			<p:outputLabel value="Mobile" required="true"
-				requiredMessage="Please enter the Mobile No."></p:outputLabel>
-			<p:inputMask mask="999-999-9999" value="#{userProfileBean.mobileNo}"></p:inputMask>
-			<p:outputLabel value="Email-ID" required="true"
-				requiredMessage="Please enter the Email-Id"></p:outputLabel>
-			<p:inputText value="#{userProfileBean.emailId}"
-				placeholder="sales@company.com"></p:inputText>
-			<center>
-				<p:commandButton id="save" value="SAVE"
-					actionListener="#{userProfileBean.save}"
-					oncomplete="if(args.showDialog) PF('saveInfo').show()" />
-			</center>
-		</h:panelGrid>
-	</div>
-	</h:form>
+		<h:form id="saveForm">
+			<div id="file" align="center">
+				<p:outputLabel value="USER PROFILE"
+					style="font-family:Serif;font-size:25px;color:red;text-align:center;"></p:outputLabel>
+				<h:panelGrid columns="2" styleClass="test" cellspacing="30">
+					<p:outputLabel value="UserName"></p:outputLabel>
+					<p:inputText value="#{userProfileBean.userName}"
+						placeholder="Janet" required="true"
+						requiredMessage="Please enter the username"></p:inputText>
+					<p:outputLabel value="Password" required="true"
+						requiredMessage="Please enter the password"></p:outputLabel>
+					<p:password value="#{userProfileBean.password}"></p:password>
+					<p:outputLabel value="Mobile" required="true"
+						requiredMessage="Please enter the Mobile No."></p:outputLabel>
+					<p:inputMask mask="999-999-9999"
+						value="#{userProfileBean.mobileNo}"></p:inputMask>
+					<p:outputLabel value="Email-ID" required="true"
+						requiredMessage="Please enter the Email-Id"></p:outputLabel>
+					<p:inputText value="#{userProfileBean.emailId}"
+						placeholder="sales@company.com"></p:inputText>
+					<center>
+						<p:commandButton id="save" value="SAVE"
+							actionListener="#{userProfileBean.save}"
+							oncomplete="if(args.showDialog) PF('saveInfo').show()" />
+					</center>
+				</h:panelGrid>
+			</div>
+		</h:form>
 	</h:body>
 </ui:composition>
 

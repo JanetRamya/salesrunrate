@@ -26,8 +26,8 @@ public class LoginBean extends AbstractBean {
 
 	@Autowired
 	UserService userService;
-	
-	@Autowired 
+
+	@Autowired
 	UserSession userSession;
 	UserProfile user = new UserProfile();
 
@@ -58,7 +58,7 @@ public class LoginBean extends AbstractBean {
 		}
 		try {
 			if (user != null) {
-				
+
 				HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext()
 						.getSession(true);
 				SessionHolder.getIntance().saveSession(userName, session);
@@ -66,20 +66,19 @@ public class LoginBean extends AbstractBean {
 				.redirect(FacesContext.getCurrentInstance().getExternalContext().getRequestContextPath()
 						+ "/pages/landing.xhtml");
 			} else {
-				
+
 				FacesContext context = FacesContext.getCurrentInstance();
 				context.addMessage("logForm:login", new FacesMessage(FacesMessage.SEVERITY_ERROR,
 						"Either UserName or Password Invalid", "Either UserName or Password Invalid"));
-		
+
 			}
 
 		} catch (IOException e) {
 			LOGGER.error(e.getMessage(), e);
 		}
 	}
-	
-	public void logout()
-	{
+
+	public void logout() {
 		SessionHolder.getIntance().clearSession(userSession.getUserName());
 		try {
 			FacesContext.getCurrentInstance().getExternalContext()
@@ -89,9 +88,6 @@ public class LoginBean extends AbstractBean {
 			LOGGER.error(e.getMessage(), e);
 		}
 
-	}	
-	
-	
-	
+	}
 
 }

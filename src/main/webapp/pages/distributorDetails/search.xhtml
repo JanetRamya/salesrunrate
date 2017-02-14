@@ -5,8 +5,17 @@
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
 	xmlns:p="http://primefaces.org/ui">
-	<p:outputLabel value="DistributorDetails"></p:outputLabel>
-	<p:dataTable var="dist" value="#{distributorDetailsBean.distCode}">
+	<div align="center">
+		<p:outputLabel style="font-size:30px;" value="DISTRIBUTOR DETAILS"></p:outputLabel>
+	</div>
+	<div align="right">
+		<p:commandButton value="Create New Distributor"
+			action="#{navi.selectUrl('/pages/distributorDetails/entity.xhtml')}"
+			update=":content"></p:commandButton>
+	</div>
+	<br />
+	<p:dataTable var="dist"
+		value="#{distributorDetailsBean.distributorDetails}">
 		<p:column headerText="DISTRIBUTOR CODE">
 			<h:outputText value="#{dist.distCode}" />
 		</p:column>
@@ -18,11 +27,11 @@
 		<p:column headerText="MOBILE">
 			<h:outputText value="#{dist.mobile}" />
 		</p:column>
-		
+
 		<p:column headerText="EMAIL-ID">
 			<h:outputText value="#{dist.email}" />
 		</p:column>
-		
+
 		<p:column headerText="COUNTRY">
 			<h:outputText value="#{dist.country}" />
 		</p:column>
