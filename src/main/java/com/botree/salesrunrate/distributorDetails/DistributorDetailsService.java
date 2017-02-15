@@ -45,4 +45,9 @@ public class DistributorDetailsService implements IDistributorDetailsService {
 	public List<DistributorDetails> findAll() {
 		return repository.findAll();
 	}
+
+	@Override
+	public DistributorDetails findAll(String distCode) {
+		return repository.findOneByDistCode(distCode);
+	}
 }

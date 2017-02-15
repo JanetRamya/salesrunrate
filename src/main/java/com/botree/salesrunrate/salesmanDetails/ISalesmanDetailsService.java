@@ -10,4 +10,5 @@ public interface ISalesmanDetailsService {
 			final String mobile, final String email, final String allow, final String monSalary);
 
 	public List<SalesmanDetails> findAll();
+	public SalesmanDetails findAll(String smCode);
 }

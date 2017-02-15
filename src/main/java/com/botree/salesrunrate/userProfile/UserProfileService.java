@@ -37,4 +37,9 @@ public class UserProfileService implements IUserProfileService {
 
 	}
 
+	@Override
+	public UserProfile findOneByUserNameAndPassword(String userName, String password) {
+		return repository.findOneByUserNameAndPassword(userName, password);
+	}
+
 }

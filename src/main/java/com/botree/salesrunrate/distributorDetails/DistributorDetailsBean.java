@@ -4,12 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 
 import org.primefaces.context.RequestContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import com.botree.salesrunrate.entity.DistributorDetails;
+import com.botree.salesrunrate.entity.ProductDetails;
 
 @Component("distributorDetailsBean")
 @Scope("session")
@@ -25,10 +28,20 @@ public class DistributorDetailsBean {
 	@Autowired
 	private IDistributorDetailsService service;
 	List<DistributorDetails> distributorDetails = new ArrayList<>();
+	DistributorDetails distributor=new DistributorDetails();
 
 	public void save() {
-		service.save(distCode, distName, mobile, email, country, state, city);
-		RequestContext.getCurrentInstance().addCallbackParam("showDialog", true);
+		distributor=service.findAll(distCode);
+		if(distributor==null){
+			service.save(distCode, distName, mobile, email, country, state, city);
+			RequestContext.getCurrentInstance().addCallbackParam("showDialog", true);
+		} else {
+			RequestContext.getCurrentInstance().addCallbackParam("showDialog", false);
+			FacesContext context = FacesContext.getCurrentInstance();
+			context.addMessage("content:save", new FacesMessage(FacesMessage.SEVERITY_ERROR, "Distributor Code already exists",
+					"Distributor Code already exists"));
+		}
+		
 	}
 
 	@PostConstruct

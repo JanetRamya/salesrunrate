@@ -18,13 +18,14 @@
 			<p:outputLabel value="Price"></p:outputLabel>
 			<p:inputText value="#{productDetailsBean.price}" required="true"
 				requiredMessage="Please Enter Price"></p:inputText>
-			<center>
-				<p:commandButton value="SAVE"
-					actionListener="#{productDetailsBean.save}"
-					oncomplete="if(args.showDialog) PF('saveInfo').show()"></p:commandButton>
-			</center>
 		</h:panelGrid>
 	</div>
+	<p:message for="save" id="saveMsg"></p:message>
+			<center>
+				<p:commandButton id="save" value="SAVE"
+					actionListener="#{productDetailsBean.save}" update=":content saveMsg"
+					oncomplete="if(args.showDialog) PF('saveInfo').show()" />
+			</center>
 </ui:composition>
 
 

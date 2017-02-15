@@ -33,4 +33,9 @@ public class SalesmanDetailsService implements ISalesmanDetailsService {
 		return repository.findAll();
 	}
 
+	@Override
+	public SalesmanDetails findAll(String smCode) {
+		return repository.findOneBySmCode(smCode);
+	}
+
 }

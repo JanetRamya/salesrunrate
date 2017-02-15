@@ -11,6 +11,8 @@ public interface IProductDetailsService {
 	public List<ProductDetails> findAll();
 	
 	public ProductDetails findAll(String prdCode);
+	
+	public ProductDetails findProdName(String prodCode);
 
 
 }

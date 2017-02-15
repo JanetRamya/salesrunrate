@@ -8,17 +8,9 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Inventory extends MongoEntity {
 	private static final long serialVersionUID = 1L;
 	@Id
-	private String prdName;
 	private String prdCode;
+	private String prdName;
 	private String qty;
-
-	public String getPrdName() {
-		return prdName;
-	}
-
-	public void setPrdName(String prdName) {
-		this.prdName = prdName;
-	}
 
 	public String getPrdCode() {
 		return prdCode;
@@ -26,6 +18,14 @@ public class Inventory extends MongoEntity {
 
 	public void setPrdCode(String prdCode) {
 		this.prdCode = prdCode;
+	}
+
+	public String getPrdName() {
+		return prdName;
+	}
+
+	public void setPrdName(String prdName) {
+		this.prdName = prdName;
 	}
 
 	public String getQty() {

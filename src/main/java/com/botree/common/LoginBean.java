@@ -5,6 +5,8 @@ import java.io.IOException;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
+
+import org.primefaces.context.RequestContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,10 +53,12 @@ public class LoginBean extends AbstractBean {
 		userSession.setUserName(userName);
 		userSession.setPassword(password);
 		user = userService.findUser(userName, password);
-		if (user.getDistCode() == null) {
-			userSession.setCmpUser(true);
-		} else {
-			userSession.setCmpUser(false);
+		if (user != null) {
+			if (user.getDistCode() == null) {
+				userSession.setCmpUser(true);
+			} else {
+				userSession.setCmpUser(false);
+			}
 		}
 		try {
 			if (user != null) {
@@ -66,7 +70,7 @@ public class LoginBean extends AbstractBean {
 				.redirect(FacesContext.getCurrentInstance().getExternalContext().getRequestContextPath()
 						+ "/pages/landing.xhtml");
 			} else {
-
+				RequestContext.getCurrentInstance().addCallbackParam("showDialog", false);
 				FacesContext context = FacesContext.getCurrentInstance();
 				context.addMessage("logForm:login", new FacesMessage(FacesMessage.SEVERITY_ERROR,
 						"Either UserName or Password Invalid", "Either UserName or Password Invalid"));

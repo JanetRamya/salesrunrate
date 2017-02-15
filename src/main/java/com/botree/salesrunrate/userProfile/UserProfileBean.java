@@ -39,7 +39,7 @@ public class UserProfileBean extends AbstractBean {
 					"UserName already exists"));
 		}
 	}
-
+	
 	@PostConstruct
 	public void findUserProfile() {
 		userProfile = service.findAll(userSession.getUserName());
@@ -48,6 +48,7 @@ public class UserProfileBean extends AbstractBean {
 	public void delete(UserProfile user) {
 		service.delete(user);
 	}
+	
 
 	public String getUserName() {
 		return userName;

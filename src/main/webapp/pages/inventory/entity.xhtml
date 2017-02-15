@@ -17,10 +17,11 @@
 						<f:selectItems value="#{inventoryBean.prodMap.entrySet()}"
 							var="dbch" itemLabel="#{dbch.key}" itemValue="#{dbch.key}" />
 						<p:ajax
-							update="prod"
-							event="change" listener="#{inventoryBean.loadDistrBrLocation}" />
+							update=":content prod"
+							event="change" listener="#{inventoryBean.loadProductName}" />
+							</p:selectOneMenu>
 			<p:outputLabel value="ProductName"></p:outputLabel>
-			<p:inputText value="#{inventoryBean.prdCode}"></p:inputText>
+			<p:inputText value="#{inventoryBean.productName}"></p:inputText>
 			<p:outputLabel value="Quantity"></p:outputLabel>
 			<p:spinner id="minMax" value="#{inventoryBean.qty}" min="0"
 				max="1000" />

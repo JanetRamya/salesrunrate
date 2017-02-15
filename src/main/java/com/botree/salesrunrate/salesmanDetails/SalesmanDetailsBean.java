@@ -7,10 +7,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 
 import org.primefaces.context.RequestContext;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.botree.salesrunrate.entity.ProductDetails;
 import com.botree.salesrunrate.entity.SalesmanDetails;
 
 @Component("salesmanDetailsBean")
@@ -29,11 +32,20 @@ public class SalesmanDetailsBean {
 	@Autowired
 	private ISalesmanDetailsService service;
 	List<SalesmanDetails> salesmanDetails = new ArrayList<>();
+	SalesmanDetails sales=new SalesmanDetails();
 
 	public void save() {
-		service.save(smCode, smName, distBranch, compName, mobile, email, allow, monSalary);
-		RequestContext.getCurrentInstance().addCallbackParam("showDialog", true);
-
+		sales=service.findAll(smCode);
+		if(sales==null){
+			service.save(smCode, smName, distBranch, compName, mobile, email, allow, monSalary);
+			RequestContext.getCurrentInstance().addCallbackParam("showDialog", true);
+		} else {
+			RequestContext.getCurrentInstance().addCallbackParam("showDialog", false);
+			FacesContext context = FacesContext.getCurrentInstance();
+			context.addMessage("content:save", new FacesMessage(FacesMessage.SEVERITY_ERROR, "Salesman Code already exists",
+					"Salesman Code already exists"));
+		}
+		
 	}
 
 	@PostConstruct

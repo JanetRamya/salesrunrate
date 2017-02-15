@@ -18,30 +18,36 @@ import com.botree.salesrunrate.productDetails.IProductDetailsService;
 @Component("inventoryBean")
 @Scope("session")
 public class InventoryBean {
-	private String prdName;
 	private String prdCode;
+	private String prdName;
 	private String qty;
 
 	@Autowired
 	private IInventoryService service;
-	
+
 	@Autowired
 	private IProductDetailsService productService;
-	List<ProductDetails> prodList=new ArrayList<>();
-	Map<String,String> prodMap=new HashMap<>();
+	List<ProductDetails> prodList = new ArrayList<>();
+	ProductDetails prodNameList = new ProductDetails();
+	Map<String, String> prodMap = new HashMap<>();
+	private String productName;
+	List<Inventory> stock= new ArrayList<>();
 	
-	Inventory inventory =new Inventory();
-	
-	public void save(){
-		service.save(prdName,prdCode,qty);
-		RequestContext.getCurrentInstance().addCallbackParam("showDialog",true);
+Inventory inventory = new Inventory();
+
+	public void save() {
+		service.save(prdName, prdCode, qty);
+		RequestContext.getCurrentInstance().addCallbackParam("showDialog", true);
 	}
-	
-	public void findInventory()
-	{
-		inventory=service.findAll(prdName);
-		
-		
+
+	public void findInventory() {
+		inventory = service.findAll(prdName);
+
+	}
+
+	@PostConstruct
+	public void findAll(){
+		stock=service.findAll();
 	}
 	@PostConstruct
 	public List<ProductDetails> findProducts()
@@ -57,6 +63,12 @@ public class InventoryBean {
 		return prodList;
 	}
 
+	public void loadProductName() {
+		prodNameList = productService.findProdName(prdCode);
+		productName = prodNameList.getPrdName();
+
+	}
+
 	public String getPrdName() {
 		return prdName;
 	}
@@ -64,7 +76,7 @@ public class InventoryBean {
 	public void setPrdName(String prdName) {
 		this.prdName = prdName;
 	}
-	
+
 	public String getPrdCode() {
 		return prdCode;
 	}
@@ -120,6 +132,29 @@ public class InventoryBean {
 	public void setProdMap(Map<String, String> prodMap) {
 		this.prodMap = prodMap;
 	}
-	
-	
+
+	public ProductDetails getProdNameList() {
+		return prodNameList;
+	}
+
+	public void setProdNameList(ProductDetails prodNameList) {
+		this.prodNameList = prodNameList;
+	}
+
+	public String getProductName() {
+		return productName;
+	}
+
+	public void setProductName(String productName) {
+		this.productName = productName;
+	}
+	public List<Inventory> getStock() {
+		return stock;
+	}
+
+	public void setStock(List<Inventory> stock) {
+		this.stock = stock;
+	}
+
+
 }

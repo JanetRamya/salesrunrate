@@ -35,7 +35,7 @@ public class ProductDetailsBean {
 		} else {
 			RequestContext.getCurrentInstance().addCallbackParam("showDialog", false);
 			FacesContext context = FacesContext.getCurrentInstance();
-			context.addMessage("content:saveForm:save", new FacesMessage(FacesMessage.SEVERITY_ERROR, "Product Code already exists",
+			context.addMessage("content:save", new FacesMessage(FacesMessage.SEVERITY_ERROR, "Product Code already exists",
 					"Product Code already exists"));
 		}
 		

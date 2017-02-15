@@ -46,12 +46,14 @@
 			<p:inputText value="#{salesmanDetailsBean.allow}"></p:inputText>
 			<p:outputLabel value="MonthlySalary"></p:outputLabel>
 			<p:inputText value="#{salesmanDetailsBean.monSalary}"></p:inputText>
+			</h:panelGrid>
+			<p:message for="save" id="saveMsg"></p:message>
 			<center>
-				<p:commandButton value="SAVE"
-					actionListener="#{salesmanDetailsBean.save}"
-					oncomplete="if(args.showDialog) PF('saveInfo').show()"></p:commandButton>
-			</center>
-		</h:panelGrid>
+					<p:commandButton id="save" value="SAVE"
+						actionListener="#{salesmanDetailsBean.save}" update=":content saveMsg"
+						oncomplete="if(args.showDialog) PF('saveInfo').show()" />
+				</center>
+		
 	</div>
 </ui:composition>
 

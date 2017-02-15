@@ -5,14 +5,22 @@
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
 	xmlns:p="http://primefaces.org/ui">
-	<p:outputLabel value="Inventory"></p:outputLabel>
-	<p:dataTable var="prd" value="#{inventoryBean.prdCode}">
+	<div align="center">
+		<p:outputLabel style="font-size:30px;" value="STOCK DETAILS"></p:outputLabel>
+	</div>
+	<div align="right">
+		<p:commandButton value="Stock Adjustment"
+			action="#{navi.selectUrl('/pages/inventory/entity.xhtml')}"
+			update=":content"></p:commandButton>
+	</div>
+	<br />
+	<p:dataTable var="prd" value="#{inventoryBean.stock}">
 		<p:column headerText="PRODUCT CODE">
 			<h:outputText value="#{prd.prdCode}" />
 		</p:column>
 
 		<p:column headerText="PRODUCT NAME">
-			<h:outputText value="#{prd.prdName}" />
+			<h:outputText value="#{prd.productName}" />
 		</p:column>
 
 		<p:column headerText="QUANTITY">

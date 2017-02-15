@@ -7,5 +7,7 @@ import com.botree.salesrunrate.entity.Inventory;
 public interface InventoryRepo extends MongoRepository<Inventory, String>{
 
 	Inventory findOneByPrdCode(String prdName);
+	
+	
 
 }

@@ -1,5 +1,7 @@
 package com.botree.salesrunrate.inventory;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import com.botree.salesrunrate.entity.Inventory;
@@ -11,10 +13,10 @@ public class InventoryService implements IInventoryService {
 	private InventoryRepo repository;
 
 	@Override
-	public void save( String prdName,String prdCode, String qty) {
+	public void save(String prdCode, String prdName, String qty) {
 		Inventory inventory=new Inventory();
-		inventory.setPrdName(prdName);
 		inventory.setPrdCode(prdCode);
+		inventory.setPrdName(prdName);
 		inventory.setQty(qty);
 		repository.save(inventory);	
 		
@@ -24,5 +26,11 @@ public class InventoryService implements IInventoryService {
 	public Inventory findAll(String prdName) {
 		return repository.findOneByPrdCode(prdName);
 	}
+
+	@Override
+	public List<Inventory> findAll() {
+		return repository.findAll();
+	}
+
 
 }

@@ -9,4 +9,6 @@ public interface IDistributorDetailsService {
 			final String country, final String state, final String city);
 
 	public List<DistributorDetails> findAll();
+	
+	public DistributorDetails findAll(String distCode);
 }

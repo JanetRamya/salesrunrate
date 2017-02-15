@@ -29,7 +29,14 @@ public class ProductDetailsService implements IProductDetailsService {
 
 	@Override
 	public ProductDetails findAll(String prdCode) {
-		return repository.findOneByProductCode(prdCode);
+		return repository.findOneByPrdCode(prdCode);
 	}
 
+	@Override
+	public ProductDetails findProdName(String prodCode) {
+		// TODO Auto-generated method stub
+		return repository.findByPrdCode(prodCode);
+	}
+
+	
 }
