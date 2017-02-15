@@ -9,5 +9,8 @@ public interface IProductDetailsService {
 	public void save(final String prdCode, final String prdName, final String price);
 
 	public List<ProductDetails> findAll();
+	
+	public ProductDetails findAll(String prdCode);
+
 
 }

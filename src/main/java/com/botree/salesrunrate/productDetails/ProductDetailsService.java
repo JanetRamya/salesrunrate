@@ -27,4 +27,9 @@ public class ProductDetailsService implements IProductDetailsService {
 		return repository.findAll();
 	}
 
+	@Override
+	public ProductDetails findAll(String prdCode) {
+		return repository.findOneByProductCode(prdCode);
+	}
+
 }

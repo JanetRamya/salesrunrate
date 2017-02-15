@@ -10,14 +10,15 @@
 			style="font-family:Serif;font-size:25px;color:red;text-align:center;"></p:outputLabel>
 		<h:panelGrid columns="2" styleClass="test" cellspacing="20">
 			<p:outputLabel value="ProductCode"></p:outputLabel>
-			<p:autoComplete value="#{inventoryBean.prdName}"
-				completeMethod="#{productDetailsBean.findProductDetails}"
-				minQueryLength="3" required="true"
-				onkeypress="if (event.prdCode == 13) { return false; }"
-				dropdown="true">
-				<p:ajax update=":content" event="itemSelect"
-					listener="#{inventoryBean.prdName}" />
-			</p:autoComplete>
+			<p:selectOneMenu id="prod"
+						value="#{inventoryBean.prdCode}" required="true"
+						style="width:150px">
+						<f:selectItem itemLabel="Select Product"></f:selectItem>
+						<f:selectItems value="#{inventoryBean.prodMap.entrySet()}"
+							var="dbch" itemLabel="#{dbch.key}" itemValue="#{dbch.key}" />
+						<p:ajax
+							update="prod"
+							event="change" listener="#{inventoryBean.loadDistrBrLocation}" />
 			<p:outputLabel value="ProductName"></p:outputLabel>
 			<p:inputText value="#{inventoryBean.prdCode}"></p:inputText>
 			<p:outputLabel value="Quantity"></p:outputLabel>

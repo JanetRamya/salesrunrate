@@ -26,13 +26,15 @@
 						requiredMessage="Please enter the Email-Id"></p:outputLabel>
 					<p:inputText value="#{userProfileBean.emailId}"
 						placeholder="sales@company.com"></p:inputText>
-					<center>
-						<p:commandButton id="save" value="SAVE"
-							actionListener="#{userProfileBean.save}"
-							oncomplete="if(args.showDialog) PF('saveInfo').show()" />
-					</center>
 				</h:panelGrid>
 			</div>
+			<p:message for="save" id="saveMsg"></p:message>
+			<center>
+				<p:commandButton id="save" value="SAVE"
+					actionListener="#{userProfileBean.save}" update=":content saveMsg"
+					oncomplete="if(args.showDialog) PF('saveInfo').show()" />
+			</center>
+
 		</h:form>
 	</h:body>
 </ui:composition>

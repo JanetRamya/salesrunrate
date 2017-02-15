@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 
 import org.primefaces.context.RequestContext;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,10 +25,20 @@ public class ProductDetailsBean {
 	@Autowired
 	private IProductDetailsService service;
 	List<ProductDetails> productDetails = new ArrayList<>();
+	ProductDetails product=new ProductDetails();
 
 	public void save() {
-		service.save(prdCode, prdName, price);
-		RequestContext.getCurrentInstance().addCallbackParam("showDialog", true);
+		product=service.findAll(prdCode);
+		if(product==null){
+			service.save(prdCode, prdName, price);
+			RequestContext.getCurrentInstance().addCallbackParam("showDialog", true);
+		} else {
+			RequestContext.getCurrentInstance().addCallbackParam("showDialog", false);
+			FacesContext context = FacesContext.getCurrentInstance();
+			context.addMessage("content:saveForm:save", new FacesMessage(FacesMessage.SEVERITY_ERROR, "Product Code already exists",
+					"Product Code already exists"));
+		}
+		
 	}
 
 	@PostConstruct

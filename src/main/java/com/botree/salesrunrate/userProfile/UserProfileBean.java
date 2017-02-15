@@ -3,18 +3,17 @@ package com.botree.salesrunrate.userProfile;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-
 import org.primefaces.context.RequestContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
+import com.botree.common.AbstractBean;
 import com.botree.common.UserSession;
 import com.botree.salesrunrate.entity.UserProfile;
 
 @Component("userProfileBean")
 @Scope("session")
-public class UserProfileBean {
-
+public class UserProfileBean extends AbstractBean {
 	private String userName;
 	private String password;
 	private String mobileNo;
@@ -30,12 +29,13 @@ public class UserProfileBean {
 
 	public void save() {
 		usr = service.findAll(userName);
-		if (usr.getUserName() == null) {
+		if (usr== null) {
 			service.save(userName, password, emailId, mobileNo);
 			RequestContext.getCurrentInstance().addCallbackParam("showDialog", true);
 		} else {
+			RequestContext.getCurrentInstance().addCallbackParam("showDialog", false);
 			FacesContext context = FacesContext.getCurrentInstance();
-			context.addMessage("content:save", new FacesMessage(FacesMessage.SEVERITY_ERROR, "UserName already exists",
+			context.addMessage("content:saveForm:save", new FacesMessage(FacesMessage.SEVERITY_ERROR, "UserName already exists",
 					"UserName already exists"));
 		}
 	}
