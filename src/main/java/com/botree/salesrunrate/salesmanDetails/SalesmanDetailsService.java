@@ -38,4 +38,10 @@ public class SalesmanDetailsService implements ISalesmanDetailsService {
 		return repository.findOneBySmCode(smCode);
 	}
 
+	@Override
+	public void delete(List<SalesmanDetails> salesmanDetails) {
+		repository.delete(salesmanDetails);
+		
+	}
+
 }

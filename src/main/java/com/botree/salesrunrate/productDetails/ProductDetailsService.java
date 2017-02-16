@@ -19,7 +19,6 @@ public class ProductDetailsService implements IProductDetailsService {
 		productDetails.setPrdName(prdName);
 		productDetails.setPrice(price);
 		repository.save(productDetails);
-
 	}
 
 	@Override

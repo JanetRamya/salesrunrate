@@ -27,6 +27,7 @@ public class InventoryBean {
 
 	@Autowired
 	private IProductDetailsService productService;
+	
 	List<ProductDetails> prodList = new ArrayList<>();
 	ProductDetails prodNameList = new ProductDetails();
 	Map<String, String> prodMap = new HashMap<>();
@@ -58,7 +59,7 @@ Inventory inventory = new Inventory();
 		prodList = productService.findAll();
 
 		for (ProductDetails retailer : prodList) {
-			prodMap.put(retailer.getPrdCode() + " - " +retailer.getPrdName(), retailer.getPrdName());
+			prodMap.put(retailer.getPrdCode(), retailer.getPrdName());
 
 		}
 		return prodList;

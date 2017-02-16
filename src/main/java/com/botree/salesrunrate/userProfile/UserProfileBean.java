@@ -1,7 +1,5 @@
 package com.botree.salesrunrate.userProfile;
 
-import java.io.IOException;
-
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;

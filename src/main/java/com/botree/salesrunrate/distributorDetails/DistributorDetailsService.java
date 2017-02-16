@@ -50,4 +50,11 @@ public class DistributorDetailsService implements IDistributorDetailsService {
 	public DistributorDetails findAll(String distCode) {
 		return repository.findOneByDistCode(distCode);
 	}
+
+
+	@Override
+	public void delete(DistributorDetails distributorDetails) {
+		repository.delete(distributorDetails);
+		
+	}
 }
