@@ -5,6 +5,7 @@
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
 	xmlns:p="http://primefaces.org/ui">
+	<h:inputHidden value="#{salesmanDetailsBean.bean}" />
 	<div align="center">
 		<p:outputLabel style="font-size:30px;" value="SALESMAN DETAILS"></p:outputLabel>
 	</div>
@@ -45,6 +46,20 @@
 		</p:column>
 		<p:column headerText="MONTHLY SALARY">
 			<h:outputText value="#{sale.monSalary}" />
+		</p:column>
+		<p:column headerText="ACTIONS">
+			<p:commandLink id="edit"
+				actionListener="#{salesmanDetailsBean.update(sale)}"
+				update=":content">
+				<i class="fe fa-pencil"></i>
+			</p:commandLink>  
+						 &#160;	       
+		<p:commandLink id="delete" update=":content"
+				onclick="PF('deleteConfirm').show()">
+				<p:graphicImage value="../images/delete.png" for="edit" />
+				<f:setPropertyActionListener target="#{salesmanDetailsBean.salesmanDetails}"
+					value="#{sale}" />
+			</p:commandLink>
 		</p:column>
 
 	</p:dataTable>

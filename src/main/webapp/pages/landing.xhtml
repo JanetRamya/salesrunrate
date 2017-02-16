@@ -148,6 +148,30 @@
 			</h:panelGroup>
 		</h:form>
 	</p:confirmDialog>
-
+<p:confirmDialog id="deleteConfirmDialog"
+		message="Do you want delete" styleClass="customDialogStyle"
+		severity="warning" widgetVar="deleteConfirm">
+		<h:form>
+			<h:panelGroup styleClass="buttons_center">
+				<p:commandButton id="deleteYes" value="Yes" styleClass="yes"
+					onclick="PF('deleteConfirm').hide()"
+					oncomplete="if (args.showDialog) if (args.hasErrors) PF('delError').show(); else PF('deleteInfo').show()"
+					action="#{dialogHelper.delete}" immediate="true" update=":content" />
+				<p:commandButton id="deleteNo" value="No" styleClass="no"
+					onclick="PF('deleteConfirm').hide()" action="#" />
+			</h:panelGroup>
+		</h:form>
+	</p:confirmDialog>
+	<p:confirmDialog id="deleteInfoDialog"
+		message="DELETED SUCCESSFULLY" styleClass="customDialogStyle"
+		severity="check" widgetVar="deleteInfo">
+		<h:form>
+			<h:panelGroup styleClass="buttons_center">
+				<p:commandButton id="deleteOk" value="OK" styleClass="ok"
+					onclick="PF('deleteInfo').hide();" immediate="true"
+					update=":content" />
+			</h:panelGroup>
+		</h:form>
+	</p:confirmDialog>
 </h:body>
 </html>

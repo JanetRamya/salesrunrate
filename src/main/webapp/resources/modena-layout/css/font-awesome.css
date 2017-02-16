@@ -1815,3 +1815,6 @@
     overflow: visible;
     text-indent: 0px;
 }
+.fa-pencil:before {
+  content: "\f040";
+}

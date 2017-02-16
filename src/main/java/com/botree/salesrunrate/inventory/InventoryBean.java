@@ -36,7 +36,7 @@ public class InventoryBean {
 Inventory inventory = new Inventory();
 
 	public void save() {
-		service.save(prdName, prdCode, qty);
+		service.save(prdCode, prdName, qty);
 		RequestContext.getCurrentInstance().addCallbackParam("showDialog", true);
 	}
 
@@ -47,17 +47,18 @@ Inventory inventory = new Inventory();
 
 	@PostConstruct
 	public void findAll(){
-		stock=service.findAll();
+		
 	}
 	@PostConstruct
 	public List<ProductDetails> findProducts()
 
 	{
+		stock=service.findAll();
 		prodMap = new HashMap<>();
 		prodList = productService.findAll();
 
 		for (ProductDetails retailer : prodList) {
-			prodMap.put(retailer.getPrdCode(), retailer.getPrdName());
+			prodMap.put(retailer.getPrdCode() + " - " +retailer.getPrdName(), retailer.getPrdName());
 
 		}
 		return prodList;
@@ -69,14 +70,6 @@ Inventory inventory = new Inventory();
 
 	}
 
-	public String getPrdName() {
-		return prdName;
-	}
-
-	public void setPrdName(String prdName) {
-		this.prdName = prdName;
-	}
-
 	public String getPrdCode() {
 		return prdCode;
 	}
@@ -85,28 +78,20 @@ Inventory inventory = new Inventory();
 		this.prdCode = prdCode;
 	}
 
+	public String getPrdName() {
+		return prdName;
+	}
+
+	public void setPrdName(String prdName) {
+		this.prdName = prdName;
+	}
+
 	public String getQty() {
 		return qty;
 	}
 
 	public void setQty(String qty) {
 		this.qty = qty;
-	}
-
-	public Inventory getInventory() {
-		return inventory;
-	}
-
-	public void setInventory(Inventory inventory) {
-		this.inventory = inventory;
-	}
-
-	public IInventoryService getService() {
-		return service;
-	}
-
-	public void setService(IInventoryService service) {
-		this.service = service;
 	}
 
 	public IProductDetailsService getProductService() {
@@ -125,20 +110,20 @@ Inventory inventory = new Inventory();
 		this.prodList = prodList;
 	}
 
-	public Map<String, String> getProdMap() {
-		return prodMap;
-	}
-
-	public void setProdMap(Map<String, String> prodMap) {
-		this.prodMap = prodMap;
-	}
-
 	public ProductDetails getProdNameList() {
 		return prodNameList;
 	}
 
 	public void setProdNameList(ProductDetails prodNameList) {
 		this.prodNameList = prodNameList;
+	}
+
+	public Map<String, String> getProdMap() {
+		return prodMap;
+	}
+
+	public void setProdMap(Map<String, String> prodMap) {
+		this.prodMap = prodMap;
 	}
 
 	public String getProductName() {
@@ -148,6 +133,7 @@ Inventory inventory = new Inventory();
 	public void setProductName(String productName) {
 		this.productName = productName;
 	}
+
 	public List<Inventory> getStock() {
 		return stock;
 	}
@@ -155,6 +141,16 @@ Inventory inventory = new Inventory();
 	public void setStock(List<Inventory> stock) {
 		this.stock = stock;
 	}
+
+	public Inventory getInventory() {
+		return inventory;
+	}
+
+	public void setInventory(Inventory inventory) {
+		this.inventory = inventory;
+	}
+
+	
 
 
 }

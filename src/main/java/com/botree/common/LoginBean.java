@@ -94,4 +94,22 @@ public class LoginBean extends AbstractBean {
 
 	}
 
+	@Override
+	public String getHeader() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void delete() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setSearchPage() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
