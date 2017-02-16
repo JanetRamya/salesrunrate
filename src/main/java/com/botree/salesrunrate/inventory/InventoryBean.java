@@ -36,7 +36,7 @@ public class InventoryBean {
 Inventory inventory = new Inventory();
 
 	public void save() {
-		service.save(prdCode,prdName,qty);
+		service.save(prdName, prdCode, qty);
 		RequestContext.getCurrentInstance().addCallbackParam("showDialog", true);
 	}
 
