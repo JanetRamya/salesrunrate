@@ -13,7 +13,8 @@ public class CustomerDetails extends MongoEntity{
 	@Id
 	private String custCode;
 	private String custName;
-	private String distName;
+	private String distCode;
+	private String smCode;
 	public String getCustCode() {
 		return custCode;
 	}
@@ -26,12 +27,19 @@ public class CustomerDetails extends MongoEntity{
 	public void setCustName(String custName) {
 		this.custName = custName;
 	}
-	public String getDistName() {
-		return distName;
+	public String getDistCode() {
+		return distCode;
 	}
-	public void setDistName(String distName) {
-		this.distName = distName;
+	public void setDistCode(String distCode) {
+		this.distCode = distCode;
 	}
+	public String getSmCode() {
+		return smCode;
+	}
+	public void setSmCode(String smCode) {
+		this.smCode = smCode;
+	}
+	
 	 
 	
 

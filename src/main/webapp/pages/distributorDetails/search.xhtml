@@ -12,7 +12,7 @@
 	<div align="right">
 		<p:commandButton value="Create New Distributor"
 			action="#{navi.selectUrl('/pages/distributorDetails/entity.xhtml')}"
-			update=":content"></p:commandButton>
+			update=":content" rendered="#{userSession.cmpUser}"></p:commandButton>
 	</div>
 	<br />
 	<p:dataTable var="dist"

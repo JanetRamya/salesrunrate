@@ -24,7 +24,7 @@ public class InventoryService implements IInventoryService {
 
 	@Override
 	public Inventory findAll(String prdName) {
-		return repository.findOneByPrdCode(prdName);
+		return repository.findOneByPrdName(prdName);
 	}
 
 	@Override

@@ -73,7 +73,7 @@
 									<ul class="reportsGrp">
 										<li><p:commandLink id="target"
 												styleClass="leftMenuCommandLink" value="Distributor Target"
-												actionListener="#{navi.selectUrl('disttarget.xhtml')}"
+												actionListener="#{navi.selectUrl('/pages/distributorTarget/entity.xhtml')}"
 												update=":content">
 											</p:commandLink></li>
 									</ul>
@@ -92,6 +92,17 @@
 										<li><p:commandLink id="targ"
 												styleClass="leftMenuCommandLink" value="Salesman Target"
 												actionListener="#{navi.selectUrl('salestarget.xhtml')}"
+												update=":content">
+											</p:commandLink></li>
+									</ul>
+								</p:panel>
+								<p:panel styleClass="rptGrps">
+									<h:outputLabel styleClass="rptHeader" value="Customer"
+										style="color:#AD1457;"></h:outputLabel>
+									<ul class="reportsGrp">
+										<li><p:commandLink id="cust"
+												styleClass="leftMenuCommandLink" value="Customer Details"
+												actionListener="#{navi.selectUrl('/pages/customerDetails/search.xhtml')}"
 												update=":content">
 											</p:commandLink></li>
 									</ul>

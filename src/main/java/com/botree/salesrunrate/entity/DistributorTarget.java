@@ -13,10 +13,12 @@ public class DistributorTarget extends MongoEntity {
 	@Id
 	private String distCode;
 	private String distName;
+	private String sdate;
+	private String edate;
 	private String prdCode;
 	private String prdName;
 	private String stock;
-	private String tQty;
+	private String tqty;
 	
 	
 	public String getDistCode() {
@@ -30,6 +32,18 @@ public class DistributorTarget extends MongoEntity {
 	}
 	public void setDistName(String distName) {
 		this.distName = distName;
+	}
+	public String getSdate() {
+		return sdate;
+	}
+	public void setSdate(String sdate) {
+		this.sdate = sdate;
+	}
+	public String getEdate() {
+		return edate;
+	}
+	public void setEdate(String edate) {
+		this.edate = edate;
 	}
 	public String getPrdCode() {
 		return prdCode;
@@ -50,10 +64,10 @@ public class DistributorTarget extends MongoEntity {
 		this.stock = stock;
 	}
 	public String gettQty() {
-		return tQty;
+		return tqty;
 	}
 	public void settQty(String tQty) {
-		this.tQty = tQty;
+		this.tqty = tQty;
 	}
 	
 	

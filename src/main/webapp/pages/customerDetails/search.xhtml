@@ -6,25 +6,25 @@
 	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
 	xmlns:p="http://primefaces.org/ui">
 	<div align="center">
-		<p:outputLabel style="font-size:30px;" value="PRODUCT DETAILS"></p:outputLabel>
+		<p:outputLabel style="font-size:30px;" value="CUSTOMER DETAILS"></p:outputLabel>
 	</div>
 	<div align="right">
-		<p:commandButton value="Add New Product"
-			action="#{navi.selectUrl('/pages/productDetails/entity.xhtml')}"
+		<p:commandButton value="Add New Customer"
+			action="#{navi.selectUrl('/pages/customerDetails/entity.xhtml')}"
 			update=":content"></p:commandButton>
 	</div>
 	<br />
-	<p:dataTable var="prd" value="#{productDetailsBean.productDetails}">
-		<p:column headerText="PRODUCT CODE">
-			<h:outputText value="#{prd.prdCode}" />
+	<p:dataTable var="cust" value="#{customerDetailsBean.customerDetails}">
+		<p:column headerText="CUSTOMER CODE">
+			<h:outputText value="#{cust.custCode}" />
 		</p:column>
 
-		<p:column headerText="PRODUCT NAME">
-			<h:outputText value="#{prd.prdName}" />
+		<p:column headerText="CUSTOMER NAME">
+			<h:outputText value="#{cust.custName}" />
 		</p:column>
 
-		<p:column headerText="PRICE">
-			<h:outputText value="#{prd.price}" />
+		<p:column headerText="DISTRIBUTOR NAME">
+			<h:outputText value="#{cust.distName}" />
 		</p:column>
 	</p:dataTable>
 </ui:composition>

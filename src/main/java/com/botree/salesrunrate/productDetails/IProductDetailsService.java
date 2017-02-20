@@ -12,7 +12,7 @@ public interface IProductDetailsService {
 	
 	public ProductDetails findAll(String prdCode);
 	
-	public ProductDetails findProdName(String prodCode);
+	public ProductDetails findProdName(String prdCode);
 
 
 }

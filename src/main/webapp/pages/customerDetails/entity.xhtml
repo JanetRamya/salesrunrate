@@ -16,8 +16,14 @@
 			<p:inputText value="#{customerDetailsBean.custName}" required="true"
 				requiredMessage="Please Enter Customer Name"></p:inputText>
 			<p:outputLabel value="DistributorName"></p:outputLabel>
-			<p:inputText value="#{customerDetailsBean.distName}" required="true"
-				requiredMessage="Please Enter PricDistributor Name"></p:inputText>
+			<p:outputLabel value="DistributorCode-Name"></p:outputLabel>
+			<p:selectOneMenu id="dist"
+						value="#{customerDetailsBean.distCode}" required="true"
+						style="width:150px">
+						<f:selectItem itemLabel="Select Distributor"></f:selectItem>
+						<f:selectItems value="#{customerDetailsBean.distMap.entrySet()}"
+							var="dbch" itemLabel="#{dbch.key}" itemValue="#{dbch.key}" />
+							</p:selectOneMenu>
 		</h:panelGrid>
 	</div>
 	<p:message for="save" id="saveMsg"></p:message>

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.botree.salesrunrate.entity.DistributorDetails;
+import com.botree.salesrunrate.entity.DistributorTarget;
 import com.botree.salesrunrate.entity.UserProfile;
 import com.botree.salesrunrate.userProfile.UserProfileRepo;
 
@@ -56,5 +57,11 @@ public class DistributorDetailsService implements IDistributorDetailsService {
 	public void delete(DistributorDetails distributorDetails) {
 		repository.delete(distributorDetails);
 		
+	}
+
+	@Override
+	public DistributorTarget findDistName(String distCode) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

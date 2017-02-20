@@ -6,27 +6,41 @@
 	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
 	xmlns:p="http://primefaces.org/ui">
 	<div id="file" align="center">
-		<p:outputLabel value="PRODUCT DETAILS"
+		<p:outputLabel value="DISTRIBUTOR TARGET DETAILS"
 			style="font-family:Serif;font-size:25px;color:red;text-align:center;"></p:outputLabel>
 		<h:panelGrid columns="2" styleClass="test" cellspacing="20">
-			<p:outputLabel value="Distributor Code & Name"></p:outputLabel>
-			<p:inputText value="#{distributorTargetBean.distCode}"></p:inputText>
-		</h:panelGrid>
+			<p:outputLabel value="DistributorCode-Name"></p:outputLabel>
+			<p:selectOneMenu id="dist"
+						value="#{distributorTargetBean.distCode}" required="true"
+						style="width:150px">
+						<f:selectItem itemLabel="Select Distributor"></f:selectItem>
+						<f:selectItems value="#{distributorTargetBean.distMap.entrySet()}"
+							var="dbch" itemLabel="#{dbch.key}" itemValue="#{dbch.key}" />
+							</p:selectOneMenu>
+		<p:outputLabel value="Start Date"></p:outputLabel>
+		  <p:calendar pattern="dd-MM-yyyy" effect="fold" mindate="20-02-17"/>
+		<p:outputLabel value="End Date"></p:outputLabel>
+		 <p:calendar pattern="dd-MM-yyyy" effect="fold"/>
+		 </h:panelGrid>
 	</div>
-	<p:dataTable>
-		<p:column headerText="Product Code" style="color:red;">
-			<h:inputText value="#{distributorTargetBean.prdCode}" />
+	
+	<p:dataTable var="targ" value="#{distributorTargetBean.target}">
+		<p:column headerText="PRODUCT CODE">
+			<h:outputText value="#{targ.prdCode}" />
 		</p:column>
-		<p:column headerText="Product Name" style="color:red;">
-			<h:inputText value="#{distributorTargetBean.prdName}" />
+
+		<p:column headerText="PRODUCT NAME">
+			<h:outputText value="#{targ.prdName}" />
 		</p:column>
-		<p:column headerText="Stock-In-Hand" style="color:red;">
-			<h:inputText value="#{distributorTargetBean.stock}" />
+
+		<p:column headerText="STOCK-IN-HAND">
+			<h:outputText value="#{targ.stock}" />
 		</p:column>
-		<p:column headerText="Target Quantity" style="color:red;">
-			<h:inputText value="#{distributorTargetBean.tqty}" />
+		<p:column headerText="TARGET QUANTITY">
+			<h:outputText/>
 		</p:column>
 	</p:dataTable>
+	
 	<p:message for="save" id="saveMsg"></p:message>
 	<center>
 		<p:commandButton id="save" value="SAVE"

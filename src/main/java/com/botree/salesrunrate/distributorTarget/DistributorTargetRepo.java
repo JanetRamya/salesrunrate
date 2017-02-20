@@ -1,13 +1,11 @@
 package com.botree.salesrunrate.distributorTarget;
 
-import java.util.List;
+import org.springframework.data.mongodb.repository.MongoRepository;
 
 import com.botree.salesrunrate.entity.DistributorTarget;
 
-public interface DistributorTargetRepo {
+public interface DistributorTargetRepo extends MongoRepository<DistributorTarget, String> {
 
-	public void save(DistributorTarget distributorTarget);
-
-	public List<DistributorTarget> findAll();
+public DistributorTarget findOneByDistName(String distName);
 
 }

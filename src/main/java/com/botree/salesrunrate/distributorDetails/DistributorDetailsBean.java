@@ -57,6 +57,14 @@ public class DistributorDetailsBean extends AbstractBean {
 
 	}
 
+	public List<DistributorDetails> getDistributorDetails() {
+		return distributorDetails;
+	}
+
+	public void setDistributorDetails(List<DistributorDetails> distributorDetails) {
+		this.distributorDetails = distributorDetails;
+	}
+
 	public String getDistCode() {
 		return distCode;
 	}

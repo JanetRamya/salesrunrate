@@ -11,13 +11,15 @@ import org.primefaces.context.RequestContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
+
+import com.botree.common.AbstractBean;
 import com.botree.salesrunrate.entity.Inventory;
 import com.botree.salesrunrate.entity.ProductDetails;
 import com.botree.salesrunrate.productDetails.IProductDetailsService;
 
 @Component("inventoryBean")
 @Scope("session")
-public class InventoryBean {
+public class InventoryBean extends AbstractBean {
 	private String prdCode;
 	private String prdName;
 	private String qty;
@@ -33,8 +35,7 @@ public class InventoryBean {
 	Map<String, String> prodMap = new HashMap<>();
 	private String productName;
 	List<Inventory> stock= new ArrayList<>();
-	
-Inventory inventory = new Inventory();
+	Inventory inventory = new Inventory();
 
 	public void save() {
 		service.save(prdCode, prdName, qty);
@@ -45,11 +46,11 @@ Inventory inventory = new Inventory();
 		inventory = service.findAll(prdName);
 
 	}
-
 	@PostConstruct
 	public void findAll(){
-		
+		stock=service.findAll();
 	}
+	
 	@PostConstruct
 	public List<ProductDetails> findProducts()
 
@@ -69,6 +70,14 @@ Inventory inventory = new Inventory();
 		prodNameList = productService.findProdName(prdCode);
 		productName = prodNameList.getPrdName();
 
+	}
+
+	public IInventoryService getService() {
+		return service;
+	}
+
+	public void setService(IInventoryService service) {
+		this.service = service;
 	}
 
 	public String getPrdCode() {
@@ -149,6 +158,24 @@ Inventory inventory = new Inventory();
 
 	public void setInventory(Inventory inventory) {
 		this.inventory = inventory;
+	}
+
+	@Override
+	public String getHeader() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void delete() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setSearchPage() {
+		// TODO Auto-generated method stub
+		
 	}
 
 	

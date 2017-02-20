@@ -11,12 +11,14 @@ import org.primefaces.context.RequestContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
+
+import com.botree.common.AbstractBean;
 import com.botree.salesrunrate.entity.ProductDetails;
 
 @Component("productDetailsBean")
 @Scope("session")
 
-public class ProductDetailsBean {
+public class ProductDetailsBean extends AbstractBean {
 
 	private String prdCode;
 	private String prdName;
@@ -76,6 +78,24 @@ public class ProductDetailsBean {
 
 	public void setProductDetails(List<ProductDetails> productDetails) {
 		this.productDetails = productDetails;
+	}
+
+	@Override
+	public String getHeader() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void delete() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setSearchPage() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

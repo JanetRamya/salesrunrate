@@ -9,12 +9,12 @@
 		<p:outputLabel style="font-size:30px;" value="DISTRIBUTOR TARGET SETTING"></p:outputLabel>
 	</div>
 	<div align="right">
-		<p:commandButton value="ASSIGN NEW TARGET"
+		<p:commandButton value="Assign New Target"
 			action="#{navi.selectUrl('/pages/distributorTarget/entity.xhtml')}"
 			update=":content"></p:commandButton>
 	</div>
 	<br />
-	<p:dataTable var="targ" value="#{distributorTargetBean.distributorTarget}">
+	<p:dataTable var="targ" value="#{distributorTargetBean.target}">
 		<p:column headerText="PRODUCT CODE">
 			<h:outputText value="#{targ.prdCode}" />
 		</p:column>

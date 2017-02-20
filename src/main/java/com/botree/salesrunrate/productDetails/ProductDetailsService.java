@@ -32,9 +32,9 @@ public class ProductDetailsService implements IProductDetailsService {
 	}
 
 	@Override
-	public ProductDetails findProdName(String prodCode) {
+	public ProductDetails findProdName(String prdCode) {
 		// TODO Auto-generated method stub
-		return repository.findByPrdCode(prodCode);
+		return repository.findByPrdCode(prdCode);
 	}
 
 	

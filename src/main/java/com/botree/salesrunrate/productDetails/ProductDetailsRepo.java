@@ -9,6 +9,6 @@ public interface ProductDetailsRepo extends MongoRepository<ProductDetails, Stri
 	
 	public ProductDetails findOneByPrdCode(String prdCode);
 	
-	ProductDetails findByPrdCode(String prodCode);
+	ProductDetails findByPrdCode(String prdCode);
 
 }
