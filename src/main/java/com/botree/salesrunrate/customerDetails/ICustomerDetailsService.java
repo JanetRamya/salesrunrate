@@ -9,5 +9,5 @@ public interface ICustomerDetailsService {
 
 	public List<CustomerDetails> findAll();
 	
-	public CustomerDetails findAll(String custCode);
+	public List<CustomerDetails> findAll(String custCode);
 }

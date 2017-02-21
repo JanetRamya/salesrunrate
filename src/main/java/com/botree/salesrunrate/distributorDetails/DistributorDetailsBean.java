@@ -32,14 +32,15 @@ public class DistributorDetailsBean extends AbstractBean {
 	@Autowired
 	private IDistributorDetailsService service;
 	List<DistributorDetails> distributorDetails = new ArrayList<>();
+	DistributorDetails distributor=new DistributorDetails();
 
 	@Autowired
 	Navigation navi;
 
 	public void save() {
 		if (this.mode != "edit") {
-			distributorDetails = service.findAll();
-			if (distributorDetails == null) {
+			distributor = service.findAll(distCode);
+			if (distributor == null) {
 				service.save(distCode, distName, mobile, email, country, state, city);
 				RequestContext.getCurrentInstance().addCallbackParam("showDialog", true);
 			} else {

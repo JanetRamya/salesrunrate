@@ -29,8 +29,8 @@ public class DistributorTargetBean extends AbstractBean {
 	private String stock;
 	private String tqty;
 	
-	@Autowired
-	private IDistributorTargetService service;
+//	@Autowired
+	//private IDistributorTargetService service;
  
 	
 	@Autowired
@@ -45,13 +45,13 @@ public class DistributorTargetBean extends AbstractBean {
 
 	public void save() {
 
-		service.save(distCode, distName, sdate, edate, prdCode, prdName, stock, tqty);
+	//service.save(distCode, distName, sdate, edate, prdCode, prdName, stock, tqty);
 		RequestContext.getCurrentInstance().addCallbackParam("showDialog", true);
 
 	}
 
 	public void findDistributorTarget() {
-		distributorTarget = service.findAll();
+	//	distributorTarget = service.findAll();
 	}
 
 	
@@ -60,7 +60,7 @@ public class DistributorTargetBean extends AbstractBean {
 	public List<DistributorDetails> findDistributor()
 
 	{
-		target = service.findAll();
+		//target = service.findAll();
 		distMap = new HashMap<>();
 		distList = distributorService.findAll();
 

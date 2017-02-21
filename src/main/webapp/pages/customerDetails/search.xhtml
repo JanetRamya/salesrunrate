@@ -14,7 +14,7 @@
 			update=":content"></p:commandButton>
 	</div>
 	<br />
-	<p:dataTable var="cust" value="#{customerDetailsBean.customerDetails}">
+	<p:dataTable var="cust" value="#{customerDetailsBean.customer}">
 		<p:column headerText="CUSTOMER CODE">
 			<h:outputText value="#{cust.custCode}" />
 		</p:column>
@@ -23,8 +23,11 @@
 			<h:outputText value="#{cust.custName}" />
 		</p:column>
 
-		<p:column headerText="DISTRIBUTOR NAME">
-			<h:outputText value="#{cust.distName}" />
+		<p:column headerText="DISTRIBUTOR CODE">
+			<h:outputText value="#{cust.distCode}" />
+		</p:column>
+		<p:column headerText="SALESMAN CODE">
+			<h:outputText value="#{cust.smCode}" />
 		</p:column>
 	</p:dataTable>
 </ui:composition>

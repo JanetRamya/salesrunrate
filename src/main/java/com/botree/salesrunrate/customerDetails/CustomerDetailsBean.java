@@ -18,6 +18,8 @@ import com.botree.common.AbstractBean;
 import com.botree.salesrunrate.distributorDetails.IDistributorDetailsService;
 import com.botree.salesrunrate.entity.CustomerDetails;
 import com.botree.salesrunrate.entity.DistributorDetails;
+import com.botree.salesrunrate.entity.SalesmanDetails;
+import com.botree.salesrunrate.salesmanDetails.ISalesmanDetailsService;
 
 @Component("customerDetailsBean")
 @Scope("session")
@@ -28,20 +30,26 @@ public class CustomerDetailsBean extends AbstractBean{
 		private String custName;
 		private String distCode;
 		private String smCode;
-
-		@Autowired
-		private ICustomerDetailsService custService;
-
+		
+	@Autowired
+	private ICustomerDetailsService service;
 		@Autowired
 		private IDistributorDetailsService distributorService;
 
+		@Autowired
+		private ISalesmanDetailsService salesmanService;
+		
 		List<DistributorDetails> distList = new ArrayList<>();
 		DistributorDetails distNameList = new DistributorDetails();
 		Map<String, String> distMap = new HashMap<>();
 		List<CustomerDetails> cust = new ArrayList<>();
 		
-	
-		CustomerDetails customer=new CustomerDetails();
+		List<SalesmanDetails> salesList = new ArrayList<>();
+		SalesmanDetails salesNameList = new SalesmanDetails();
+		Map<String, String> salesMap = new HashMap<>();
+		
+		
+		List<CustomerDetails> customer=new ArrayList<>();
 		List<CustomerDetails> customerDetails= new ArrayList<>();
 		
 		
@@ -49,7 +57,7 @@ public class CustomerDetailsBean extends AbstractBean{
 		public List<DistributorDetails> findDistributor()
 
 		{
-			cust = custService.findAll();
+			customer = service.findAll();
 			distMap = new HashMap<>();
 			distList = distributorService.findAll();
 
@@ -59,14 +67,53 @@ public class CustomerDetailsBean extends AbstractBean{
 			return distList;
 		}
 
+		@PostConstruct
+		public List<SalesmanDetails> findSalesman()
+
+		{
+			customer = service.findAll();
+			salesMap = new HashMap<>();
+			salesList = salesmanService.findAll();
+
+			for (SalesmanDetails sale : salesList) {
+				salesMap.put(sale.getSmCode()+ " - " + sale.getSmName(), sale.getSmCode());
+			}
+			return salesList;
+		}
+		
+
+		public List<SalesmanDetails> getSalesList() {
+			return salesList;
+		}
+
+		public void setSalesList(List<SalesmanDetails> salesList) {
+			this.salesList = salesList;
+		}
+
+		public SalesmanDetails getSalesNameList() {
+			return salesNameList;
+		}
+
+		public void setSalesNameList(SalesmanDetails salesNameList) {
+			this.salesNameList = salesNameList;
+		}
+
+		public Map<String, String> getSalesMap() {
+			return salesMap;
+		}
+
+		public void setSalesMap(Map<String, String> salesMap) {
+			this.salesMap = salesMap;
+		}
+
 		public void save() {
-			customer=custService.findAll(custCode);
+		customer=service.findAll(custCode);
 			String[] codes=distCode.split(" - ");
 			String distrCode=codes[0];
 			String[] code=smCode.split(" - ");
 			String salesCode=code[0];
 			if(customer==null){
-				custService.save(custCode, custName, distrCode,salesCode);
+				service.save(custCode, custName, distrCode,salesCode);
 				RequestContext.getCurrentInstance().addCallbackParam("showDialog", true);
 			} else {
 				RequestContext.getCurrentInstance().addCallbackParam("showDialog", false);
@@ -77,11 +124,29 @@ public class CustomerDetailsBean extends AbstractBean{
 			
 		}
 
-		@PostConstruct
-		public void findAll() {
-			customerDetails= custService.findAll();;
+		public List<DistributorDetails> getDistList() {
+			return distList;
 		}
 
+		public void setDistList(List<DistributorDetails> distList) {
+			this.distList = distList;
+		}
+
+		public DistributorDetails getDistNameList() {
+			return distNameList;
+		}
+
+		public void setDistNameList(DistributorDetails distNameList) {
+			this.distNameList = distNameList;
+		}
+
+		public Map<String, String> getDistMap() {
+			return distMap;
+		}
+
+		public void setDistMap(Map<String, String> distMap) {
+			this.distMap = distMap;
+		}
 	public String getCustCode() {
 			return custCode;
 		}
@@ -121,6 +186,25 @@ public class CustomerDetailsBean extends AbstractBean{
 
 		public void setCustomerDetails(List<CustomerDetails> customerDetails) {
 			this.customerDetails = customerDetails;
+		}
+
+
+	public List<CustomerDetails> getCust() {
+			return cust;
+		}
+
+		public void setCust(List<CustomerDetails> cust) {
+			this.cust = cust;
+		}
+
+		
+
+	public List<CustomerDetails> getCustomer() {
+			return customer;
+		}
+
+		public void setCustomer(List<CustomerDetails> customer) {
+			this.customer = customer;
 		}
 
 	@Override

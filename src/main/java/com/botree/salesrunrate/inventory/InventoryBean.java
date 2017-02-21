@@ -46,10 +46,7 @@ public class InventoryBean extends AbstractBean {
 		inventory = service.findAll(prdName);
 
 	}
-	@PostConstruct
-	public void findAll(){
-		stock=service.findAll();
-	}
+	
 	
 	@PostConstruct
 	public List<ProductDetails> findProducts()
