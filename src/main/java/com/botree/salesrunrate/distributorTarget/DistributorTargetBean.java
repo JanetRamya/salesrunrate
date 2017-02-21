@@ -1,6 +1,7 @@
 package com.botree.salesrunrate.distributorTarget;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -16,51 +17,68 @@ import com.botree.common.AbstractBean;
 import com.botree.salesrunrate.distributorDetails.IDistributorDetailsService;
 import com.botree.salesrunrate.entity.DistributorDetails;
 import com.botree.salesrunrate.entity.DistributorTarget;
+import com.botree.salesrunrate.entity.Inventory;
+import com.botree.salesrunrate.inventory.InventoryRepo;
 
 @Component("distributorTargetBean")
 @Scope("session")
 public class DistributorTargetBean extends AbstractBean {
 	private String distCode;
 	private String distName;
-	private String sdate;
-	private String edate;
+	private Date sdate=new Date();
+	private Date edate;
 	private String prdCode;
 	private String prdName;
-	private String stock;
+	private String qty;
 	private String tqty;
-	
-//	@Autowired
-	//private IDistributorTargetService service;
- 
-	
+
+	@Autowired
+	private IDistributorTargetService service;
+
 	@Autowired
 	private IDistributorDetailsService distributorService;
+
+	@Autowired
+	InventoryRepo repo;
+
+	@Autowired
+	DistributorTargetRepo distributorTargetRepo;
 
 	List<DistributorDetails> distList = new ArrayList<>();
 	DistributorDetails distNameList = new DistributorDetails();
 	Map<String, String> distMap = new HashMap<>();
-	List<DistributorTarget> target = new ArrayList<>();
-	
+	List<Inventory> target = new ArrayList<>();
+
 	List<DistributorTarget> distributorTarget = new ArrayList<>();
 
 	public void save() {
-
-	//service.save(distCode, distName, sdate, edate, prdCode, prdName, stock, tqty);
+		service.save(distCode, distName, sdate, edate, prdCode, prdName, qty, tqty);
+		distributorTargetRepo.save(distributorTarget);
 		RequestContext.getCurrentInstance().addCallbackParam("showDialog", true);
 
 	}
-
-	public void findDistributorTarget() {
-	//	distributorTarget = service.findAll();
+	public void changeToDate()
+	{
+		Date mindate = sdate;
 	}
 
-	
+	public void findDistributorTarget() {
+		distributorTarget = service.findAll();
+	}
 
 	@PostConstruct
 	public List<DistributorDetails> findDistributor()
 
 	{
-		//target = service.findAll();
+		// target = service.findAll();
+		target = repo.findAll();
+		for (Inventory obj : target) {
+			DistributorTarget target = new DistributorTarget();
+			target.setPrdCode(obj.getPrdCode());
+			target.setPrdName(obj.getPrdName());
+			target.setQty(obj.getQty());
+			distributorTarget.add(target);
+		}
 		distMap = new HashMap<>();
 		distList = distributorService.findAll();
 
@@ -69,8 +87,6 @@ public class DistributorTargetBean extends AbstractBean {
 		}
 		return distList;
 	}
-
-	
 
 	public String getDistCode() {
 		return distCode;
@@ -88,19 +104,19 @@ public class DistributorTargetBean extends AbstractBean {
 		this.distName = distName;
 	}
 
-	public String getSdate() {
+	public Date getSdate() {
 		return sdate;
 	}
 
-	public void setSdate(String sdate) {
+	public void setSdate(Date sdate) {
 		this.sdate = sdate;
 	}
 
-	public String getEdate() {
+	public Date getEdate() {
 		return edate;
 	}
 
-	public void setEdate(String edate) {
+	public void setEdate(Date edate) {
 		this.edate = edate;
 	}
 
@@ -120,12 +136,12 @@ public class DistributorTargetBean extends AbstractBean {
 		this.prdName = prdName;
 	}
 
-	public String getStock() {
-		return stock;
+	public String getQty() {
+		return qty;
 	}
 
-	public void setStock(String stock) {
-		this.stock = stock;
+	public void setQty(String qty) {
+		this.qty = qty;
 	}
 
 	public String getTqty() {
@@ -135,7 +151,6 @@ public class DistributorTargetBean extends AbstractBean {
 	public void setTqty(String tqty) {
 		this.tqty = tqty;
 	}
-
 
 	public IDistributorDetailsService getDistributorService() {
 		return distributorService;
@@ -153,8 +168,6 @@ public class DistributorTargetBean extends AbstractBean {
 		this.distList = distList;
 	}
 
-	
-
 	public DistributorDetails getDistNameList() {
 		return distNameList;
 	}
@@ -171,14 +184,13 @@ public class DistributorTargetBean extends AbstractBean {
 		this.distMap = distMap;
 	}
 
-	public List<DistributorTarget> getTarget() {
+	public List<Inventory> getTarget() {
 		return target;
 	}
 
-	public void setTarget(List<DistributorTarget> target) {
+	public void setTarget(List<Inventory> target) {
 		this.target = target;
 	}
-
 
 	public List<DistributorTarget> getDistributorTarget() {
 		return distributorTarget;

@@ -1,5 +1,7 @@
 package com.botree.salesrunrate.entity;
 
+import java.util.Date;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -13,11 +15,11 @@ public class DistributorTarget extends MongoEntity {
 	@Id
 	private String distCode;
 	private String distName;
-	private String sdate;
-	private String edate;
+	private Date sdate;
+	private Date edate;
 	private String prdCode;
 	private String prdName;
-	private String stock;
+	private String qty;
 	private String tqty;
 	
 	
@@ -33,16 +35,17 @@ public class DistributorTarget extends MongoEntity {
 	public void setDistName(String distName) {
 		this.distName = distName;
 	}
-	public String getSdate() {
+	
+	public Date getSdate() {
 		return sdate;
 	}
-	public void setSdate(String sdate) {
+	public void setSdate(Date sdate) {
 		this.sdate = sdate;
 	}
-	public String getEdate() {
+	public Date getEdate() {
 		return edate;
 	}
-	public void setEdate(String edate) {
+	public void setEdate(Date edate) {
 		this.edate = edate;
 	}
 	public String getPrdCode() {
@@ -57,18 +60,20 @@ public class DistributorTarget extends MongoEntity {
 	public void setPrdName(String prdName) {
 		this.prdName = prdName;
 	}
-	public String getStock() {
-		return stock;
+	public String getQty() {
+		return qty;
 	}
-	public void setStock(String stock) {
-		this.stock = stock;
+	public void setQty(String qty) {
+		this.qty = qty;
 	}
-	public String gettQty() {
+	public String getTqty() {
 		return tqty;
 	}
-	public void settQty(String tQty) {
-		this.tqty = tQty;
+	public void setTqty(String tqty) {
+		this.tqty = tqty;
 	}
+	
+	
 	
 	
 	

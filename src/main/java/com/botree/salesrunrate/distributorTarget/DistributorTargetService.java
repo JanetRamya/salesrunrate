@@ -1,9 +1,13 @@
 package com.botree.salesrunrate.distributorTarget;
 
+import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import com.botree.salesrunrate.entity.DistributorTarget;
 
+@Component
 public class DistributorTargetService implements IDistributorTargetService{
 	
 	@Autowired
@@ -15,9 +19,17 @@ public class DistributorTargetService implements IDistributorTargetService{
 		return repository.findAll();
 	}
 
+	
 	@Override
-	public void save(String distCode, String distName, String sdate, String edate, String prdCode, String prdName,
-			String stock, String tqty) {
+	public DistributorTarget findAll(String distName) {
+		// TODO Auto-generated method stub
+		return repository.findOneByDistName(distName);
+	}
+
+
+	@Override
+	public void save(String distCode, String distName, Date sdate, Date edate, String prdCode, String prdName,
+			String qty, String tqty) {
 		DistributorTarget distributorTarget=new DistributorTarget();
 		distributorTarget.setDistCode(distCode);
 		distributorTarget.setDistName(distName);
@@ -25,16 +37,10 @@ public class DistributorTargetService implements IDistributorTargetService{
 		distributorTarget.setEdate(edate);
 		distributorTarget.setPrdCode(prdCode);
 		distributorTarget.setPrdName(prdName);
-		distributorTarget.setStock(stock);
-		distributorTarget.settQty(tqty);
+		distributorTarget.setQty(qty);
+		distributorTarget.setTqty(tqty);
 		repository.save(distributorTarget);
-	
-	}
-
-	@Override
-	public DistributorTarget findAll(String distName) {
-		// TODO Auto-generated method stub
-		return repository.findOneByDistName(distName);
+		
 	}
 	}
 

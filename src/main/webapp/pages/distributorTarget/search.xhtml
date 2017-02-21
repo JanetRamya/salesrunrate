@@ -14,20 +14,31 @@
 			update=":content"></p:commandButton>
 	</div>
 	<br />
-	<p:dataTable var="targ" value="#{distributorTargetBean.target}">
+	
+	<p:dataTable var="targ" value="#{distributorTargetBean.distributorTarget}">
+		<p:column headerText="DISTRIBUTOR CODE">
+			<h:outputText value="#{targ.distCode}" />
+		</p:column>
+		<p:column headerText="DISTRIBUTOR NAME">
+			<h:outputText value="#{targ.distName}" />
+		</p:column>
+		<p:column headerText="FROM-DATE">
+			<h:outputText value="#{targ.sdate}" />
+		</p:column>
+		<p:column headerText="TO-DATE">
+			<h:outputText value="#{targ.edate}" />
+		</p:column>
 		<p:column headerText="PRODUCT CODE">
 			<h:outputText value="#{targ.prdCode}" />
 		</p:column>
-
 		<p:column headerText="PRODUCT NAME">
 			<h:outputText value="#{targ.prdName}" />
 		</p:column>
-
 		<p:column headerText="STOCK-IN-HAND">
-			<h:outputText value="#{targ.stock}" />
+			<h:outputText value="#{targ.qty}" />
 		</p:column>
 		<p:column headerText="TARGET QUANTITY">
-			<h:outputText value="#{targ.tqty}" />
+			<h:outputText value="#{targ.tqty}"></h:outputText>
 		</p:column>
 	</p:dataTable>
 </ui:composition>

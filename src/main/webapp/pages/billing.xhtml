@@ -5,53 +5,61 @@
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
 	xmlns:p="http://primefaces.org/ui">
-	<div id="file">
-		<p:outputLabel value="!!! INVOICE !!!"
+	<div id="file" align="center">
+		<p:outputLabel value="Invoice Details"
 			style="font-family:Serif;font-size:25px;color:red;text-align:center;"></p:outputLabel>
-		<br /> <br />
 		<h:panelGrid columns="2" styleClass="test" cellspacing="20">
-			 <p:outputLabel value="SalesmanName" ></p:outputLabel>
-			<p:inputText></p:inputText>
-			<p:outputLabel value="RetailerName"></p:outputLabel>
-			<p:inputText></p:inputText>
-			<p:outputLabel value="ProductCode"></p:outputLabel>
-			<p:selectOneMenu>
-				<f:selectItem itemLabel="Select Code" itemValue="" />
-				<f:selectItem itemLabel="1234" itemValue="1" />
-				<f:selectItem itemLabel="4554" itemValue="2" />
-				<f:selectItem itemLabel="4846" itemValue="3" />
+			<p:outputLabel value="SalesmanCode-Name"></p:outputLabel>
+			<p:selectOneMenu id="sale" value="#{billingBean.smCode}"
+				required="true" style="width:150px">
+				<f:selectItem itemLabel="Select Salesman"></f:selectItem>
+				<f:selectItems value="#{billingBean.salesMap.entrySet()}" var="dbch"
+					itemLabel="#{dbch.key}" itemValue="#{dbch.key}" />
 			</p:selectOneMenu>
+
+			<p:outputLabel value="ProductCode-Name"></p:outputLabel>
+			<p:selectOneMenu id="sale" value="#{billingBean.prdCode}"
+				required="true" style="width:150px">
+				<f:selectItem itemLabel="Select Product"></f:selectItem>
+				<f:selectItems value="#{billingBean.salesMap.entrySet()}" var="dbch"
+					itemLabel="#{dbch.key}" itemValue="#{dbch.key}" />
+			</p:selectOneMenu>
+			<p:outputLabel value="RetailerName"></p:outputLabel>
+			<p:inputText value="#{billingBean.retailerName}"></p:inputText>
 			<p:outputLabel value="Stock-In-Hand"></p:outputLabel>
-			<p:inputText></p:inputText>
-			<p:outputLabel value="OrderQuantity"></p:outputLabel>
-			<p:inputText></p:inputText>
+			<p:inputText value="#{billingBean.qty}"></p:inputText>
+			<p:outputLabel value="Order Quantity"></p:outputLabel>
+			<p:inputText value="#{billingBean.orderqty}"></p:inputText>
 			<p:outputLabel value="Price"></p:outputLabel>
-			<p:inputText></p:inputText>
-			<center>
-				<p:commandButton value="ADD"></p:commandButton>
-			</center>
+			<p:inputText value="#{billingBean.price}"></p:inputText>
 		</h:panelGrid>
 	</div>
-	<div align="center">
-		<p:dataTable>
-			<p:column headerText="Product Code" style="color:red;">
-				<h:outputText />
-			</p:column>
-			<p:column headerText="Product Name" style="color:red;">
-				<h:outputText />
-			</p:column>
-			<p:column headerText="Quantity" style="color:red;">
-				<h:outputText />
-			</p:column>
-			<p:column headerText="Price" style="color:red;">
-				<h:outputText />
-			</p:column>
-		</p:dataTable>
-	</div>
-	<center>
-		<h:commandButton value="PRINT BILL"></h:commandButton>
-	</center>
+	<p:commandButton value="Add"></p:commandButton>
 
+	<p:dataTable var="bill" value="#{billingBean.billing}">
+		<p:column headerText="PRODUCT CODE">
+			<h:outputText value="#{bill.prdCode}" />
+		</p:column>
+
+		<p:column headerText="PRODUCT NAME">
+			<h:outputText value="#{bill.prdName}" />
+		</p:column>
+
+		<p:column headerText="STOCK-IN-HAND">
+			<h:outputText value="#{bill.qty}" />
+		</p:column>
+		<p:column headerText="PRICE">
+			<h:inputText value="#{bill.price}" />
+		</p:column>
+	</p:dataTable>
+
+	<p:message for="save" id="saveMsg"></p:message>
+	<center>
+		<p:commandButton id="save" value="SAVE"
+			actionListener="#{billingBean.save}"
+			update=":content saveMsg"
+			oncomplete="if(args.showDialog) PF('saveInfo').show()" />
+	</center>
 </ui:composition>
 
 

@@ -10,21 +10,23 @@
 			style="font-family:Serif;font-size:25px;color:red;text-align:center;"></p:outputLabel>
 		<h:panelGrid columns="2" styleClass="test" cellspacing="20">
 			<p:outputLabel value="DistributorCode-Name"></p:outputLabel>
-			<p:selectOneMenu id="dist"
-						value="#{distributorTargetBean.distCode}" required="true"
-						style="width:150px">
-						<f:selectItem itemLabel="Select Distributor"></f:selectItem>
-						<f:selectItems value="#{distributorTargetBean.distMap.entrySet()}"
-							var="dbch" itemLabel="#{dbch.key}" itemValue="#{dbch.key}" />
-							</p:selectOneMenu>
-		<p:outputLabel value="Start Date"></p:outputLabel>
-		  <p:calendar pattern="dd-MM-yyyy" effect="fold" mindate="20-02-17"/>
-		<p:outputLabel value="End Date"></p:outputLabel>
-		 <p:calendar pattern="dd-MM-yyyy" effect="fold"/>
-		 </h:panelGrid>
+			<p:selectOneMenu id="dist" value="#{distributorTargetBean.distCode}"
+				required="true" style="width:150px">
+				<f:selectItem itemLabel="Select Distributor"></f:selectItem>
+				<f:selectItems value="#{distributorTargetBean.distMap.entrySet()}"
+					var="dbch" itemLabel="#{dbch.key}" itemValue="#{dbch.key}" />
+			</p:selectOneMenu>
+			<p:outputLabel value="Start Date"></p:outputLabel>
+			<p:calendar value="#{distributorTargetBean.sdate}"
+				pattern="dd-MM-yyyy" effect="fold" showOn="button" mindate="sdate"/>
+			<p:outputLabel value="End Date"></p:outputLabel>
+			<p:calendar value="#{distributorTargetBean.edate}"
+				pattern="dd-MM-yyyy" effect="fold" showOn="button" mindate="changeToDate()"/>
+		</h:panelGrid>
 	</div>
-	
-	<p:dataTable var="targ" value="#{distributorTargetBean.target}">
+
+	<p:dataTable var="targ"
+		value="#{distributorTargetBean.distributorTarget}">
 		<p:column headerText="PRODUCT CODE">
 			<h:outputText value="#{targ.prdCode}" />
 		</p:column>
@@ -34,13 +36,13 @@
 		</p:column>
 
 		<p:column headerText="STOCK-IN-HAND">
-			<h:outputText value="#{targ.stock}" />
+			<h:outputText value="#{targ.qty}" />
 		</p:column>
 		<p:column headerText="TARGET QUANTITY">
-			<h:outputText/>
+			<p:inputText value="#{targ.tqty}" />
 		</p:column>
 	</p:dataTable>
-	
+
 	<p:message for="save" id="saveMsg"></p:message>
 	<center>
 		<p:commandButton id="save" value="SAVE"

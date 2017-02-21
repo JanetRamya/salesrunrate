@@ -30,9 +30,10 @@ public class CustomerDetailsService implements ICustomerDetailsService{
 
 	@Override
 	public CustomerDetails findAll(String custCode) {
-		// TODO Auto-generated method stub
 		return repository.findByCustCode(custCode);
 	}
+
+	
 
 	
 }
