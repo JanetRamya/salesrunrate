@@ -32,5 +32,11 @@ public class InventoryService implements IInventoryService {
 		return repository.findAll();
 	}
 
+	@Override
+	public Inventory findQuantity(String qty) {
+		// TODO Auto-generated method stub
+		return repository.findByQty(qty);
+	}
+
 
 }

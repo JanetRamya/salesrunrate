@@ -41,7 +41,7 @@
 	<p:message for="save" id="saveMsg"></p:message>
 			<center>
 				<p:commandButton id="save" value="SAVE"
-					actionListener="#{distributorDetailsBean.save}" update=":content saveMsg"
+					actionListener="#{distributorDetailsBean.save}"
 					oncomplete="if(args.showDialog) PF('saveInfo').show()" />
 			</center>
 </ui:composition>

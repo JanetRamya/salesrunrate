@@ -52,17 +52,15 @@ public class DistributorDetailsService implements IDistributorDetailsService {
 		return repository.findOneByDistCode(distCode);
 	}
 
-
-	@Override
-	public void delete(DistributorDetails distributorDetails) {
-		repository.delete(distributorDetails);
-		
-	}
-
 	@Override
 	public DistributorTarget findDistName(String distCode) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public void delete(List<DistributorDetails> distributorDetails) {
+		repository.delete(distributorDetails);
 	}
 
 	

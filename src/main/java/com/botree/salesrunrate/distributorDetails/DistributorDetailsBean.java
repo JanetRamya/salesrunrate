@@ -136,10 +136,7 @@ public class DistributorDetailsBean extends AbstractBean {
 		return null;
 	}
 
-	@Override
-	public void delete() {
-		service.delete((DistributorDetails) distributorDetails);
-	}
+	
 
 	@Override
 	public void setSearchPage() {
@@ -149,14 +146,20 @@ public class DistributorDetailsBean extends AbstractBean {
 
 	public void update(DistributorDetails dist) {
 		this.mode = "edit";
-		distCode = dist.getDistCode();
-		distName = dist.getDistName();
-		mobile = dist.getMobile();
-		email = dist.getEmail();
-		country = dist.getCountry();
-		state = dist.getState();
-		city = dist.getCity();
-		navi.selectUrl("pages/distributorDetails/entity.xhtml");
+		distCode=dist.getDistCode();
+		distName=dist.getDistName();
+		mobile=dist.getMobile();
+		email=dist.getEmail();
+		country=dist.getCountry();
+		state=dist.getState();
+		city=dist.getCity();
+		navi.selectUrl("/pages/distributorDetails/entity.xhtml");
 	}
+
+	@Override
+	public void delete() {
+		service.delete(distributorDetails);
+	}
+	
 
 }

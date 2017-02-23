@@ -13,4 +13,6 @@ public interface IInventoryService {
 	
 	public List<Inventory> findAll();
 
+	public Inventory findQuantity(String prdCode);
+
 }

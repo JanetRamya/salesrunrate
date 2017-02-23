@@ -30,6 +30,8 @@ public class CustomerDetailsService implements ICustomerDetailsService{
 
 	@Override
 	public CustomerDetails findAll(String custCode) {
+		String[] first = custCode.split(" - ");
+		custCode = first[0];
 		return repository.findByCustCode(custCode);
 	}
 

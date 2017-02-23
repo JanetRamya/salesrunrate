@@ -40,12 +40,12 @@ public class CustomerDetailsBean extends AbstractBean {
 	List<DistributorDetails> distList = new ArrayList<>();
 	DistributorDetails distNameList = new DistributorDetails();
 	Map<String, String> distMap = new HashMap<>();
-	List<CustomerDetails> cust = new ArrayList<>();
+
 
 	List<SalesmanDetails> salesList = new ArrayList<>();
 	SalesmanDetails salesNameList = new SalesmanDetails();
 	Map<String, String> salesMap = new HashMap<>();
-
+	
 	List<CustomerDetails> customer = new ArrayList<>();
 	CustomerDetails customerDetails = new CustomerDetails();
 
@@ -77,6 +77,17 @@ public class CustomerDetailsBean extends AbstractBean {
 		return salesList;
 	}
 
+	public void save() {
+
+		String[] codes = distCode.split(" - ");
+		String distrCode = codes[0];
+		//String[] code = smCode.split(" - ");
+		//String salesCode = code[0];
+		service.save(custCode, custName, distrCode, smCode);
+		RequestContext.getCurrentInstance().addCallbackParam("showDialog", true);
+
+	}
+
 	public List<SalesmanDetails> getSalesList() {
 		return salesList;
 	}
@@ -101,17 +112,7 @@ public class CustomerDetailsBean extends AbstractBean {
 		this.salesMap = salesMap;
 	}
 
-	public void save() {
-
-		String[] codes = distCode.split(" - ");
-		String distrCode = codes[0];
-		String[] code = smCode.split(" - ");
-		String salesCode = code[0];
-		service.save(custCode, custName, distrCode, salesCode);
-		RequestContext.getCurrentInstance().addCallbackParam("showDialog", true);
-
-	}
-
+	
 	public List<DistributorDetails> getDistList() {
 		return distList;
 	}
@@ -168,13 +169,7 @@ public class CustomerDetailsBean extends AbstractBean {
 		this.smCode = smCode;
 	}
 
-	public List<CustomerDetails> getCust() {
-		return cust;
-	}
-
-	public void setCust(List<CustomerDetails> cust) {
-		this.cust = cust;
-	}
+	
 
 	public List<CustomerDetails> getCustomer() {
 		return customer;
@@ -183,6 +178,14 @@ public class CustomerDetailsBean extends AbstractBean {
 	public void setCustomer(List<CustomerDetails> customer) {
 		this.customer = customer;
 	}
+	public CustomerDetails getCustomerDetails() {
+		return customerDetails;
+	}
+
+	public void setCustomerDetails(CustomerDetails customerDetails) {
+		this.customerDetails = customerDetails;
+	}
+
 
 	@Override
 	public String getHeader() {

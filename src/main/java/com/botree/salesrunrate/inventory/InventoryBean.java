@@ -64,8 +64,7 @@ public class InventoryBean extends AbstractBean {
 	}
 
 	public void loadProductName() {
-		prodNameList = productService.findProdName(prdCode);
-		productName = prodNameList.getPrdName();
+		prdName = prodMap.get(prdCode);
 
 	}
 

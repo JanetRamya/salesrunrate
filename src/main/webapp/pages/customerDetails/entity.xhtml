@@ -10,10 +10,10 @@
 			style="font-family:Serif;font-size:25px;color:red;text-align:center;"></p:outputLabel>
 		<h:panelGrid columns="2" styleClass="test" cellspacing="20">
 			<p:outputLabel value="CustomerCode"></p:outputLabel>
-			<p:inputText value="#{customerDetailsBean.custCode}" required="true"
+			<p:inputText id="custCode" value="#{customerDetailsBean.custCode}" required="true"
 				requiredMessage="Please Enter Customer Code"></p:inputText>
 			<p:outputLabel value="CustomerName"></p:outputLabel>
-			<p:inputText value="#{customerDetailsBean.custName}" required="true"
+			<p:inputText id="custName" value="#{customerDetailsBean.custName}" required="true"
 				requiredMessage="Please Enter Customer Name"></p:inputText>
 			<p:outputLabel value="DistributorCode-Name"></p:outputLabel>
 			<p:selectOneMenu id="dist"
@@ -35,8 +35,8 @@
 	</div>
 	<p:message for="save" id="saveMsg"></p:message>
 			<center>
-				<p:commandButton id="save" value="SAVE"
-					actionListener="#{customerDetailsBean.save}" update=":content saveMsg"
+				<p:commandButton id="save" value="SAVE" process="@this,dist,custCode,custName,sal"
+					action="#{customerDetailsBean.save}" update=":content saveMsg"
 					oncomplete="if(args.showDialog) PF('saveInfo').show()" />
 			</center>
 </ui:composition>

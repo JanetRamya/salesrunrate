@@ -11,6 +11,7 @@ public class ProductDetailsService implements IProductDetailsService {
 
 	@Autowired
 	private ProductDetailsRepo repository;
+	private String prdName;
 
 	@Override
 	public void save(String prdCode, String prdName, String price) {
@@ -34,7 +35,7 @@ public class ProductDetailsService implements IProductDetailsService {
 	@Override
 	public ProductDetails findProdName(String prdCode) {
 		// TODO Auto-generated method stub
-		return repository.findByPrdCode(prdCode);
+		return repository.findByPrdCode(prdName);
 	}
 
 	

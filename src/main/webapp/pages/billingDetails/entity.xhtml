@@ -1,0 +1,74 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:p="http://primefaces.org/ui">
+	<div id="file" align="center">
+		<p:outputLabel value="INVOICE DETAILS"
+			style="font-family:Serif;font-size:25px;color:red;text-align:center;"></p:outputLabel>
+		<h:panelGrid columns="2" styleClass="test" cellspacing="20">
+			<p:outputLabel value="Retailer Code-Name"></p:outputLabel>
+			<p:selectOneMenu id="customer" value="#{billingDetailsBean.custCode}"
+				required="true" style="width:150px">
+				<f:selectItem itemLabel="Select Retailer"></f:selectItem>
+				<f:selectItems value="#{billingDetailsBean.custMap.entrySet()}" var="dbch"
+					itemLabel="#{dbch.key}" itemValue="#{dbch.key}" />
+					<p:ajax
+							update=":content customer"
+							event="change" listener="#{billingDetailsBean.loadSalesman}" />
+			</p:selectOneMenu>
+			<p:outputLabel value="SalesmanCode-Name"></p:outputLabel>
+			<p:inputText value="#{billingDetailsBean.smCode}"></p:inputText>
+			
+			
+			<p:outputLabel value="Product Code-Name"></p:outputLabel>
+			<p:selectOneMenu id="prod"
+						value="#{billingDetailsBean.prdCode}" required="true"
+						style="width:150px">
+						<f:selectItem itemLabel="Select Product"></f:selectItem>
+						<f:selectItems value="#{billingDetailsBean.invMap.entrySet()}"
+							var="dbch" itemLabel="#{dbch.key}" itemValue="#{dbch.key}" />
+						<p:ajax
+							update=":content prod"
+							event="change" listener="#{billingDetailsBean.loadQuantity}" />
+							</p:selectOneMenu>
+			<p:outputLabel value="Stock-In-Hand"></p:outputLabel>
+			<p:inputText value="#{billingDetailsBean.qty}"></p:inputText>
+			
+			<p:outputLabel value="Order Quantity"></p:outputLabel>
+			<p:inputText value="#{billingDetailsBean.orderQuantity}"></p:inputText>
+			<p:outputLabel value="Price"></p:outputLabel>
+			<p:inputText value="#{billingDetailsBean.price}"></p:inputText>
+		</h:panelGrid>
+	
+	<p:commandButton value="Add"></p:commandButton>
+</div>
+	<p:dataTable var="bill">
+		<p:column headerText="PRODUCT CODE">
+			<h:outputText value="#{bill.prdCode}" />
+		</p:column>
+
+		<p:column headerText="PRODUCT NAME">
+			<h:outputText value="#{bill.prdName}" />
+		</p:column>
+
+		<p:column headerText="STOCK-IN-HAND">
+			<h:outputText value="#{bill.orderQuantity}" />
+		</p:column>
+		<p:column headerText="PRICE">
+			<h:inputText value="#{bill.price}" />
+		</p:column>
+	</p:dataTable>
+
+	<p:message for="save" id="saveMsg"></p:message>
+	<center>
+		<p:commandButton id="save" value="SAVE"
+			actionListener="#{billingDetailsBean.save}"
+			update=":content saveMsg"
+			oncomplete="if(args.showDialog) PF('saveInfo').show()" />
+	</center>
+</ui:composition>
+
+

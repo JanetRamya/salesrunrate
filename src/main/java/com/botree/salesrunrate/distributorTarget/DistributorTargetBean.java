@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 
 import org.primefaces.context.RequestContext;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +20,7 @@ import com.botree.salesrunrate.distributorDetails.IDistributorDetailsService;
 import com.botree.salesrunrate.entity.DistributorDetails;
 import com.botree.salesrunrate.entity.DistributorTarget;
 import com.botree.salesrunrate.entity.Inventory;
+import com.botree.salesrunrate.inventory.IInventoryService;
 import com.botree.salesrunrate.inventory.InventoryRepo;
 
 @Component("distributorTargetBean")
@@ -25,12 +28,13 @@ import com.botree.salesrunrate.inventory.InventoryRepo;
 public class DistributorTargetBean extends AbstractBean {
 	private String distCode;
 	private String distName;
-	private Date sdate=new Date();
-	private Date edate;
+	private Date sdate = new Date();
+	private Date edate = new Date();
 	private String prdCode;
 	private String prdName;
 	private String qty;
 	private String tqty;
+	private Date toMinDate;
 
 	@Autowired
 	private IDistributorTargetService service;
@@ -43,24 +47,44 @@ public class DistributorTargetBean extends AbstractBean {
 
 	@Autowired
 	DistributorTargetRepo distributorTargetRepo;
+	
+	@Autowired
+	private IInventoryService invenotryService;
+
 
 	List<DistributorDetails> distList = new ArrayList<>();
 	DistributorDetails distNameList = new DistributorDetails();
 	Map<String, String> distMap = new HashMap<>();
-	List<Inventory> target = new ArrayList<>();
 
+	List<Inventory> target = new ArrayList<>();
 	List<DistributorTarget> distributorTarget = new ArrayList<>();
+	DistributorTarget distributorTargetList = new DistributorTarget();
+	
+	Inventory inventory=new Inventory();
 
 	public void save() {
-		service.save(distCode, distName, sdate, edate, prdCode, prdName, qty, tqty);
-		distributorTargetRepo.save(distributorTarget);
-		RequestContext.getCurrentInstance().addCallbackParam("showDialog", true);
+		distributorTargetList.setDistCode(distCode);
+		distributorTargetList.setSdate(sdate);
+		distributorTargetList.setEdate(edate);
+		if (validation()) {
+			for (DistributorTarget target : distributorTarget) {
+				if (target.getTqty() != "") {
+					distributorTargetList.setPrdCode(target.getPrdCode());
+					distributorTargetList.setPrdName(target.getPrdName());
+					distributorTargetList.setQty(target.getQty());
+					distributorTargetList.setTqty(target.getTqty());
+					distributorTargetRepo.save(distributorTargetList);
+					Integer totalQty=Integer.parseInt(target.getQty()) - Integer.parseInt(target.getTqty());
+					inventory.setQty(totalQty.toString());
+					invenotryService.save(target.getPrdCode(), target.getPrdName(), totalQty.toString());
+					RequestContext.getCurrentInstance().addCallbackParam("showDialog", true);
+				}
+			}
+		}
 
 	}
-	public void changeToDate()
-	{
-		Date mindate = sdate;
-	}
+
+	
 
 	public void findDistributorTarget() {
 		distributorTarget = service.findAll();
@@ -86,6 +110,25 @@ public class DistributorTargetBean extends AbstractBean {
 			distMap.put(dist.getDistCode() + " - " + dist.getDistName(), dist.getDistCode());
 		}
 		return distList;
+	}
+
+	public boolean validation() {
+		for (DistributorTarget targ : distributorTarget) {
+			if (targ.getTqty()!= ""){
+			Integer index = distributorTarget.indexOf(targ);
+			if (Integer.parseInt(targ.getTqty()) > Integer.parseInt(targ.getQty())) {
+				FacesContext context = FacesContext.getCurrentInstance();
+				context.addMessage("content:distrTarget:" + index + ":tqty", new FacesMessage(
+						FacesMessage.SEVERITY_ERROR, "Target limit exceeded", "Target limit exceeded"));
+				return false;
+			}
+			}
+		}
+		return true;
+	}
+
+	public void changeToDate() {
+		setToMinDate(sdate);
 	}
 
 	public String getDistCode() {
@@ -198,6 +241,14 @@ public class DistributorTargetBean extends AbstractBean {
 
 	public void setDistributorTarget(List<DistributorTarget> distributorTarget) {
 		this.distributorTarget = distributorTarget;
+	}
+
+	public Date getToMinDate() {
+		return toMinDate;
+	}
+
+	public void setToMinDate(Date toMinDate) {
+		this.toMinDate = toMinDate;
 	}
 
 	@Override

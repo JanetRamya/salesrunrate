@@ -17,15 +17,20 @@
 					var="dbch" itemLabel="#{dbch.key}" itemValue="#{dbch.key}" />
 			</p:selectOneMenu>
 			<p:outputLabel value="Start Date"></p:outputLabel>
-			<p:calendar value="#{distributorTargetBean.sdate}"
-				pattern="dd-MM-yyyy" effect="fold" showOn="button" mindate="sdate"/>
+			<p:calendar id="fromDate" value="#{distributorTargetBean.sdate}"
+				pattern="dd-MM-yyyy" effect="fold" showOn="button" mindate="sdate">
+				<p:ajax event="dateSelect"
+					listener="#{distributorTargetBean.changeToDate}"
+					update="fromDate toDate"></p:ajax>
+			</p:calendar>
 			<p:outputLabel value="End Date"></p:outputLabel>
-			<p:calendar value="#{distributorTargetBean.edate}"
-				pattern="dd-MM-yyyy" effect="fold" showOn="button" mindate="changeToDate()"/>
+			<p:calendar id="toDate" value="#{distributorTargetBean.edate}"
+				pattern="dd-MM-yyyy" effect="fold" showOn="button"
+				mindate="#{distributorTargetBean.toMinDate}" />
 		</h:panelGrid>
 	</div>
 
-	<p:dataTable var="targ"
+	<p:dataTable var="targ" id="distrTarget"
 		value="#{distributorTargetBean.distributorTarget}">
 		<p:column headerText="PRODUCT CODE">
 			<h:outputText value="#{targ.prdCode}" />
@@ -39,7 +44,9 @@
 			<h:outputText value="#{targ.qty}" />
 		</p:column>
 		<p:column headerText="TARGET QUANTITY">
-			<p:inputText value="#{targ.tqty}" />
+			<p:inputText value="#{targ.tqty}" id="tqty">
+		<p:message for="tqty" id="tqtyMsg"></p:message>
+			</p:inputText>
 		</p:column>
 	</p:dataTable>
 

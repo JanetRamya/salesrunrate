@@ -14,7 +14,10 @@ public interface IDistributorDetailsService {
 
 	public DistributorDetails findAll(String distCode);
 
-	public void delete(DistributorDetails distributorDetails);
+	public void delete(List<DistributorDetails> distributorDetails);
 
 	public DistributorTarget findDistName(String distCode);
 }
+
+
+
