@@ -1,0 +1,62 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:p="http://primefaces.org/ui">
+	<div id="file" align="center">
+		<p:outputLabel value="SALESMAN TARGET DETAILS"
+			style="font-family:Serif;font-size:25px;color:red;text-align:center;"></p:outputLabel>
+		<h:panelGrid columns="2" styleClass="test" cellspacing="20">
+			<p:outputLabel value="SalesmanCode-Name"></p:outputLabel>
+			<p:selectOneMenu id="dist" value="#{salesmanTargetBean.smCode}"
+				required="true" style="width:150px">
+				<f:selectItem itemLabel="Select Salesman"></f:selectItem>
+				<f:selectItems value="#{salesmanTargetBean.salesMap.entrySet()}"
+					var="dbch" itemLabel="#{dbch.key}" itemValue="#{dbch.key}" />
+			</p:selectOneMenu>
+			<p:outputLabel value="StartDate"></p:outputLabel>
+			<p:calendar id="fromDate" value="#{salesmanTargetBean.sdate}"
+				pattern="dd-MM-yyyy" effect="fold" showOn="button" mindate="sdate">
+				<p:ajax event="dateSelect"
+					listener="#{salesmanTargetBean.changeToDate}"
+					update="fromDate toDate"></p:ajax>
+			</p:calendar>
+			<p:outputLabel value="EndDate"></p:outputLabel>
+			<p:calendar id="toDate" value="#{salesmanTargetBean.edate}"
+				pattern="dd-MM-yyyy" effect="fold" showOn="button"
+				mindate="#{salesmanTargetBean.toMinDate}" />
+		</h:panelGrid>
+	</div>
+
+	<p:dataTable var="targ" id="salesmanTarget"
+		value="#{salesmanTargetBean.salesmanTarget}">
+		<p:column headerText="PRODUCT CODE">
+			<h:outputText value="#{targ.prdCode}" />
+		</p:column>
+
+		<p:column headerText="PRODUCT NAME">
+			<h:outputText value="#{targ.prdName}" />
+		</p:column>
+
+		<p:column headerText="STOCK-IN-HAND">
+			<h:outputText value="#{targ.qty}" />
+		</p:column>
+		<p:column headerText="TARGET QUANTITY">
+			<p:inputText value="#{targ.tqty}" id="tqty">
+		<p:message for="tqty" id="tqtyMsg"></p:message>
+			</p:inputText>
+		</p:column>
+	</p:dataTable>
+
+	<p:message for="save" id="saveMsg"></p:message>
+	<center>
+		<p:commandButton id="save" value="SAVE"
+			actionListener="#{salesmanTargetBean.save}"
+			update=":content saveMsg"
+			oncomplete="if(args.showDialog) PF('saveInfo').show()" />
+	</center>
+</ui:composition>
+
+

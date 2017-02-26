@@ -47,10 +47,9 @@ public class DistributorTargetBean extends AbstractBean {
 
 	@Autowired
 	DistributorTargetRepo distributorTargetRepo;
-	
+
 	@Autowired
 	private IInventoryService invenotryService;
-
 
 	List<DistributorDetails> distList = new ArrayList<>();
 	DistributorDetails distNameList = new DistributorDetails();
@@ -59,8 +58,8 @@ public class DistributorTargetBean extends AbstractBean {
 	List<Inventory> target = new ArrayList<>();
 	List<DistributorTarget> distributorTarget = new ArrayList<>();
 	DistributorTarget distributorTargetList = new DistributorTarget();
-	
-	Inventory inventory=new Inventory();
+
+	Inventory inventory = new Inventory();
 
 	public void save() {
 		distributorTargetList.setDistCode(distCode);
@@ -74,7 +73,7 @@ public class DistributorTargetBean extends AbstractBean {
 					distributorTargetList.setQty(target.getQty());
 					distributorTargetList.setTqty(target.getTqty());
 					distributorTargetRepo.save(distributorTargetList);
-					Integer totalQty=Integer.parseInt(target.getQty()) - Integer.parseInt(target.getTqty());
+					Integer totalQty = Integer.parseInt(target.getQty()) - Integer.parseInt(target.getTqty());
 					inventory.setQty(totalQty.toString());
 					invenotryService.save(target.getPrdCode(), target.getPrdName(), totalQty.toString());
 					RequestContext.getCurrentInstance().addCallbackParam("showDialog", true);
@@ -83,8 +82,6 @@ public class DistributorTargetBean extends AbstractBean {
 		}
 
 	}
-
-	
 
 	public void findDistributorTarget() {
 		distributorTarget = service.findAll();
@@ -114,14 +111,14 @@ public class DistributorTargetBean extends AbstractBean {
 
 	public boolean validation() {
 		for (DistributorTarget targ : distributorTarget) {
-			if (targ.getTqty()!= ""){
-			Integer index = distributorTarget.indexOf(targ);
-			if (Integer.parseInt(targ.getTqty()) > Integer.parseInt(targ.getQty())) {
-				FacesContext context = FacesContext.getCurrentInstance();
-				context.addMessage("content:distrTarget:" + index + ":tqty", new FacesMessage(
-						FacesMessage.SEVERITY_ERROR, "Target limit exceeded", "Target limit exceeded"));
-				return false;
-			}
+			if (targ.getTqty() != "") {
+				Integer index = distributorTarget.indexOf(targ);
+				if (Integer.parseInt(targ.getTqty()) > Integer.parseInt(targ.getQty())) {
+					FacesContext context = FacesContext.getCurrentInstance();
+					context.addMessage("content:distrTarget:" + index + ":tqty", new FacesMessage(
+							FacesMessage.SEVERITY_ERROR, "Target limit exceeded", "Target limit exceeded"));
+					return false;
+				}
 			}
 		}
 		return true;
@@ -249,6 +246,22 @@ public class DistributorTargetBean extends AbstractBean {
 
 	public void setToMinDate(Date toMinDate) {
 		this.toMinDate = toMinDate;
+	}
+
+	public DistributorTarget getDistributorTargetList() {
+		return distributorTargetList;
+	}
+
+	public void setDistributorTargetList(DistributorTarget distributorTargetList) {
+		this.distributorTargetList = distributorTargetList;
+	}
+
+	public DistributorTargetRepo getDistributorTargetRepo() {
+		return distributorTargetRepo;
+	}
+
+	public void setDistributorTargetRepo(DistributorTargetRepo distributorTargetRepo) {
+		this.distributorTargetRepo = distributorTargetRepo;
 	}
 
 	@Override

@@ -11,13 +11,17 @@
 		<h:panelGrid columns="2" styleClass="test" cellspacing="20">
 			<p:outputLabel value="ProductCode"></p:outputLabel>
 			<p:inputText value="#{productDetailsBean.prdCode}" required="true"
-				requiredMessage="Please Enter Product Code"></p:inputText>
+				requiredMessage="Please Enter Product Code" >
+				 <f:convertNumber integerOnly="true" type="number" />
+				</p:inputText>
 			<p:outputLabel value="ProductName"></p:outputLabel>
 			<p:inputText value="#{productDetailsBean.prdName}" required="true"
 				requiredMessage="Please Enter Product Name"></p:inputText>
 			<p:outputLabel value="Price"></p:outputLabel>
 			<p:inputText value="#{productDetailsBean.price}" required="true"
-				requiredMessage="Please Enter Price"></p:inputText>
+				requiredMessage="Please Enter Price">
+				 <f:convertNumber integerOnly="true" type="number"/>
+				</p:inputText>
 		</h:panelGrid>
 	</div>
 	<p:message for="save" id="saveMsg"></p:message>

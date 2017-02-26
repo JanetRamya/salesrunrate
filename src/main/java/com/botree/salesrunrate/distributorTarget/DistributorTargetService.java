@@ -15,14 +15,12 @@ public class DistributorTargetService implements IDistributorTargetService{
 
 	@Override
 	public List<DistributorTarget> findAll() {
-		// TODO Auto-generated method stub
 		return repository.findAll();
 	}
 
 	
 	@Override
 	public DistributorTarget findAll(String distName) {
-		// TODO Auto-generated method stub
 		return repository.findOneByDistName(distName);
 	}
 
