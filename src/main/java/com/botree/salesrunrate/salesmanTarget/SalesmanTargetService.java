@@ -35,7 +35,7 @@ private SalesmanTargetRepo repository;
 
 	@Override
 	public SalesmanTarget findAll(String smName) {
-		return repository.findOneBySalesman(smName);
+		return repository.findOneBySmName(smName);
 	}
 
 }

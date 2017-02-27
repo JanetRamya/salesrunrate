@@ -48,8 +48,8 @@ public class DistributorTargetBean extends AbstractBean {
 	@Autowired
 	DistributorTargetRepo distributorTargetRepo;
 
-	@Autowired
-	private IInventoryService invenotryService;
+//	@Autowired
+//	private IInventoryService invenotryService;
 
 	List<DistributorDetails> distList = new ArrayList<>();
 	DistributorDetails distNameList = new DistributorDetails();
@@ -73,9 +73,9 @@ public class DistributorTargetBean extends AbstractBean {
 					distributorTargetList.setQty(target.getQty());
 					distributorTargetList.setTqty(target.getTqty());
 					distributorTargetRepo.save(distributorTargetList);
-					Integer totalQty = Integer.parseInt(target.getQty()) - Integer.parseInt(target.getTqty());
+					/*Integer totalQty = Integer.parseInt(target.getQty()) - Integer.parseInt(target.getTqty());
 					inventory.setQty(totalQty.toString());
-					invenotryService.save(target.getPrdCode(), target.getPrdName(), totalQty.toString());
+					invenotryService.save(target.getPrdCode(), target.getPrdName(), totalQty.toString());*/
 					RequestContext.getCurrentInstance().addCallbackParam("showDialog", true);
 				}
 			}
@@ -89,9 +89,7 @@ public class DistributorTargetBean extends AbstractBean {
 
 	@PostConstruct
 	public List<DistributorDetails> findDistributor()
-
 	{
-		// target = service.findAll();
 		target = repo.findAll();
 		for (Inventory obj : target) {
 			DistributorTarget target = new DistributorTarget();

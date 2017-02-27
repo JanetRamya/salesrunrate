@@ -11,8 +11,8 @@
 		<h:panelGrid columns="2" styleClass="test" cellspacing="20">
 			<p:outputLabel value="Retailer Code-Name"></p:outputLabel>
 			<p:selectOneMenu id="customer" value="#{billingDetailsBean.custCode}"
-				required="true" style="width:150px">
-				<f:selectItem itemLabel="Select Retailer"></f:selectItem>
+				required="true" style="width:150px" disabled="#{billingDetailsBean.renderFlag}">
+				
 				<f:selectItems value="#{billingDetailsBean.custMap.entrySet()}" var="dbch"
 					itemLabel="#{dbch.key}" itemValue="#{dbch.key}" />
 					<p:ajax
@@ -20,7 +20,7 @@
 							event="change" listener="#{billingDetailsBean.loadSalesman}" />
 			</p:selectOneMenu>
 			<p:outputLabel value="SalesmanCode-Name"></p:outputLabel>
-			<p:inputText value="#{billingDetailsBean.smCode}"></p:inputText>
+			<p:inputText value="#{billingDetailsBean.smCode}" disabled="#{billingDetailsBean.renderFlag}"></p:inputText>
 			
 			
 			<p:outputLabel value="Product Code-Name"></p:outputLabel>
@@ -38,14 +38,21 @@
 			<p:inputText value="#{billingDetailsBean.qty}"></p:inputText>
 			
 			<p:outputLabel value="Order Quantity"></p:outputLabel>
-			<p:inputText value="#{billingDetailsBean.orderQuantity}"></p:inputText>
+			<p:inputText value="#{billingDetailsBean.orderQuantity}">
+				 <f:convertNumber integerOnly="true" type="number" />
+				 
+				 <p:ajax listener="#{billingDetailsBean.getProductPrice}" update=":content price"></p:ajax>
+				 </p:inputText>
 			<p:outputLabel value="Price"></p:outputLabel>
-			<p:inputText value="#{billingDetailsBean.price}"></p:inputText>
+			<p:inputText id="price" value="#{billingDetailsBean.price}">
+				 <f:convertNumber integerOnly="true" type="number" /></p:inputText>
 		</h:panelGrid>
 	
-	<p:commandButton value="Add"></p:commandButton>
+	<p:commandButton value="Add" action="#{billingDetailsBean.addProduct}" update=":content "></p:commandButton>
 </div>
-	<p:dataTable var="bill">
+
+
+	<p:dataTable var="bill" value="#{billingDetailsBean.list}">
 		<p:column headerText="PRODUCT CODE">
 			<h:outputText value="#{bill.prdCode}" />
 		</p:column>
@@ -60,7 +67,19 @@
 		<p:column headerText="PRICE">
 			<h:inputText value="#{bill.price}" />
 		</p:column>
+		<p:column headerText="ACTIONS">
+			<p:commandLink id="edit"
+				actionListener="#{billingDetailsBean.editProduct(bill)}"
+				update=":content">
+				<i class="fe fa-pencil"></i>
+			</p:commandLink> 
+			<p:commandLink id="delete" update=":content"
+				action="#{billingDetailsBean.deleteProduct(bill)}">
+				<p:graphicImage value="../images/delete.png" for="edit" />
+			</p:commandLink> 
+			</p:column>
 	</p:dataTable>
+	
 
 	<p:message for="save" id="saveMsg"></p:message>
 	<center>

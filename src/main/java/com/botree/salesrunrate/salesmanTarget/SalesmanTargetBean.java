@@ -1,4 +1,5 @@
 package com.botree.salesrunrate.salesmanTarget;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -14,16 +15,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import com.botree.common.AbstractBean;
 import com.botree.salesrunrate.entity.Inventory;
 import com.botree.salesrunrate.entity.SalesmanDetails;
 import com.botree.salesrunrate.entity.SalesmanTarget;
-import com.botree.salesrunrate.inventory.IInventoryService;
 import com.botree.salesrunrate.inventory.InventoryRepo;
 import com.botree.salesrunrate.salesmanDetails.ISalesmanDetailsService;
 
 @Component("salesmanTargetBean")
 @Scope("session")
-public class SalesmanTargetBean {
+public class SalesmanTargetBean extends AbstractBean {
 	private String smCode;
 	private String smName;
 	private Date sdate = new Date();
@@ -33,24 +34,20 @@ public class SalesmanTargetBean {
 	private String qty;
 	private String tqty;
 	private Date toMinDate;
-	
+
 	@Autowired
 	private ISalesmanTargetService service;
-	
+
 	@Autowired
 	private ISalesmanDetailsService saleService;
-	
+
 	@Autowired
 	InventoryRepo repo;
-	
+
 	@Autowired
 	SalesmanTargetRepo saleTargetRepo;
-	
-	@Autowired
-	private IInventoryService inventoryService;
-	
+
 	List<SalesmanDetails> salesList = new ArrayList<>();
-	SalesmanDetails salesNameList = new SalesmanDetails();
 	Map<String, String> salesMap = new HashMap<>();
 
 	List<Inventory> target = new ArrayList<>();
@@ -70,9 +67,6 @@ public class SalesmanTargetBean {
 					salesmanTargetList.setQty(target.getQty());
 					salesmanTargetList.setTqty(target.getTqty());
 					saleTargetRepo.save(salesmanTargetList);
-					Integer totalQty = Integer.parseInt(target.getQty()) - Integer.parseInt(target.getTqty());
-					inventory.setQty(totalQty.toString());
-					inventoryService.save(target.getPrdCode(), target.getPrdName(), totalQty.toString());
 					RequestContext.getCurrentInstance().addCallbackParam("showDialog", true);
 				}
 			}
@@ -80,12 +74,9 @@ public class SalesmanTargetBean {
 
 	}
 
-	public void findsalesmanTarget() {
-		salesmanTarget=service.findAll();
-	}
-
+	
 	@PostConstruct
-	public List<SalesmanDetails> findDistributor()
+	public List<SalesmanDetails> findSalesman()
 
 	{
 		target = repo.findAll();
@@ -99,8 +90,8 @@ public class SalesmanTargetBean {
 		salesMap = new HashMap<>();
 		salesList = saleService.findAll();
 
-		for (SalesmanDetails dist : salesList) {
-			salesMap.put(dist.getSmCode() + " - " + dist.getSmName(), dist.getSmCode());
+		for (SalesmanDetails sale : salesList) {
+			salesMap.put(sale.getSmCode() + " - " + sale.getSmName(), sale.getSmCode());
 		}
 		return salesList;
 	}
@@ -111,7 +102,7 @@ public class SalesmanTargetBean {
 				Integer index = salesmanTarget.indexOf(targ);
 				if (Integer.parseInt(targ.getTqty()) > Integer.parseInt(targ.getQty())) {
 					FacesContext context = FacesContext.getCurrentInstance();
-					context.addMessage("content:distrTarget:" + index + ":tqty", new FacesMessage(
+					context.addMessage("content:salesmanTarget:" + index + ":tqty", new FacesMessage(
 							FacesMessage.SEVERITY_ERROR, "Target limit exceeded", "Target limit exceeded"));
 					return false;
 				}
@@ -123,58 +114,75 @@ public class SalesmanTargetBean {
 	public void changeToDate() {
 		setToMinDate(sdate);
 	}
-	
+
 	public String getSmCode() {
 		return smCode;
 	}
+
 	public void setSmCode(String smCode) {
 		this.smCode = smCode;
 	}
+
 	public String getSmName() {
 		return smName;
 	}
+
 	public void setSmName(String smName) {
 		this.smName = smName;
 	}
+
 	public Date getSdate() {
 		return sdate;
 	}
+
 	public void setSdate(Date sdate) {
 		this.sdate = sdate;
 	}
+
 	public Date getEdate() {
 		return edate;
 	}
+
 	public void setEdate(Date edate) {
 		this.edate = edate;
 	}
+
 	public String getPrdCode() {
 		return prdCode;
 	}
+
 	public void setPrdCode(String prdCode) {
 		this.prdCode = prdCode;
 	}
+
 	public String getPrdName() {
 		return prdName;
 	}
+
 	public void setPrdName(String prdName) {
 		this.prdName = prdName;
 	}
+
 	public String getQty() {
 		return qty;
 	}
+
 	public void setQty(String qty) {
 		this.qty = qty;
 	}
+
 	public String getTqty() {
 		return tqty;
 	}
+
 	public void setTqty(String tqty) {
 		this.tqty = tqty;
 	}
+
 	public Date getToMinDate() {
 		return toMinDate;
 	}
+
 	public SalesmanTargetRepo getSaleTargetRepo() {
 		return saleTargetRepo;
 	}
@@ -199,13 +207,6 @@ public class SalesmanTargetBean {
 		this.salesList = salesList;
 	}
 
-	public SalesmanDetails getSalesNameList() {
-		return salesNameList;
-	}
-
-	public void setSalesNameList(SalesmanDetails salesNameList) {
-		this.salesNameList = salesNameList;
-	}
 
 	public Map<String, String> getSalesMap() {
 		return salesMap;
@@ -250,8 +251,39 @@ public class SalesmanTargetBean {
 	public void setToMinDate(Date toMinDate) {
 		this.toMinDate = toMinDate;
 	}
-	
-	
-	
-	
+
+	public ISalesmanTargetService getService() {
+		return service;
+	}
+
+	public void setService(ISalesmanTargetService service) {
+		this.service = service;
+	}
+
+	public ISalesmanDetailsService getSaleService() {
+		return saleService;
+	}
+
+	public void setSaleService(ISalesmanDetailsService saleService) {
+		this.saleService = saleService;
+	}
+
+	@Override
+	public String getHeader() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void delete() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void setSearchPage() {
+		// TODO Auto-generated method stub
+
+	}
+
 }

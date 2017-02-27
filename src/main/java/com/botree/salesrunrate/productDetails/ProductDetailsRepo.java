@@ -10,5 +10,4 @@ public interface ProductDetailsRepo extends MongoRepository<ProductDetails, Stri
 	public ProductDetails findOneByPrdCode(String prdCode);
 	
 	public ProductDetails findByPrdCode(String prdName);
-
 }

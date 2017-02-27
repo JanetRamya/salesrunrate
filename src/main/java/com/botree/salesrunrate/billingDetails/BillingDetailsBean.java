@@ -17,12 +17,15 @@ import com.botree.salesrunrate.customerDetails.ICustomerDetailsService;
 import com.botree.salesrunrate.entity.BillingDetails;
 import com.botree.salesrunrate.entity.CustomerDetails;
 import com.botree.salesrunrate.entity.Inventory;
+import com.botree.salesrunrate.entity.ProductDetails;
 import com.botree.salesrunrate.inventory.IInventoryService;
+import com.botree.salesrunrate.productDetails.IProductDetailsService;
+
 @Component("billingDetailsBean")
 @Scope("session")
 
 public class BillingDetailsBean extends AbstractBean {
-	
+
 	private String custCode;
 	private String custName;
 	private String smCode;
@@ -31,6 +34,7 @@ public class BillingDetailsBean extends AbstractBean {
 	private String qty;
 	private String orderQuantity;
 	private String price;
+	private boolean renderFlag;
 
 	@Autowired
 	private ICustomerDetailsService custService;
@@ -38,66 +42,108 @@ public class BillingDetailsBean extends AbstractBean {
 	private IInventoryService invService;
 	@Autowired
 	private IBillingDetailsService service;
-	
-	
-	List<CustomerDetails> custList= new ArrayList<>();
-	CustomerDetails custNameList=new CustomerDetails();
-	Map<String, String> custMap = new HashMap<>();
-	
-	List<Inventory> invList= new ArrayList<>();
-	Inventory invNameList=new Inventory();
-	Map<String, String> invMap = new HashMap<>();
-	
-	private String quantity;
-	List<BillingDetails> bill=new ArrayList<>();
-	BillingDetails billingDetails =new BillingDetails();
 
-	public void save()
-	{
+	@Autowired
+	private IProductDetailsService prodService;
+
+	List<CustomerDetails> custList = new ArrayList<>();
+	CustomerDetails custNameList = new CustomerDetails();
+	Map<String, String> custMap = new HashMap<>();
+
+	List<Inventory> invList = new ArrayList<>();
+	Inventory invNameList = new Inventory();
+	Map<String, String> invMap = new HashMap<>();
+
+	private String quantity;
+	List<BillingDetails> bill = new ArrayList<>();
+	BillingDetails billingDetails = new BillingDetails();
+
+	ProductDetails productPrice = new ProductDetails();
+
+	List<BillingForm> list = new ArrayList<>();
+	List<BillingForm> listProd = new ArrayList<>();
+	BillingForm productList = new BillingForm();
+
+	public void save() {
 		service.save(custCode, custName, smCode, prdCode, prdName, qty, orderQuantity, price);
 		RequestContext.getCurrentInstance().addCallbackParam("showDialog", true);
 	}
-	
-	public void findBill()
-	{
-	
+
+	public void findBill() {
+
 	}
-	
+
 	@PostConstruct
-	public List<CustomerDetails> findCustomer()
-	{
-		bill=service.findAll();
+	public List<CustomerDetails> findCustomer() {
+		bill = service.findAll();
 		custMap = new HashMap<>();
 		custList = custService.findAll();
 
 		for (CustomerDetails cust : custList) {
-			custMap.put(cust.getCustCode()+ " - " + cust.getCustName(), cust.getSmCode());
+			custMap.put(cust.getCustCode() + " - " + cust.getCustName(), cust.getSmCode());
 		}
 		return custList;
 	}
+
 	@PostConstruct
-	public List<Inventory> findProd()
-	{
-		bill=service.findAll();
+	public List<Inventory> findProd() {
+		bill = service.findAll();
 		invMap = new HashMap<>();
-		invList =invService.findAll();
+		invList = invService.findAll();
 
 		for (Inventory inv : invList) {
-			invMap.put(inv.getPrdCode()+ " - " + inv.getPrdName(), inv.getQty());
+			invMap.put(inv.getPrdCode() + " - " + inv.getPrdName(), inv.getQty());
 		}
 		return invList;
 	}
-	
-	public void loadSalesman(){
+
+	public void loadSalesman() {
 		String[] first = custCode.split(" - ");
 		custCode = first[0];
 		custNameList = custService.findAll(custCode);
 		smCode = custNameList.getSmCode();
-		}
-	public void loadQuantity() {
-		
-		qty = invMap.get(prdCode);
+	}
 
+	public void loadQuantity() {
+
+		qty = invMap.get(prdCode);
+		orderQuantity = "";
+		price = "";
+
+	}
+
+	public void getProductPrice() {
+		String[] prodCode = prdCode.split(" - ");
+		productPrice = prodService.findPrice(prodCode[0]);
+		Integer prodPrice = Integer.parseInt(productPrice.getPrice()) * Integer.parseInt(orderQuantity);
+		setPrice(prodPrice.toString());
+	}
+
+	public void addProduct() {
+		renderFlag = true;
+		productList = new BillingForm();
+		String[] code = prdCode.split(" - ");
+		productList.setPrdCode(code[0]);
+		productList.setPrdName(code[1]);
+		productList.setStockOnHand(qty);
+		productList.setOrderQuantity(orderQuantity);
+		productList.setPrice(getPrice());
+		list.add(productList);
+		orderQuantity = "";
+		price = "";
+
+	}
+
+	public void editProduct(BillingForm bill) {
+		list.remove(bill);
+		setOrderQuantity(bill.getOrderQuantity());
+		setPrice(bill.getPrice());
+		setQty(bill.getStockOnHand());
+		setPrdCode(bill.getPrdCode() + " - " + bill.getPrdName());
+	}
+
+	public void deleteProduct(BillingForm billProd) {
+		list.remove(billProd);
 	}
 	public BillingDetails getBillingDetails() {
 		return billingDetails;
@@ -114,7 +160,7 @@ public class BillingDetailsBean extends AbstractBean {
 	public void setQuantity(String quantity) {
 		this.quantity = quantity;
 	}
-	
+
 	public List<BillingDetails> getBill() {
 		return bill;
 	}
@@ -235,6 +281,22 @@ public class BillingDetailsBean extends AbstractBean {
 		this.price = price;
 	}
 
+	public List<BillingForm> getList() {
+		return list;
+	}
+
+	public void setList(List<BillingForm> list) {
+		this.list = list;
+	}
+
+	public boolean isRenderFlag() {
+		return renderFlag;
+	}
+
+	public void setRenderFlag(boolean renderFlag) {
+		this.renderFlag = renderFlag;
+	}
+
 	@Override
 	public String getHeader() {
 		// TODO Auto-generated method stub
@@ -244,13 +306,13 @@ public class BillingDetailsBean extends AbstractBean {
 	@Override
 	public void delete() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void setSearchPage() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

@@ -45,7 +45,8 @@
 		</p:column>
 		<p:column headerText="TARGET QUANTITY">
 			<p:inputText value="#{targ.tqty}" id="tqty">
-		<p:message for="tqty" id="tqtyMsg"></p:message>
+				<f:convertNumber integerOnly="true" type="number" />
+				<p:message for="tqty" id="tqtyMsg"></p:message>
 			</p:inputText>
 		</p:column>
 	</p:dataTable>

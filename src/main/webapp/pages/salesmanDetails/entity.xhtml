@@ -43,9 +43,11 @@
 			<p:inputText value="#{salesmanDetailsBean.email}"
 				placeholder="sales@company.com"></p:inputText>
 			<p:outputLabel value="DailyAllowance"></p:outputLabel>
-			<p:inputText value="#{salesmanDetailsBean.allow}"></p:inputText>
+			<p:inputText value="#{salesmanDetailsBean.allow}">
+				 <f:convertNumber integerOnly="true" type="number" /></p:inputText>
 			<p:outputLabel value="MonthlySalary"></p:outputLabel>
-			<p:inputText value="#{salesmanDetailsBean.monSalary}"></p:inputText>
+			<p:inputText value="#{salesmanDetailsBean.monSalary}">
+				 <f:convertNumber integerOnly="true" type="number" /></p:inputText>
 			</h:panelGrid>
 			<p:message for="save" id="saveMsg"></p:message>
 			<center>

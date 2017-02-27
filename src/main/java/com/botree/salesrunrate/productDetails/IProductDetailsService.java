@@ -13,6 +13,8 @@ public interface IProductDetailsService {
 	public ProductDetails findAll(String prdCode);
 	
 	public ProductDetails findProdName(String prdCode);
+	
+	public ProductDetails findPrice(String prodCod);
 
 
 }

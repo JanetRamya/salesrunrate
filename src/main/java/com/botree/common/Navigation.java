@@ -1,8 +1,10 @@
 package com.botree.common;
 
+import java.io.IOException;
 import java.io.Serializable;
 
 import javax.annotation.PostConstruct;
+import javax.faces.context.FacesContext;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -48,6 +50,14 @@ public class Navigation implements Serializable {
 	public void selectUrl(String url) {
 		renderModule = false;
 		setSelectedUrl(url);
+	}
+	public void landingScreen() throws IOException
+	
+	{
+		renderModule=true;
+		FacesContext.getCurrentInstance().getExternalContext()
+		.redirect(FacesContext.getCurrentInstance().getExternalContext().getRequestContextPath()
+				+ "/pages/landing.xhtml");
 	}
 
 }

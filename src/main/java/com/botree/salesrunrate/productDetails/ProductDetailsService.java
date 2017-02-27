@@ -38,5 +38,10 @@ public class ProductDetailsService implements IProductDetailsService {
 		return repository.findByPrdCode(prdName);
 	}
 
+	@Override
+	public ProductDetails findPrice(String prodCode) {
+		return repository.findOneByPrdCode(prodCode);
+	}
+
 	
 }
