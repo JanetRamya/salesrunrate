@@ -20,7 +20,6 @@ import com.botree.salesrunrate.distributorDetails.IDistributorDetailsService;
 import com.botree.salesrunrate.entity.DistributorDetails;
 import com.botree.salesrunrate.entity.DistributorTarget;
 import com.botree.salesrunrate.entity.Inventory;
-import com.botree.salesrunrate.inventory.IInventoryService;
 import com.botree.salesrunrate.inventory.InventoryRepo;
 
 @Component("distributorTargetBean")
@@ -48,9 +47,6 @@ public class DistributorTargetBean extends AbstractBean {
 	@Autowired
 	DistributorTargetRepo distributorTargetRepo;
 
-//	@Autowired
-//	private IInventoryService invenotryService;
-
 	List<DistributorDetails> distList = new ArrayList<>();
 	DistributorDetails distNameList = new DistributorDetails();
 	Map<String, String> distMap = new HashMap<>();
@@ -58,8 +54,6 @@ public class DistributorTargetBean extends AbstractBean {
 	List<Inventory> target = new ArrayList<>();
 	List<DistributorTarget> distributorTarget = new ArrayList<>();
 	DistributorTarget distributorTargetList = new DistributorTarget();
-
-	Inventory inventory = new Inventory();
 
 	public void save() {
 		distributorTargetList.setDistCode(distCode);
@@ -73,9 +67,6 @@ public class DistributorTargetBean extends AbstractBean {
 					distributorTargetList.setQty(target.getQty());
 					distributorTargetList.setTqty(target.getTqty());
 					distributorTargetRepo.save(distributorTargetList);
-					/*Integer totalQty = Integer.parseInt(target.getQty()) - Integer.parseInt(target.getTqty());
-					inventory.setQty(totalQty.toString());
-					invenotryService.save(target.getPrdCode(), target.getPrdName(), totalQty.toString());*/
 					RequestContext.getCurrentInstance().addCallbackParam("showDialog", true);
 				}
 			}

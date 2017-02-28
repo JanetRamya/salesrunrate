@@ -63,7 +63,6 @@ public class LoginBean extends AbstractBean {
 		try {
 			if (user != null) {
 				
-
 				HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext()
 						.getSession(true);
 				SessionHolder.getIntance().saveSession(userName, session);

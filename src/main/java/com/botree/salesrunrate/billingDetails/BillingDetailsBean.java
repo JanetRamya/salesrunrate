@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 
 import org.primefaces.context.RequestContext;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,6 +47,13 @@ public class BillingDetailsBean extends AbstractBean {
 
 	@Autowired
 	private IProductDetailsService prodService;
+	@Autowired
+	private BillingDetailsRepo billingDetailsRepo;
+
+	@Autowired
+	private IInventoryService inventoryService;
+
+	Inventory inventory = new Inventory();
 
 	List<CustomerDetails> custList = new ArrayList<>();
 	CustomerDetails custNameList = new CustomerDetails();
@@ -63,10 +72,25 @@ public class BillingDetailsBean extends AbstractBean {
 	List<BillingForm> list = new ArrayList<>();
 	List<BillingForm> listProd = new ArrayList<>();
 	BillingForm productList = new BillingForm();
+	BillingDetails billingDetailsList = new BillingDetails();
 
 	public void save() {
-		service.save(custCode, custName, smCode, prdCode, prdName, qty, orderQuantity, price);
-		RequestContext.getCurrentInstance().addCallbackParam("showDialog", true);
+		String[] cust=custCode.split(" - ");
+		billingDetailsList.setCustCode(cust[0]);
+		billingDetailsList.setCustName(cust[1]);
+		billingDetailsList.setSmCode(smCode);
+		for (BillingForm billing : list) {
+			billingDetailsList.setPrdCode(billing.getPrdCode());
+			billingDetailsList.setPrdName(billing.getPrdName());
+			billingDetailsList.setQty(billing.getQty());
+			billingDetailsList.setOrderQuantity(billing.getOrderQuantity());
+			billingDetailsList.setPrice(billing.getPrice());
+			billingDetailsRepo.save(billingDetailsList);
+			Integer totalQty = Integer.parseInt(billing.getQty()) - Integer.parseInt(billing.getOrderQuantity());
+			//inventory.setQty(totalQty.toString());
+			inventoryService.save(billing.getPrdCode(), billing.getPrdName(), totalQty.toString());
+			RequestContext.getCurrentInstance().addCallbackParam("showDialog", true);
+		}
 	}
 
 	public void findBill() {
@@ -98,10 +122,7 @@ public class BillingDetailsBean extends AbstractBean {
 	}
 
 	public void loadSalesman() {
-		String[] first = custCode.split(" - ");
-		custCode = first[0];
-		custNameList = custService.findAll(custCode);
-		smCode = custNameList.getSmCode();
+			smCode=custMap.get(custCode);
 	}
 
 	public void loadQuantity() {
@@ -122,10 +143,17 @@ public class BillingDetailsBean extends AbstractBean {
 	public void addProduct() {
 		renderFlag = true;
 		productList = new BillingForm();
+		if(orderQuantity=="")
+		{
+			FacesContext context = FacesContext.getCurrentInstance();
+			context.addMessage("content:addProd", new FacesMessage(FacesMessage.SEVERITY_ERROR,
+					"Order Quantity should not be blank", "Order Quantity should not be blank"));
+			return;
+		}
 		String[] code = prdCode.split(" - ");
 		productList.setPrdCode(code[0]);
 		productList.setPrdName(code[1]);
-		productList.setStockOnHand(qty);
+		productList.setQty(qty);
 		productList.setOrderQuantity(orderQuantity);
 		productList.setPrice(getPrice());
 		list.add(productList);
@@ -138,7 +166,7 @@ public class BillingDetailsBean extends AbstractBean {
 		list.remove(bill);
 		setOrderQuantity(bill.getOrderQuantity());
 		setPrice(bill.getPrice());
-		setQty(bill.getStockOnHand());
+		setQty(bill.getQty());
 		setPrdCode(bill.getPrdCode() + " - " + bill.getPrdName());
 	}
 
@@ -295,6 +323,38 @@ public class BillingDetailsBean extends AbstractBean {
 
 	public void setRenderFlag(boolean renderFlag) {
 		this.renderFlag = renderFlag;
+	}
+
+	public Inventory getInventory() {
+		return inventory;
+	}
+
+	public void setInventory(Inventory inventory) {
+		this.inventory = inventory;
+	}
+
+	public List<BillingForm> getListProd() {
+		return listProd;
+	}
+
+	public void setListProd(List<BillingForm> listProd) {
+		this.listProd = listProd;
+	}
+
+	public BillingForm getProductList() {
+		return productList;
+	}
+
+	public void setProductList(BillingForm productList) {
+		this.productList = productList;
+	}
+
+	public BillingDetails getBillingDetailsList() {
+		return billingDetailsList;
+	}
+
+	public void setBillingDetailsList(BillingDetails billingDetailsList) {
+		this.billingDetailsList = billingDetailsList;
 	}
 
 	@Override

@@ -10,35 +10,42 @@
 			style="font-family:Serif;font-size:25px;color:red;text-align:center;"></p:outputLabel>
 		<h:panelGrid columns="2" styleClass="test" cellspacing="20">
 			<p:outputLabel value="CustomerCode"></p:outputLabel>
-			<p:inputText id="custCode" value="#{customerDetailsBean.custCode}" required="true"
-				requiredMessage="Please Enter Customer Code"></p:inputText>
+			<p:inputText id="custCode" value="#{customerDetailsBean.custCode}"
+				required="true" requiredMessage="Please Enter Customer Code"></p:inputText>
 			<p:outputLabel value="CustomerName"></p:outputLabel>
-			<p:inputText id="custName" value="#{customerDetailsBean.custName}" required="true"
-				requiredMessage="Please Enter Customer Name"></p:inputText>
+			<p:inputText id="custName" value="#{customerDetailsBean.custName}"
+				required="true" requiredMessage="Please Enter Customer Name"></p:inputText>
 			<p:outputLabel value="DistributorCode-Name"></p:outputLabel>
-			<p:selectOneMenu id="dist"
-						value="#{customerDetailsBean.distCode}" required="true"
-						style="width:150px">
-						<f:selectItem itemLabel="Select Distributor"></f:selectItem>
-						<f:selectItems value="#{customerDetailsBean.distMap.entrySet()}"
-							var="dbch" itemLabel="#{dbch.key}" itemValue="#{dbch.key}" />
-							</p:selectOneMenu>
+			<p:selectOneMenu id="dist" value="#{customerDetailsBean.distCode}"
+				required="true" style="width:150px">
+				<f:selectItem itemLabel="Select Distributor"></f:selectItem>
+				<f:selectItems value="#{customerDetailsBean.distMap.entrySet()}"
+					var="dbch" itemLabel="#{dbch.key}" itemValue="#{dbch.key}" />
+			</p:selectOneMenu>
 			<p:outputLabel value="SalesmanCode-Name"></p:outputLabel>
-			<p:selectOneMenu id="sal"
-						value="#{customerDetailsBean.smCode}" required="true"
-						style="width:150px">
-						<f:selectItem itemLabel="Select Salesman"></f:selectItem>
-						<f:selectItems value="#{customerDetailsBean.salesMap.entrySet()}"
-							var="dbch" itemLabel="#{dbch.key}" itemValue="#{dbch.key}" />
-							</p:selectOneMenu>
+			<p:selectOneMenu id="sal" value="#{customerDetailsBean.smCode}"
+				required="true" style="width:150px">
+				<f:selectItem itemLabel="Select Salesman"></f:selectItem>
+				<f:selectItems value="#{customerDetailsBean.salesMap.entrySet()}"
+					var="dbch" itemLabel="#{dbch.key}" itemValue="#{dbch.key}" />
+			</p:selectOneMenu>
 		</h:panelGrid>
 	</div>
 	<p:message for="save" id="saveMsg"></p:message>
-			<center>
-				<p:commandButton id="save" value="SAVE" process="@this,dist,custCode,custName,sal"
-					action="#{customerDetailsBean.save}" update=":content saveMsg"
-					oncomplete="if(args.showDialog) PF('saveInfo').show()" />
-			</center>
+	<center>
+		<p:commandButton id="save" value="SAVE"
+			process="@this,dist,custCode,custName,sal"
+			action="#{customerDetailsBean.save}" update=":content saveMsg"
+			oncomplete="if(args.showDialog) PF('saveInfo').show()" />
+	</center>
+	<br />
+	<br />
+	<div align="center">
+		<p:commandButton value="BACK"
+			action="#{navi.selectUrl('/pages/customerDetails/search.xhtml')}"
+			update=":content" immediate="true"></p:commandButton>
+	</div>
+
 </ui:composition>
 
 

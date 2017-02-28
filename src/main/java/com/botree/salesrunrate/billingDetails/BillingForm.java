@@ -5,7 +5,9 @@ public class BillingForm {
 	private String prdName;
 	private String orderQuantity;
 	private String price;
-	private String stockOnHand;
+	private String qty;
+	
+	
 	public String getPrdCode() {
 		return prdCode;
 	}
@@ -30,12 +32,14 @@ public class BillingForm {
 	public void setPrice(String price) {
 		this.price = price;
 	}
-	public String getStockOnHand() {
-		return stockOnHand;
+	public String getQty() {
+		return qty;
 	}
-	public void setStockOnHand(String stockOnHand) {
-		this.stockOnHand = stockOnHand;
+	public void setQty(String qty) {
+		this.qty = qty;
 	}
+	
+	
 	
 
 

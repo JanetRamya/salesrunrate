@@ -32,5 +32,12 @@
 					oncomplete="if(args.showDialog) PF('saveInfo').show()" />
 			</center>
 		</h:panelGrid>
+		<br />
+	<br />
+	<div align="center">
+		<p:commandButton value="BACK"
+			action="#{navi.selectUrl('/pages/inventory/search.xhtml')}"
+			update=":content" immediate="true"></p:commandButton>
+	</div>
 	</div>
 </ui:composition>

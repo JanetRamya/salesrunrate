@@ -51,13 +51,12 @@ public class Navigation implements Serializable {
 		renderModule = false;
 		setSelectedUrl(url);
 	}
-	public void landingScreen() throws IOException
+	public void landingScreen() 
 	
 	{
 		renderModule=true;
-		FacesContext.getCurrentInstance().getExternalContext()
-		.redirect(FacesContext.getCurrentInstance().getExternalContext().getRequestContextPath()
-				+ "/pages/landing.xhtml");
+		setSelectedUrl("/pages/landing.xhtml");
+		
 	}
 
 }

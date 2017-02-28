@@ -1,5 +1,6 @@
 package com.botree.salesrunrate.entity;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection="billingDetails")
@@ -9,7 +10,8 @@ public class BillingDetails extends MongoEntity{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
+@Id	
 private String custCode;
 private String custName;
 private String smCode;
@@ -18,12 +20,7 @@ private String prdName;
 private String qty;
 private String orderQuantity;
 private String price;
-public String getCustName() {
-	return custName;
-}
-public void setCustName(String custName) {
-	this.custName = custName;
-}
+
 public String getPrdName() {
 	return prdName;
 }
@@ -67,4 +64,11 @@ public String getPrice() {
 public void setPrice(String price) {
 	this.price = price;
 }
+public String getCustName() {
+	return custName;
+}
+public void setCustName(String custName) {
+	this.custName = custName;
+}
+
 }

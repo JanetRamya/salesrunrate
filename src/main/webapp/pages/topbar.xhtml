@@ -10,8 +10,8 @@
 		<div class="wrapper_inner_topbar">
 			<h:panelGrid style="float:left;">
 				<p:commandLink id="logo"
-					action="#{navi.landingScreen}"
-					update=":content">
+					actionListener="#{navi.landingScreen}"
+					update=":content" immediate="true">
 					<p:graphicImage value="../images/CSNG-grey.png" for="logo"
 						border="0" />
 					<b style="font-size: 30px; font-family: sans-serif; color: light blue;">SALES
@@ -25,7 +25,7 @@
 				<li><a class="ripplelink"><i class="icon-power"></i> <span
 						class="ShowOnMobile">System</span></a>
 					<ul>
-						<li><p:commandLink actionListener="#{loginBean.logout}">
+						<li><p:commandLink actionListener="#{loginBean.logout}" immediate="true">
 								<span class="Red"><i class="icon-vpn_key Fs30 DispBlock"></i>
 									Logout</span>
 							</p:commandLink></li>

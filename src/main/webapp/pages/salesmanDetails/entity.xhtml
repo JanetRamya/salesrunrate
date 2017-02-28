@@ -55,7 +55,13 @@
 						actionListener="#{salesmanDetailsBean.save}" update=":content saveMsg"
 						oncomplete="if(args.showDialog) PF('saveInfo').show()" />
 				</center>
-		
+	</div>
+	<br />
+	<br />
+	<div align="center">
+		<p:commandButton value="BACK"
+			action="#{navi.selectUrl('/pages/salesmanDetails/search.xhtml')}"
+			update=":content" immediate="true"></p:commandButton>
 	</div>
 </ui:composition>
 
