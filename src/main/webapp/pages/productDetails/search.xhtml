@@ -5,13 +5,14 @@
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
 	xmlns:p="http://primefaces.org/ui">
+	<h:inputHidden value="#{productDetailsBean.bean}" />
 	<div align="center">
 		<p:outputLabel style="font-size:30px;" value="PRODUCT DETAILS"></p:outputLabel>
 	</div>
 	<div align="right">
 		<p:commandButton value="Add New Product"
 			action="#{navi.selectUrl('/pages/productDetails/entity.xhtml')}"
-			update=":content"></p:commandButton>
+			update=":content" rendered="#{userSession.cmpUser}"></p:commandButton>
 	</div>
 	<br />
 	<p:dataTable var="prd" value="#{productDetailsBean.productDetails}">

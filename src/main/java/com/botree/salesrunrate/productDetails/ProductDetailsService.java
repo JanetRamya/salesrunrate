@@ -34,7 +34,6 @@ public class ProductDetailsService implements IProductDetailsService {
 
 	@Override
 	public ProductDetails findProdName(String prdCode) {
-		// TODO Auto-generated method stub
 		return repository.findByPrdCode(prdName);
 	}
 
@@ -42,6 +41,8 @@ public class ProductDetailsService implements IProductDetailsService {
 	public ProductDetails findPrice(String prodCode) {
 		return repository.findOneByPrdCode(prodCode);
 	}
+
+	
 
 	
 }

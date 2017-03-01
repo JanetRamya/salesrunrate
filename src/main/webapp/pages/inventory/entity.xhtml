@@ -24,8 +24,9 @@
 			<p:inputText value="#{inventoryBean.prdName}" id="prdName"></p:inputText>
 			<p:outputLabel value="Quantity"></p:outputLabel>
 			<p:spinner id="minMax" value="#{inventoryBean.qty}" min="0"
-				max="1000" />
-			<p:message for="save" id="saveMsg"></p:message>
+				max="1000" required="true" requiredMessage="Enter Stock-in-hand"/>
+				<p:message for="save" id="saveMsg" display="text" />
+			<p:message for="minMax" id="minMaxMsg"></p:message>
 			<center>
 				<p:commandButton id="save" value="SAVE"
 					action="#{inventoryBean.save}" update=":content saveMsg" process="@this,prod,prdName,minMax"

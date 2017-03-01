@@ -132,7 +132,6 @@ public class DistributorDetailsBean extends AbstractBean {
 
 	@Override
 	public String getHeader() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -140,7 +139,6 @@ public class DistributorDetailsBean extends AbstractBean {
 
 	@Override
 	public void setSearchPage() {
-		// TODO Auto-generated method stub
 
 	}
 

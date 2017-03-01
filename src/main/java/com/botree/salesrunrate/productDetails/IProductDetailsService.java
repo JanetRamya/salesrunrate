@@ -16,5 +16,4 @@ public interface IProductDetailsService {
 	
 	public ProductDetails findPrice(String prodCod);
 
-
 }

@@ -13,6 +13,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import com.botree.common.AbstractBean;
+import com.botree.common.Navigation;
 import com.botree.salesrunrate.entity.ProductDetails;
 
 @Component("productDetailsBean")
@@ -29,7 +30,11 @@ public class ProductDetailsBean extends AbstractBean {
 	List<ProductDetails> productDetails = new ArrayList<>();
 	ProductDetails product=new ProductDetails();
 
+	@Autowired
+	Navigation navi;
+	
 	public void save() {
+	
 		product=service.findAll(prdCode);
 		if(product==null){
 			service.save(prdCode, prdName, price);
@@ -79,21 +84,24 @@ public class ProductDetailsBean extends AbstractBean {
 	public void setProductDetails(List<ProductDetails> productDetails) {
 		this.productDetails = productDetails;
 	}
+	
 
+	
 	@Override
 	public String getHeader() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
-	public void delete() {
-		// TODO Auto-generated method stub
-		
-	}
+	
 
 	@Override
 	public void setSearchPage() {
+		
+	}
+	
+
+	@Override
+	public void delete() {
 		// TODO Auto-generated method stub
 		
 	}

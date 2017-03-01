@@ -11,10 +11,10 @@
 		</p:outputLabel>
 		<h:panelGrid columns="2" styleClass="test" cellspacing="20">
 			<p:outputLabel value="Code"></p:outputLabel>
-			<p:inputText value="#{salesmanDetailsBean.smCode}" required="true"
-				requiredMessage="Please Enter Salesman Code"></p:inputText>
+			<p:inputText id="scode" value="#{salesmanDetailsBean.smCode}"
+				required="true" requiredMessage="Please Enter Salesman Code"></p:inputText>
 			<p:outputLabel value="Name"></p:outputLabel>
-			<p:inputText value="#{salesmanDetailsBean.smName}"
+			<p:inputText id="snme" value="#{salesmanDetailsBean.smName}"
 				placeholder="Janet" required="true"
 				requiredMessage="Please Enter Salesman Name"></p:inputText>
 			<p:outputLabel value="DistributorBranch"></p:outputLabel>
@@ -44,17 +44,20 @@
 				placeholder="sales@company.com"></p:inputText>
 			<p:outputLabel value="DailyAllowance"></p:outputLabel>
 			<p:inputText value="#{salesmanDetailsBean.allow}">
-				 <f:convertNumber integerOnly="true" type="number" /></p:inputText>
+				<f:convertNumber integerOnly="true" type="number" />
+			</p:inputText>
 			<p:outputLabel value="MonthlySalary"></p:outputLabel>
 			<p:inputText value="#{salesmanDetailsBean.monSalary}">
-				 <f:convertNumber integerOnly="true" type="number" /></p:inputText>
-			</h:panelGrid>
-			<p:message for="save" id="saveMsg"></p:message>
-			<center>
-					<p:commandButton id="save" value="SAVE"
-						actionListener="#{salesmanDetailsBean.save}" update=":content saveMsg"
-						oncomplete="if(args.showDialog) PF('saveInfo').show()" />
-				</center>
+				<f:convertNumber integerOnly="true" type="number" />
+			</p:inputText>
+		</h:panelGrid>
+		<p:message for="save" id="saveMsg"></p:message>
+		<center>
+			<p:commandButton id="save" value="SAVE"
+				actionListener="#{salesmanDetailsBean.save}"
+				update=":content saveMsg"
+				oncomplete="if(args.showDialog) PF('saveInfo').show()" />
+		</center>
 	</div>
 	<br />
 	<br />

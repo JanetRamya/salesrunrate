@@ -54,7 +54,6 @@ public class DistributorDetailsService implements IDistributorDetailsService {
 
 	@Override
 	public DistributorTarget findDistName(String distCode) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

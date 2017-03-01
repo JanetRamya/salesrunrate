@@ -10,26 +10,29 @@
 			style="font-family:Serif;font-size:25px;color:red;text-align:center;"></p:outputLabel>
 		<h:panelGrid columns="2" styleClass="test" cellspacing="20">
 			<p:outputLabel value="ProductCode"></p:outputLabel>
-			<p:inputText value="#{productDetailsBean.prdCode}" required="true"
-				requiredMessage="Please Enter Product Code" >
-				</p:inputText>
+			<p:inputText id="cde" value="#{productDetailsBean.prdCode}"
+				required="true" requiredMessage="Please Enter Product Code">
+			</p:inputText>
 			<p:outputLabel value="ProductName"></p:outputLabel>
-			<p:inputText value="#{productDetailsBean.prdName}" required="true"
-				requiredMessage="Please Enter Product Name"></p:inputText>
+			<p:inputText id="nme" value="#{productDetailsBean.prdName}"
+				required="true" requiredMessage="Please Enter Product Name"></p:inputText>
 			<p:outputLabel value="Price"></p:outputLabel>
-			<p:inputText value="#{productDetailsBean.price}" required="true"
-				requiredMessage="Please Enter Price">
-				 <f:convertNumber integerOnly="true" type="number"/>
-				</p:inputText>
+			<p:inputText id="rate" value="#{productDetailsBean.price}"
+				required="true" requiredMessage="Please Enter Price">
+				<f:convertNumber integerOnly="true" type="number" />
+			</p:inputText>
 		</h:panelGrid>
 	</div>
+	<p:message for="cde" id="cdeMsg" display="text" />
+	<p:message for="nme" id="nmeMsg" display="text" />
+	<p:message for="rate" id="rateMsg" display="text" />
 	<p:message for="save" id="saveMsg"></p:message>
-			<center>
-				<p:commandButton id="save" value="SAVE"
-					actionListener="#{productDetailsBean.save}" update=":content saveMsg"
-					oncomplete="if(args.showDialog) PF('saveInfo').show()" />
-			</center>
-			<br />
+	<center>
+		<p:commandButton id="save" value="SAVE"
+			actionListener="#{productDetailsBean.save}" update=":content saveMsg"
+			oncomplete="if(args.showDialog) PF('saveInfo').show()" />
+	</center>
+	<br />
 	<br />
 	<div align="center">
 		<p:commandButton value="BACK"

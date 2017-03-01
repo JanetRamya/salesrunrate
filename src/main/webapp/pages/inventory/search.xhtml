@@ -11,7 +11,7 @@
 	<div align="right">
 		<p:commandButton value="Stock Adjustment"
 			action="#{navi.selectUrl('/pages/inventory/entity.xhtml')}"
-			update=":content"></p:commandButton>
+			update=":content" rendered="#{userSession.cmpUser}"></p:commandButton>
 	</div>
 	<br />
 	<p:dataTable var="prd" value="#{inventoryBean.stock}">

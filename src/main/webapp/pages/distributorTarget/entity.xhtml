@@ -44,13 +44,12 @@
 			<h:outputText value="#{targ.qty}" />
 		</p:column>
 		<p:column headerText="TARGET QUANTITY">
-			<p:inputText value="#{targ.tqty}" id="tqty">
+			<p:inputText id="tqty" value="#{targ.tqty}">
 				<f:convertNumber integerOnly="true" type="number" />
-				<p:message for="tqty" id="tqtyMsg"></p:message>
+				<p:message for="tqty"></p:message>
 			</p:inputText>
 		</p:column>
 	</p:dataTable>
-
 	<p:message for="save" id="saveMsg"></p:message>
 	<center>
 		<p:commandButton id="save" value="SAVE"

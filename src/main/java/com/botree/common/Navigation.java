@@ -1,10 +1,8 @@
 package com.botree.common;
 
-import java.io.IOException;
 import java.io.Serializable;
 
 import javax.annotation.PostConstruct;
-import javax.faces.context.FacesContext;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -51,12 +49,13 @@ public class Navigation implements Serializable {
 		renderModule = false;
 		setSelectedUrl(url);
 	}
-	public void landingScreen() 
-	
+
+	public void landingScreen()
+
 	{
-		renderModule=true;
+		renderModule = true;
 		setSelectedUrl("/pages/landing.xhtml");
-		
+
 	}
 
 }
