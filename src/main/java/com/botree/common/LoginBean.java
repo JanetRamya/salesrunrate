@@ -25,6 +25,7 @@ public class LoginBean extends AbstractBean {
 
 	private String userName;
 	private String password;
+	private String distrCode;
 
 	@Autowired
 	UserService userService;
@@ -57,12 +58,13 @@ public class LoginBean extends AbstractBean {
 			if (user.getDistCode() == null) {
 				userSession.setCmpUser(true);
 			} else {
+				userSession.setDistrCode(userName);
 				userSession.setCmpUser(false);
 			}
 		}
 		try {
 			if (user != null) {
-				
+
 				HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext()
 						.getSession(true);
 				SessionHolder.getIntance().saveSession(userName, session);
@@ -94,6 +96,14 @@ public class LoginBean extends AbstractBean {
 
 	}
 
+	public String getDistrCode() {
+		return distrCode;
+	}
+
+	public void setDistrCode(String distrCode) {
+		this.distrCode = distrCode;
+	}
+
 	@Override
 	public String getHeader() {
 		// TODO Auto-generated method stub
@@ -103,13 +113,13 @@ public class LoginBean extends AbstractBean {
 	@Override
 	public void delete() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void setSearchPage() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

@@ -20,6 +20,7 @@ private String prdName;
 private String qty;
 private String orderQuantity;
 private String price;
+private String distrCode;
 
 public String getPrdName() {
 	return prdName;
@@ -70,5 +71,12 @@ public String getCustName() {
 public void setCustName(String custName) {
 	this.custName = custName;
 }
+public String getDistrCode() {
+	return distrCode;
+}
+public void setDistrCode(String distrCode) {
+	this.distrCode = distrCode;
+}
+
 
 }

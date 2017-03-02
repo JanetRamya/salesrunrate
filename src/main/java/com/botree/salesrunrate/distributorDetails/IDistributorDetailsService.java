@@ -11,13 +11,10 @@ public interface IDistributorDetailsService {
 
 	public List<DistributorDetails> findAll();
 
-
 	public DistributorDetails findAll(String distCode);
 
 	public void delete(List<DistributorDetails> distributorDetails);
 
 	public DistributorTarget findDistName(String distCode);
+	
 }
-
-
-

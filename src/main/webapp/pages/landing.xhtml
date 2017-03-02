@@ -18,7 +18,7 @@
 	<h:outputScript name="js/perfect-scrollbar.js" library="modena-layout" />
 	<h:outputScript name="js/layout.js" library="modena-layout" />
 </h:head>
-<h:body class="Geometry">
+<h:body class="RedModena Geometry">
 	<div>
 		<ui:include src="topbar.xhtml" />
 	</div>
@@ -31,7 +31,7 @@
 							<!-- SUB MENU START -->
 							<p:panel id="left_menu_headings" styleClass="leftMenuPanel"
 								rendered="#{navi.renderModule}">
-								<p:panel styleClass="rptGrps" >
+								<p:panel styleClass="rptGrps SoftGreenBack" >
 									<h:outputLabel styleClass="rptHeader" value="Configuration"
 										style="color:#AD1457;"></h:outputLabel>
 									<ul class="reportsGrp">
@@ -42,7 +42,7 @@
 											</p:commandLink></li>
 									</ul>
 																</p:panel>
-								<p:panel styleClass="rptGrps">
+								<p:panel styleClass="rptGrps YellowBack">
 									<h:outputLabel styleClass="rptHeader" value="Inventory"
 										style="color:#AD1457;"></h:outputLabel>
 									<ul class="reportsGrp">

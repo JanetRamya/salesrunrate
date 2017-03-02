@@ -50,12 +50,9 @@ public class Navigation implements Serializable {
 		setSelectedUrl(url);
 	}
 
-	public void landingScreen()
-
-	{
+	public void landingScreen() {
 		renderModule = true;
-		setSelectedUrl("/pages/landing.xhtml");
-
+		setSelectedUrl("");
 	}
 
 }

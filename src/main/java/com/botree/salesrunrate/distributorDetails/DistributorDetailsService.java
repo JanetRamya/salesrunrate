@@ -62,5 +62,4 @@ public class DistributorDetailsService implements IDistributorDetailsService {
 		repository.delete(distributorDetails);
 	}
 
-	
 }

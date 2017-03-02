@@ -40,7 +40,7 @@ public class SalesmanTargetBean extends AbstractBean {
 
 	@Autowired
 	private ISalesmanDetailsService saleService;
-
+	
 	@Autowired
 	InventoryRepo repo;
 

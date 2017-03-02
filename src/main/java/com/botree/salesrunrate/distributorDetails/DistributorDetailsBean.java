@@ -32,7 +32,7 @@ public class DistributorDetailsBean extends AbstractBean {
 	@Autowired
 	private IDistributorDetailsService service;
 	List<DistributorDetails> distributorDetails = new ArrayList<>();
-	DistributorDetails distributor=new DistributorDetails();
+	DistributorDetails distributor = new DistributorDetails();
 
 	@Autowired
 	Navigation navi;
@@ -135,8 +135,6 @@ public class DistributorDetailsBean extends AbstractBean {
 		return null;
 	}
 
-	
-
 	@Override
 	public void setSearchPage() {
 
@@ -144,13 +142,13 @@ public class DistributorDetailsBean extends AbstractBean {
 
 	public void update(DistributorDetails dist) {
 		this.mode = "edit";
-		distCode=dist.getDistCode();
-		distName=dist.getDistName();
-		mobile=dist.getMobile();
-		email=dist.getEmail();
-		country=dist.getCountry();
-		state=dist.getState();
-		city=dist.getCity();
+		distCode = dist.getDistCode();
+		distName = dist.getDistName();
+		mobile = dist.getMobile();
+		email = dist.getEmail();
+		country = dist.getCountry();
+		state = dist.getState();
+		city = dist.getCity();
 		navi.selectUrl("/pages/distributorDetails/entity.xhtml");
 	}
 
@@ -158,6 +156,5 @@ public class DistributorDetailsBean extends AbstractBean {
 	public void delete() {
 		service.delete(distributorDetails);
 	}
-	
 
 }

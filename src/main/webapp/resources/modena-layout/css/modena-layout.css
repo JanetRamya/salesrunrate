@@ -36,9 +36,11 @@ body {
   margin: 0px;
   height: 100%;
   width: 100%;
-  xbackground-color: #f5f5f5;
- background-color:#99cff7;
-  font-family: 'robotolight';
+  background-color: #f5f5f5;
+ xbackground-color:#99cff7;
+ font-family: 'robotolight';
+font-size: 30px;
+color: #383F90 !important;
 
 }
 
@@ -90,7 +92,7 @@ body {
 .BlueModena {
   background-image: none;
 }
-.BlueModena #layout-topbar {
+.BlueModena #layout-topbar {red
   xbackground-color: #0277BD;
   xbackground-color: #0288D1;
   background-color: #4183D7;
@@ -275,7 +277,7 @@ button.selectAll{
 	background-color: #CC2E45 !important;
 }
 .RedModena .ui-button{
-	background-color: #AAA;
+	background-color: #CC2E45;
 }
 
 
@@ -1586,7 +1588,7 @@ li {
   background-color: #FB8C00;
 }
 .SoftGreenBack {
-  background-color: #A5D6A7;
+  background-color: #A5D6A7 !important;
 }
 .GreenBack {
   background-color: #43A047;
@@ -1610,7 +1612,7 @@ li {
   background-color: #8E24AA;
 }
 .YellowBack {
-  background-color: #F7D100;
+  background-color: #F7D100 !important;
 }
 /* borders */
 .BorderTop {
@@ -2321,12 +2323,13 @@ webkit-box-shadow: 0px 1px 7px 0px rgba(43, 59, 93, 0.4);
 	height: auto;
 	overflow: hidden;
 	width: 100%;
-	background: #FFF;
-	margin: 0px 0px 25px 0px !important;
-	padding-bottom: 15px !important;
+	background: #ffebee !important;
+	margin: 15px 0px 25px 0px !important;
+	padding-bottom: 0px !important;
 }
 .rptGrps .rptHeader{
 	font-size: 16px;
+	color: #d50000 !important;
 }
 .reportsGrp{
 	height: auto;
@@ -2466,7 +2469,7 @@ table.hierarchyBlock{
 {
 	
 	padding: 100px;	
-	background-color: #99cff7;
+	xbackground-color: #99cff7;
 }
 #minMax
 {
@@ -2549,6 +2552,9 @@ table.hierarchyBlock{
   display: inline;
   margin-bottom: 0;
 }
+.ui-commandlink{
+	color: #01579b !important;
+}
 
 /* .panel-radius .jqplot-series-canvas{
 	top:0px !important;
@@ -2579,3 +2585,6 @@ input[type="text"] + button.ui-autocomplete-dropdown{
 	background: gray !important;
 
 	} */
+	
+	
+	

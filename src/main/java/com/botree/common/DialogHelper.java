@@ -1,4 +1,5 @@
 package com.botree.common;
+
 import java.io.Serializable;
 
 import org.primefaces.context.RequestContext;
@@ -8,7 +9,6 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import com.botree.salesrunrate.util.SpringContext;
-
 
 @Component("dialogHelper")
 @Scope("session")

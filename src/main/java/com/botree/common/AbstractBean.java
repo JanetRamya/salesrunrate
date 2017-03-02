@@ -8,16 +8,18 @@ public abstract class AbstractBean {
 	@Autowired
 	private DialogHelper dialog;
 	private String bean;
-	
+
 	public abstract String getHeader();
 
 	public abstract void delete();
 
 	public abstract void setSearchPage();
+
 	public String getBean() {
 		getDialog().setBean(this);
 		return bean;
 	}
+
 	public void setBean(String bean) {
 		this.bean = bean;
 	}

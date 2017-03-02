@@ -10,6 +10,7 @@ public class UserSession {
 	private String userName;
 	private String password;
 	private boolean cmpUser;
+	private String distrCode;
 
 	public String getUserName() {
 		return userName;
@@ -34,5 +35,14 @@ public class UserSession {
 	public void setCmpUser(boolean cmpUser) {
 		this.cmpUser = cmpUser;
 	}
+
+	public String getDistrCode() {
+		return distrCode;
+	}
+
+	public void setDistrCode(String distrCode) {
+		this.distrCode = distrCode;
+	}
+	
 
 }

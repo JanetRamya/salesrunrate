@@ -75,9 +75,10 @@ public class BillingDetailsBean extends AbstractBean {
 	BillingDetails billingDetailsList = new BillingDetails();
 
 	public void save() {
-		String[] cust=custCode.split(" - ");
+		String[] cust = custCode.split(" - ");
 		billingDetailsList.setCustCode(cust[0]);
 		billingDetailsList.setCustName(cust[1]);
+		billingDetailsList.setDistrCode(userSession.getDistrCode());
 		billingDetailsList.setSmCode(smCode);
 		for (BillingForm billing : list) {
 			billingDetailsList.setPrdCode(billing.getPrdCode());
@@ -87,7 +88,7 @@ public class BillingDetailsBean extends AbstractBean {
 			billingDetailsList.setPrice(billing.getPrice());
 			billingDetailsRepo.save(billingDetailsList);
 			Integer totalQty = Integer.parseInt(billing.getQty()) - Integer.parseInt(billing.getOrderQuantity());
-			//inventory.setQty(totalQty.toString());
+			// inventory.setQty(totalQty.toString());
 			inventoryService.save(billing.getPrdCode(), billing.getPrdName(), totalQty.toString());
 			RequestContext.getCurrentInstance().addCallbackParam("showDialog", true);
 		}
@@ -122,7 +123,7 @@ public class BillingDetailsBean extends AbstractBean {
 	}
 
 	public void loadSalesman() {
-			smCode=custMap.get(custCode);
+		smCode = custMap.get(custCode);
 	}
 
 	public void loadQuantity() {
@@ -143,8 +144,7 @@ public class BillingDetailsBean extends AbstractBean {
 	public void addProduct() {
 		renderFlag = true;
 		productList = new BillingForm();
-		if(orderQuantity=="")
-		{
+		if (orderQuantity == "") {
 			FacesContext context = FacesContext.getCurrentInstance();
 			context.addMessage("content:addProd", new FacesMessage(FacesMessage.SEVERITY_ERROR,
 					"Order Quantity should not be blank", "Order Quantity should not be blank"));
@@ -173,6 +173,7 @@ public class BillingDetailsBean extends AbstractBean {
 	public void deleteProduct(BillingForm billProd) {
 		list.remove(billProd);
 	}
+
 	public BillingDetails getBillingDetails() {
 		return billingDetails;
 	}
@@ -359,19 +360,16 @@ public class BillingDetailsBean extends AbstractBean {
 
 	@Override
 	public String getHeader() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public void delete() {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public void setSearchPage() {
-		// TODO Auto-generated method stub
 
 	}
 

@@ -41,11 +41,10 @@ public class CustomerDetailsBean extends AbstractBean {
 	DistributorDetails distNameList = new DistributorDetails();
 	Map<String, String> distMap = new HashMap<>();
 
-
 	List<SalesmanDetails> salesList = new ArrayList<>();
 	SalesmanDetails salesNameList = new SalesmanDetails();
 	Map<String, String> salesMap = new HashMap<>();
-	
+
 	List<CustomerDetails> customer = new ArrayList<>();
 	CustomerDetails customerDetails = new CustomerDetails();
 
@@ -81,8 +80,8 @@ public class CustomerDetailsBean extends AbstractBean {
 
 		String[] codes = distCode.split(" - ");
 		String distrCode = codes[0];
-		//String[] code = smCode.split(" - ");
-		//String salesCode = code[0];
+		// String[] code = smCode.split(" - ");
+		// String salesCode = code[0];
 		service.save(custCode, custName, distrCode, smCode);
 		RequestContext.getCurrentInstance().addCallbackParam("showDialog", true);
 
@@ -112,7 +111,6 @@ public class CustomerDetailsBean extends AbstractBean {
 		this.salesMap = salesMap;
 	}
 
-	
 	public List<DistributorDetails> getDistList() {
 		return distList;
 	}
@@ -169,8 +167,6 @@ public class CustomerDetailsBean extends AbstractBean {
 		this.smCode = smCode;
 	}
 
-	
-
 	public List<CustomerDetails> getCustomer() {
 		return customer;
 	}
@@ -178,6 +174,7 @@ public class CustomerDetailsBean extends AbstractBean {
 	public void setCustomer(List<CustomerDetails> customer) {
 		this.customer = customer;
 	}
+
 	public CustomerDetails getCustomerDetails() {
 		return customerDetails;
 	}
@@ -185,7 +182,6 @@ public class CustomerDetailsBean extends AbstractBean {
 	public void setCustomerDetails(CustomerDetails customerDetails) {
 		this.customerDetails = customerDetails;
 	}
-
 
 	@Override
 	public String getHeader() {

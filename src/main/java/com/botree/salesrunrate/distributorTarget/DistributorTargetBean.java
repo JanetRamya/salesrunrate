@@ -79,8 +79,7 @@ public class DistributorTargetBean extends AbstractBean {
 	}
 
 	@PostConstruct
-	public List<DistributorDetails> findDistributor()
-	{
+	public List<DistributorDetails> findDistributor() {
 		target = repo.findAll();
 		for (Inventory obj : target) {
 			DistributorTarget target = new DistributorTarget();
