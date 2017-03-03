@@ -14,4 +14,5 @@ public interface IDistributorTargetService {
 	public void save(final String distCode, final String distName,final Date sdate,final Date edate,
 			final String prdCode, final String prdName, final String qty,final  String tqty);
 
+	public List<DistributorTarget> findByTqty(Date fromDate,Date toDate);
 }

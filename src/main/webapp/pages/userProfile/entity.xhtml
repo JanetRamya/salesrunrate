@@ -9,7 +9,8 @@
 		<h:form id="saveForm">
 			<div id="file" align="center">
 				<p:outputLabel value="USER PROFILE"
-					style="font-family:Serif;font-size:30px;color:#1E6098 !important;text-align:center;"></p:outputLabel>
+					style="font-family:Serif;font-size:30px;color:#1E6098 !important;text-align:center;">
+				</p:outputLabel>
 				<h:panelGrid columns="2" styleClass="test" cellspacing="20">
 					<p:outputLabel value="UserName"></p:outputLabel>
 					<p:inputText id="usr" value="#{userProfileBean.userName}"
@@ -42,13 +43,12 @@
 						actionListener="#{userProfileBean.save}" update=":content saveMsg"
 						oncomplete="if(args.showDialog) PF('saveInfo').show()" />
 				</center>
-				<br />
-	<br />
-	<div align="center">
-		<p:commandButton value="BACK"
-			action="#{navi.selectUrl('/pages/userProfile/search.xhtml')}"
-			update=":content" immediate="true"></p:commandButton>
-	</div>
+				<br /> <br />
+				<div align="center">
+					<p:commandButton value="BACK"
+						action="#{navi.selectUrl('/pages/userProfile/search.xhtml')}"
+						update=":content" immediate="true"></p:commandButton>
+				</div>
 			</div>
 		</h:form>
 	</h:body>

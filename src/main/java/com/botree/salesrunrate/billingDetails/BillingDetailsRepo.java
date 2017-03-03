@@ -8,6 +8,6 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import com.botree.salesrunrate.entity.BillingDetails;
 
 public interface BillingDetailsRepo extends MongoRepository<BillingDetails, String> {
-	public List<BillingDetails> findByOrderQuantity(String distrCode);
+	public List<BillingDetails> findByDistrCode(String distrCode);
 
 }

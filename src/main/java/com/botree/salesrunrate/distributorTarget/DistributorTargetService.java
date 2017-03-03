@@ -40,6 +40,14 @@ public class DistributorTargetService implements IDistributorTargetService{
 		repository.save(distributorTarget);
 		
 	}
+
+	@Override
+	public List<DistributorTarget> findByTqty(Date fromDate, Date toDate) {
+		return repository.findBySdateGreaterThanAndEdateLessThan(fromDate,toDate);
+	}
+
+
+
 	}
 
 

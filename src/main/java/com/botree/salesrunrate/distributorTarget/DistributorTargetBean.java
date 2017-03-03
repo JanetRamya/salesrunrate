@@ -1,5 +1,8 @@
 package com.botree.salesrunrate.distributorTarget;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -55,8 +58,9 @@ public class DistributorTargetBean extends AbstractBean {
 	List<DistributorTarget> distributorTarget = new ArrayList<>();
 	DistributorTarget distributorTargetList = new DistributorTarget();
 
-	public void save() {
+	public void save() throws ParseException {
 		distributorTargetList.setDistCode(distCode);
+
 		distributorTargetList.setSdate(sdate);
 		distributorTargetList.setEdate(edate);
 		if (validation()) {

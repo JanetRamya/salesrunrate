@@ -184,5 +184,12 @@
 			</h:panelGroup>
 		</h:form>
 	</p:confirmDialog>
+	<p:ajaxStatus onstart="PF('statusDialog').show()"
+		onsuccess="PF('statusDialog').hide()" />
+
+	<p:dialog widgetVar="statusDialog" modal="true" draggable="false"
+		showHeader="false" closable="false" resizable="false">
+		<img src="ajaxloadingbar.gif" alt="Loading..." />
+	</p:dialog>
 </h:body>
 </html>

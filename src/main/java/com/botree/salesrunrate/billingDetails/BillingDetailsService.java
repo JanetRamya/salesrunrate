@@ -33,7 +33,7 @@ public class BillingDetailsService implements IBillingDetailsService {
 
 	@Override
 	public List<BillingDetails> findAll(String distrCode) {
-		return repository.findByOrderQuantity(distrCode);
+		return repository.findByDistrCode(distrCode);
 	}
 
 }

@@ -1,6 +1,8 @@
 package com.botree.salesrunrate.chart;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -34,8 +36,21 @@ public class TargetDistributorBean {
 	private BarChartModel barModel;
 	private BarChartModel distrTar;
 	private boolean showChart;
-
+	private Date sdate = new Date();
+	private Date edate = new Date();
+	private Date toMaxDate;
+	private Date toMinDate;
+	private Date fromMaxDate=new Date();
+	private Integer maxHeight;
+	
 	@PostConstruct
+	public void onPageDisplay()
+	{
+		if(distrTar!=null)
+		{
+		distrTar.clear();
+		}
+	}
 	public void createBarModels() {
 		showChart=true;
 		createDistributorTarget();
@@ -53,38 +68,67 @@ public class TargetDistributorBean {
 		Axis yAxis = distrTar.getAxis(AxisType.Y);
 		yAxis.setLabel("Quantity");
 		yAxis.setMin(0);
-		yAxis.setMax(50);
+		yAxis.setMax(maxHeight);
 	}
 
 	private BarChartModel distrTarQty() {
-		distributorTargetChart = distrService.findAll();
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(sdate);
+		cal.add(Calendar.DATE, -1);
+		Date fromDate = cal.getTime();
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTime(edate);
+		calendar.add(Calendar.DATE, +1);
+		Date toDate = calendar.getTime();
+		distributorTargetChart = distrService.findByTqty(fromDate, toDate);
 		BarChartModel distr = new BarChartModel();
 
 		ChartSeries targetQty = new ChartSeries();
 		for (DistributorTarget tar : distributorTargetChart) {
 			targetQty.setLabel("TargetQuantity");
+			if(maxHeight == null) {
+				maxHeight = Integer.parseInt(tar.getTqty());
+			} else if(maxHeight < Integer.parseInt(tar.getTqty())){
+				maxHeight = Integer.parseInt(tar.getTqty());
+			}
 			if (tar.getTqty() != null && !"".equals(tar.getTqty())) {
-				targetQty.set(tar.getDistCode(), Integer.parseInt(tar.getTqty()));
+				String[] dist=tar.getDistCode().split(" - ");
+				targetQty.set(dist[0], Integer.parseInt(tar.getTqty()));
 			}
 
 		}
 		ChartSeries achievedTarget = new ChartSeries();
+		achievedTarget.setLabel("Achieved Quantity");
 		for (DistributorTarget achievedQty : distributorTargetChart) {
-			String[] distCode=achievedQty.getDistCode().split(" - ");
+			String[] distCode = achievedQty.getDistCode().split(" - ");
 			distrAchievedQty = billingService.findAll(distCode[0]);
-			for (BillingDetails aQty : distrAchievedQty) {
-				achievedTarget.setLabel("Achieved Quantity");
-				achievedTarget.set(aQty.getDistrCode(), Integer.parseInt(aQty.getOrderQuantity()));
+			if (distrAchievedQty.isEmpty()) {
+				achievedTarget.set(distCode, 0);
+			} else {
+				for (BillingDetails aQty : distrAchievedQty) {
+					if(maxHeight == null) {
+						maxHeight = Integer.parseInt(aQty.getOrderQuantity());
+					} else if(maxHeight < Integer.parseInt(aQty.getOrderQuantity())){
+						maxHeight = Integer.parseInt(aQty.getOrderQuantity());
+					}
+					achievedTarget.set(aQty.getDistrCode(), Integer.parseInt(aQty.getOrderQuantity()));
+				}
 			}
-
+			
 		}
-
+		maxHeight = maxHeight + 2;
 		distr.addSeries(targetQty);
 		distr.addSeries(achievedTarget);
 		return distr;
 	}
-
-
+	
+	public void changeToDate() {
+			Calendar cal = Calendar.getInstance();
+			cal.setTime(sdate);
+			cal.add(Calendar.MONTH, 6);
+			toMaxDate = cal.getTime();
+		setToMinDate(sdate);
+	}
 	public BarChartModel getBarModel() {
 		return barModel;
 	}
@@ -108,6 +152,53 @@ public class TargetDistributorBean {
 	public void setShowChart(boolean showChart) {
 		this.showChart = showChart;
 	}
+
+	public Date getSdate() {
+		return sdate;
+	}
+
+	public void setSdate(Date sdate) {
+		this.sdate = sdate;
+	}
+
+	public Date getEdate() {
+		return edate;
+	}
+
+	public void setEdate(Date edate) {
+		this.edate = edate;
+	}
+
+	public Date getToMaxDate() {
+		return toMaxDate;
+	}
+
+	public void setToMaxDate(Date toMaxDate) {
+		this.toMaxDate = toMaxDate;
+	}
+
+	public Date getToMinDate() {
+		return toMinDate;
+	}
+
+	public void setToMinDate(Date toMinDate) {
+		this.toMinDate = toMinDate;
+	}
+
+	public Date getFromMaxDate() {
+		return fromMaxDate;
+	}
+
+	public void setFromMaxDate(Date fromMaxDate) {
+		this.fromMaxDate = fromMaxDate;
+	}
+	public Integer getMaxHeight() {
+		return maxHeight;
+	}
+	public void setMaxHeight(Integer maxHeight) {
+		this.maxHeight = maxHeight;
+	}
+	
 	
 
 }
